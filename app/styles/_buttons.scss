@@ -1,0 +1,45 @@
+$btn-success-bg:                 #19d156 !default;
+$btn-success-border:             $btn-success-bg !default;
+
+.btn.btn-fb {
+    background: #3b5998;
+    color: #fff
+}
+
+.btn.btn-tw {
+    background: #32ccfe;
+    color: #fff
+}
+
+.btn.btn-g {
+    background: #d73d32;
+    color: #fff
+}
+
+.btn.btn-inactive {
+    background: #eee
+}
+
+.btn.btn-donator {
+    background: #ffd100;
+    color: #fff
+}
+
+.btn.btn-collector {
+    background: #2daae1;
+    color: #fff
+}
+
+.btn.btn-gepant {
+    background: #19d156;
+    color: #fff
+}
+
+.btn.btn-gepant-hover:hover {
+    background: #19d156;
+    color: #fff
+}
+
+.btn {
+    @include transition(0.3s);
+}

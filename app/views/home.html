@@ -1,0 +1,34 @@
+<div ng-controller="CarouselDemoCtrl">
+    <div style="height: 305px" id='carousel'>
+        <carousel interval="myInterval">
+            <slide ng-repeat="slide in slides" active="slide.active" class="{{slide.class}}">
+                <img ng-src="images/slider-image.png" style="margin:auto;">
+                <!-- FIXME change me --> 
+               <div class="item-content ng-scope" autoscale="1200">
+                    <div class="carousel-caption">
+                        <div class="carousel-caption-inner">
+                            <h1><font><font>Want to get rid of your pledge cans and bottles?</font></font></h1>
+                            <p class="mtop1 mbot1">
+                                <font>
+                                    <font>By using Gepant get individuals and organizations an opportunity to add to their finances and donors lose their cans and bottles, while contributing to a more environmentally friendly Sweden.</font>
+                                </font>
+                            </p>
+                            <p>
+                                <a href="#/pop/addDonation" class="btn btn-primary">
+                                    <font>
+                                        <font>Give away a pledge </font>
+                                    </font>
+                                </a>
+                                <a href="#/pop/createAccount/collector" class="btn">
+                                    <font>
+                                        <font>Collect pledges</font>
+                                    </font>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </slide>
+        </carousel>
+    </div>
+</div>

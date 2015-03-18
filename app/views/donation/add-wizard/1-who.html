@@ -1,0 +1,81 @@
+<ul class="nav nav-tabs" ng-show="!user.isLogged()">
+    <li ng-class="{active:currStep.tab!='login'}"><a href="javascript:;" ng-click="currStep.tab='anonymous';currStep.validated=false;">Dina kontaktuppgifter</a>
+    </li>
+    <li ng-class="{active:currStep.tab=='login'}"><a href="javascript:;" ng-click="currStep.tab='login';currStep.validated=false;">Logga in</a>
+    </li>
+</ul>
+
+<div ng-switch="currStep.tab">
+    <form ng-switch-default name="form" step-data="stepData['who']" ng-submit="nextStep(true)" novalidate autocomplete="off">
+        <fieldset>
+            <div class="form-group">
+                <input type="text" ng-model="donation.contactName" required name="name" class="form-control" placeholder="Namn">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.name.$dirty || currStep.validated) && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange namn"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.name.$valid"></i>
+            </div>
+            <div class="form-group">
+                <input type="email" ng-model="donation.contactEmail" required name="email" class="form-control" placeholder="E-postadress">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.email.$dirty || currStep.validated) && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange en giltig e-postadress"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
+            </div>
+            <div class="form-group">
+                <input type="tel" ng-model="donation.contactTelephone" required name="tel" class="form-control" placeholder="Telefonnummer">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.tel.$dirty || currStep.validated) && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange telefonnummer"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.tel.$valid"></i>
+            </div>
+            <!--
+<div ng-show="!user.isLogged()">
+<div class="checkbox">
+<label>
+ <input type="checkbox" ng-model="donation.createAccount" name="createAccount"> Skapa konto
+</label>
+</div>
+<div class="form-group" ng-show="donation.createAccount">
+<input type="password" ng-model="donation.password" name="password" class="form-control" id="caPass" placeholder="Lösenord" ng-required="donation.createAccount && !user.isLogged()" ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/">
+<i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.password.$dirty || currStep.validated) && form.password.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra."></i>
+<i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.password.$valid"></i>
+</div>
+</div>
+-->
+
+            <div class="alert alert-danger pop" ng-show="currStep.validated && form.$invalid">Uppgifterna är inte korrekt ifyllda. Var god korrigera <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i>-markerade fält</span> (för musen över för mer information).</div>
+
+            <div class="buttons">
+                <button class="btn btn-info btn-sm">Vidare till nästa steg <i class="fa fa-chevron-right fa-lg"></i>
+                </button>
+            </div>
+        </fieldset>
+    </form>
+
+    <form ng-switch-when="login" name="form" id="loginForm" ng-submit="tryLogin()" novalidate autocomplete="off">
+
+        <div ng-switch="currStep.loginStatus">
+            <div ng-switch-when="trying" class="alert alert-info">Försöker logga in... <i class="fa fa-refresh loadicon"></i>
+            </div>
+            <div ng-switch-when="success" class="alert alert-success">Loggar in! :D</div>
+            <div ng-switch-when="error" class="alert alert-danger">Inloggningen misslyckades</div>
+            <div ng-switch-default class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">Var god logga in eller ange dina uppgifter för att fortsätta</div>
+        </div>
+
+        <a href="javascript:;" class="btn btn-fb fullwidth" ng-click="tryFbLogin()"><i class="fa fa-lg fa-fw fa-facebook"></i> Logga in via Facebook</a>
+        <hr>
+        <h3 class="splitter mtop2">Eller logga in via e-postadress</h3>
+        <div class="form-group">
+            <input type="text" ng-model="currStep.login.email" name="email" class="form-control" id="lEmail" placeholder="E-postadress">
+        </div>
+        <div class="form-group">
+            <input type="password" ng-model="currStep.login.password" name="password" class="form-control" id="lPass" placeholder="Lösenord">
+        </div>
+        <button type="submit" class="btn btn-success btn-sm">Logga in</button>
+
+
+        <div class="buttons">
+            <button class="btn btn-info btn-sm">Vidare till nästa steg <i class="fa fa-arrow-down"></i>
+            </button>
+        </div>
+    </form>
+
+</div>
+
+
+</form>

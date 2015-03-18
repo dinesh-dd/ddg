@@ -1,0 +1,64 @@
+<header class="modal-header">
+    <h1>Skapa nytt konto</h1>
+    <a href="#" class="close" ng-click='$close()'></a>
+</header>
+
+<div class="modal-body fat-v">
+
+    <div class="account-type as-table clearfix">
+        <h3 class="splitter col-sm-4 as-cell">Jag vill främst&nbsp;</h3>
+        <div class="col-sm-8 as-cell">
+            <button class="btn btn-xs" ng-class="{'btn-donator col-xs-8':u.properties.type==0,'btn-inactive col-xs-4':u.properties.type!=0}" ng-click="u.properties.type=0"><span class="text-size-125"><strong>ge</strong> pant</span>
+            </button>
+            <button class="btn btn-xs" ng-class="{'btn-collector col-xs-8':u.properties.type==1,'btn-inactive col-xs-4':u.properties.type!=1}" ng-click="u.properties.type=1"><span class="text-size-125"><strong>få</strong> pant</span>
+            </button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="or-fbLogin">
+        <button class="btn btn-fb fullwidth" ng-click="tryFbLogin()"><i class="fa fa-lg fa-fw fa-facebook"></i> Logga in via ditt Facebook-konto</button>
+    </div>
+
+    <hr />
+
+    <form name="form" id="createAccountForm" ng-submit="createAccount()" novalidate>
+        <h3 class="splitter">Eller registrera dig manuellt</h3>
+
+        <div class="form-group">
+            <input type="text" ng-model="u.name" required name="name" class="form-control" id="caName" placeholder="Namn">
+            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.name.$dirty && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange namn"></i>
+            <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.name.$valid"></i>
+        </div>
+        <div class="form-group">
+            <input type="email" ng-model="u.email" required name="email" class="form-control" id="caEmail" placeholder="E-postadress">
+            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.email.$dirty && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange en giltig e-postadress"></i>
+            <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
+        </div>
+        <div class="form-group">
+            <input type="password" ng-model="u.password" required name="password" class="form-control" id="caPass" placeholder="Lösenord" ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/">
+            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.password.$dirty && form.password.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra."></i>
+            <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.password.$valid"></i>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="u.properties.isOrganization" name="isOrganization"> Kontot avser organisation/förening
+            </label>
+        </div>
+        <div class="form-group" ng-show="u.properties.isOrganization">
+            <input type="text" ng-model="u.properties.orgnr" name="orgnr" class="form-control" id="caOrgnr" placeholder="Organisationsnummer" ng-required="u.properties.isOrganization" ng-pattern="/^[0-9-]{10,}$/">
+            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.orgnr.$dirty && form.orgnr.$invalid"></i>
+            <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.orgnr.$valid"></i>
+        </div>
+
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Skapa konto <i ng-show="form.$valid" class="fa fa-thumbs-up"></i>
+        </button>
+        <a href="#/pop/login" class="btn">Har du redan konto? <strong>Logga in</strong></a>
+
+    </form>
+
+
+
+</div>

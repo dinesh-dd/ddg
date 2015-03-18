@@ -1,0 +1,148 @@
+// .modal-dialog .modal-content .modal-header {
+// 	padding: 5% 10%;
+// 	background: #19d156;
+// 	border: 0;
+// 	position: relative;
+// }
+.modal {
+    overflow: hidden
+}
+
+.modal.fade .modal-dialog {
+    transform: translate(50%, 0);
+    -webkit-transform: translate(50%, 0);
+    -ms-transform: translate(50%, 0);
+    -moz-transform: translate(50%, 0);
+    -o-transform: translate(50%, 0)
+}
+
+.modal.in .modal-dialog {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -o-transform: translate(0, 0)
+}
+
+.modal-dialog {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    background: #fff;
+    margin: 0
+}
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        width:60%;
+        min-width: 600px
+    }
+}
+
+@media (max-width: 767px) {
+    .modal-dialog {
+        width:90%
+    }
+}
+
+.modal-dialog .modal-content {
+    box-shadow: none;
+    background: none;
+    margin: 0;
+    border: 0
+}
+
+.modal-dialog .modal-content h1,.modal-dialog .modal-content h2 {
+    margin: 0;
+    padding: 0
+}
+
+.modal-dialog .modal-content h3 {
+    margin-top: 0;
+    padding-top: 0
+}
+
+.modal-dialog .modal-content .nav-tabs li h4 {
+    margin: 0;
+    padding: 0
+}
+
+.modal-dialog .modal-content .modal-header {
+    padding: 5% 10%;
+    background: #19d156;
+    border: 0;
+    position: relative
+}
+
+.modal-dialog .modal-content .modal-header:before,.modal-dialog .modal-content .modal-header:after {
+    display: table;
+    content: " "
+}
+
+.modal-dialog .modal-content .modal-header:after {
+    clear: both
+}
+
+.modal-dialog .modal-content .modal-header,.modal-dialog .modal-content .modal-header a {
+    color: #fff
+}
+
+.modal-dialog .modal-content .modal-header h1 {
+    white-space: nowrap
+}
+
+.modal-dialog .modal-content .modal-header .close,.modal-dialog .modal-content .modal-header .close:before,.modal-dialog .modal-content .modal-header .close:after {
+    content: " ";
+    z-index: 2;
+    opacity: 1;
+    display: block;
+    width: 100px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0
+}
+
+.modal-dialog .modal-content .modal-header .close,.modal-dialog .modal-content .modal-header .close:before {
+    background: url(../images/close.png) no-repeat center center;
+    background-size: 25px 25px
+}
+
+.modal-dialog .modal-content .modal-header .close:after {
+    z-index: 1;
+    background: -moz-linear-gradient(left, rgba(25,209,86,0) 0%, #19d156 30%, #19d156 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(25,209,86,0)), color-stop(30%, #19d156), color-stop(100%, #19d156));
+    background: -webkit-linear-gradient(left, rgba(25,209,86,0) 0%, #19d156 30%, #19d156 100%);
+    background: -o-linear-gradient(left, rgba(25,209,86,0) 0%, #19d156 30%, #19d156 100%);
+    background: -ms-linear-gradient(left, rgba(25,209,86,0) 0%, #19d156 30%, #19d156 100%);
+    background: linear-gradient(to right, rgba(25,209,86,0) 0%, #19d156 30%, #19d156 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0019d156', endColorstr='#19d156',GradientType=1 )
+}
+
+.modal-dialog .modal-content .modal-body {
+    position: relative;
+    overflow: hidden;
+    padding: 3% 10%
+}
+
+.modal-dialog .modal-content .modal-body.fat-v {
+    padding-top: 10%;
+    padding-bottom: 10%
+}
+
+.modal-dialog .modal-content .buttons {
+    margin-top: 5%;
+    text-align: right
+}
+
+.modal-dialog .modal-content h3.splitter {
+    font-size: 1.2em
+}
+
+.modal-backdrop.in{
+    height: 100%;
+}

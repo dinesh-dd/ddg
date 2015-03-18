@@ -1,0 +1,67 @@
+
+
+<form name="form" step-data="stepData['where']" ng-submit="nextStep(true)" novalidate autocomplete="off">
+<fieldset>
+
+<div class="row">
+<div class="col-sm-6">
+
+<div class="form-group">
+<p>1. Börja med ditt postnummer</p>
+<input type="text" 
+ng-model="donation.postalCodeGeo" 
+name="postalCode" 
+class="form-control" 
+placeholder="Postnummer"
+autofocus
+required
+autocomplete="off"
+typeahead="address as address.formatted_address_postal for address in currStep.getPostalCode($viewValue) | filter:$viewValue" 
+typeahead-min-length="3"
+typeahead-wait-ms="300"
+typeahead-editable="false"
+type-ahead-loading="loadingLocations" 
+typeahead-on-select="currStep.setPostalCode()"
+>
+<i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.postalCode.$dirty || currStep.validated) && form.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange postnummer"></i>
+<i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.postalCode.$valid"></i>
+</div>
+<div class="form-group">
+<p>2. Komplettera med gatuadress</p>
+<input type="text" 
+ng-model="donation.streetGeo" 
+name="address"
+id="adw-address"
+required 
+autocomplete="off" 
+class="form-control" 
+placeholder="Gatuadress"
+ng-disabled="form.postalCode.$invalid"
+typeahead="address as address.formatted_address_street for address in currStep.getStreet($viewValue) | filter:$viewValue" 
+typeahead-min-length="3"
+typeahead-wait-ms="300"
+typeahead-editable="false"
+type-ahead-loading="loadingLocations" 
+typeahead-on-select="currStep.setStreet()"
+>
+<i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.address.$dirty || currStep.validated) && form.address.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange adressen panten finns på"></i>
+<i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$valid && !donation.streetGeo.street_number" popover-trigger="mouseenter" popover-placement="left" popover="Du glömmer inte ange gatunummer också?"></i>
+<i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.address.$valid && donation.streetGeo.street_number"></i>
+
+</div>
+
+</div>
+<div class="col-sm-6">
+  <div class="map" round><div id="map-adw" class="map-preview round-fill"></div></div>
+</div>
+</div>
+
+  <p class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">Var god korrigera <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i>-markerade fält</span></p>
+
+  <div class="buttons">
+    <button class="btn btn-info btn-sm">Vidare till nästa steg <i class="fa fa-arrow-down"></i></button>
+  </div>
+
+
+</fieldset>
+</form>

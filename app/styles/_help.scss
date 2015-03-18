@@ -1,0 +1,50 @@
+$help-view-side-text:		#414758;
+$help-border-color:			   #eee;
+$active-item-color: rgba(238,238,238,0.25);
+#help-aside{
+	h4{
+		font-size: 24px;
+		font-weight: normal;
+	}
+	a {
+		color:$help-view-side-text;
+	}
+	.aside-nav ul li{
+		float: none;	
+	}
+	.aside-nav ul{
+		float: none;	
+	}
+	.aside-nav ul li a{
+		border-bottom: 1px solid $help-border-color;		
+		line-height: 23px;
+	}
+	.aside-nav ul li.active a, .aside-nav ol li.active a{
+		background: $active-item-color;
+	}
+	.aside-nav ul{
+		border-top: 1px solid $help-border-color;
+	}
+}
+
+#page {
+	min-height: 400px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	article{
+		padding-bottom:25%;
+		padding-left:15px;
+		padding-right:15px;
+	}
+}
+
+
+@media (min-width: 768px){
+    #page{
+		article{
+			border-left:1px solid $help-border-color;
+			padding-left: 5%;
+			padding-right: 5%;
+		}    	
+    }
+}

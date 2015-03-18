@@ -1,0 +1,34 @@
+<header class="modal-header">
+    <h1>Logga in</h1>
+    <a href="#" class="close" ng-click='$close()'></a>
+</header>
+
+<div class="modal-body fat-v">
+    <div ng-switch="status">
+        <div ng-switch-when="trying" class="alert alert-info">Försöker logga in... <i class="fa fa-refresh loadicon"></i>
+        </div>
+        <div ng-switch-when="success" class="alert alert-success">Loggar in! :D</div>
+        <div ng-switch-when="error" class="alert alert-danger">Inloggningen misslyckades</div>
+    </div>
+
+
+    <div class="or-fbLogin">
+        <button class="btn btn-fb fullwidth" ng-click="tryFbLogin()"><i class="fa fa-lg fa-fw fa-facebook"></i> Logga in via ditt Facebook-konto</button>
+    </div>
+
+    <hr />
+
+    <form name="form" id="loginForm" ng-submit="tryLogin()" novalidate autocomplete="off">
+        <h3 class="splitter">Eller logga in via e-postadress</h3>
+
+        <div class="form-group">
+            <input type="text" ng-model="u.email" name="email" class="form-control" id="lEmail" placeholder="E-postadress">
+        </div>
+        <div class="form-group">
+            <input type="password" ng-model="u.password" name="password" class="form-control" id="lPass" placeholder="Lösenord">
+        </div>
+        <button type="submit" class="btn btn-success">Logga in</button>
+        <a class="btn" href="#/pop/signup">Saknar du konto? <strong>Registrera dig</strong></button>
+
+	</form>
+</div>

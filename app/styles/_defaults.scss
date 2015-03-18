@@ -1,0 +1,97 @@
+@import "buttons";
+@import "headers";
+@import "defaultBackGrounds";
+
+//fonts 
+html{
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    color: #2e3548;
+    background-color: #fff;
+}
+
+
+
+a{
+    color: $font-color-gePant;
+    text-decoration: none;  
+}
+
+a:hover, a:focus {
+    color: $font-color-hover;
+    text-decoration: underline;
+}
+
+
+.mtop1{
+    margin-top:1em; 
+}
+.mbot1{
+    margin-bottom:1em;    
+}
+
+.mtop2 {
+    margin-top: 2em;
+}
+.mbot2{
+    margin-bottom:2em;    
+}
+
+
+.text-size-150{
+    font-size: 150%;
+    line-height: 1.45em;
+}
+
+.text-size-125{
+    font-size: 125%;
+    line-height: 1.45em;   
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+hr {
+    margin-top: 23px;
+    margin-bottom: 23px;
+    border: 0;
+    border-top: 1px solid #eee;
+    border-color: rgba(0,0,0,0.075);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.container{
+    width: auto;
+    max-width: 1200px;  
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 23px;
+    border-radius: 0;
+}
+
+.dropdown-menu {
+    box-shadow: none;
+    padding: 0;
+    border: 5px solid rgba(0,0,0,0.05)
+}
+
+.navbar-right .dropdown-menu {
+    left: 0
+}
+
+.dropdown-menu>li>a {
+    padding-top: 6px;
+    padding-bottom: 6px
+}
