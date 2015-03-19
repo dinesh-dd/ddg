@@ -33,6 +33,7 @@ module.exports = function(config) {
       'bower_components/angular-facebook/lib/angular-facebook.js',
       'bower_components/ng-breadcrumbs/dist/ng-breadcrumbs.min.js',
       'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
+      'bower_components/angular-localization/angular-localization.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

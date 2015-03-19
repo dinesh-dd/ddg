@@ -28,6 +28,16 @@ module.exports = function (grunt) {
     yeoman: appConfig,
 
     // Watches files for changes and runs tasks based on the changed files
+    // watch: {
+    //   compass: {
+    //     files: ['<%= globalConfig.sassDir %>/**/*.scss'],
+    //     tasks: ['compass:dev', 'autoprefixer:dev']
+    //   },
+    //   livereload: {
+    //     options: { livereload: true },
+    //     files: ['<%= globalConfig.cssDir %>/style.css']
+    //   }
+    // },
     watch: {
       bower: {
         files: ['bower.json'],

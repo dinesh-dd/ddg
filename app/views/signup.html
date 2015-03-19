@@ -2,15 +2,22 @@
     <h1>Skapa nytt konto</h1>
     <a href="#" class="close" ng-click='$close()'></a>
 </header>
-
 <div class="modal-body fat-v">
+
+
+    <div ng-switch="status">
+        <div ng-switch-when="trying" class="alert alert-info">försöker registrera dig ... <i class="fa fa-refresh loadicon"></i>
+        </div>
+        <div ng-switch-when="success" class="alert alert-success">Signerad Up : D</div>
+        <div ng-switch-when="error" class="alert alert-danger">Fel i sign up</div>
+    </div>
 
     <div class="account-type as-table clearfix">
         <h3 class="splitter col-sm-4 as-cell">Jag vill främst&nbsp;</h3>
         <div class="col-sm-8 as-cell">
-            <button class="btn btn-xs" ng-class="{'btn-donator col-xs-8':u.properties.type==0,'btn-inactive col-xs-4':u.properties.type!=0}" ng-click="u.properties.type=0"><span class="text-size-125"><strong>ge</strong> pant</span>
+            <button class="btn btn-xs" ng-class="{'btn-donator col-xs-8':u.type=='Doner','btn-inactive col-xs-4':u.type!='Doner'}" ng-click="u.type='Doner'"><span class="text-size-125"><strong>ge</strong> pant</span>
             </button>
-            <button class="btn btn-xs" ng-class="{'btn-collector col-xs-8':u.properties.type==1,'btn-inactive col-xs-4':u.properties.type!=1}" ng-click="u.properties.type=1"><span class="text-size-125"><strong>få</strong> pant</span>
+            <button class="btn btn-xs" ng-class="{'btn-collector col-xs-8':u.type=='Collector','btn-inactive col-xs-4':u.type!='Collector'}" ng-click="u.type='Collector'"><span class="text-size-125"><strong>få</strong> pant</span>
             </button>
         </div>
     </div>
@@ -42,15 +49,17 @@
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.password.$valid"></i>
         </div>
 
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" ng-model="u.properties.isOrganization" name="isOrganization"> Kontot avser organisation/förening
-            </label>
-        </div>
-        <div class="form-group" ng-show="u.properties.isOrganization">
-            <input type="text" ng-model="u.properties.orgnr" name="orgnr" class="form-control" id="caOrgnr" placeholder="Organisationsnummer" ng-required="u.properties.isOrganization" ng-pattern="/^[0-9-]{10,}$/">
-            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.orgnr.$dirty && form.orgnr.$invalid"></i>
-            <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.orgnr.$valid"></i>
+        <div ng-show="u.type=='Collector'">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="u.isOrganization" name="isOrganization"> Kontot avser organisation/förening
+                </label>
+            </div>
+            <div class="form-group" ng-show="u.isOrganization">
+                <input type="text" ng-model="u.orgnr" name="orgnr" class="form-control" id="caOrgnr" placeholder="Organisationsnummer" ng-required="u.isOrganization">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.orgnr.$dirty && form.orgnr.$invalid"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.orgnr.$valid"></i>
+            </div>
         </div>
 
         <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Skapa konto <i ng-show="form.$valid" class="fa fa-thumbs-up"></i>
@@ -58,7 +67,4 @@
         <a href="#/pop/login" class="btn">Har du redan konto? <strong>Logga in</strong></a>
 
     </form>
-
-
-
 </div>
