@@ -8,8 +8,7 @@ angular.module('gePantApp').config(function($stateProvider ) {
                     controller: 'HelpCtrl'
                 },
                 'nav-right': { templateUrl : 'views/navigation/navigation.html' }
-            },
-            controller: 'HelpCtrl'
+            }
         })
         .state('om-gepant.omGepant', {
             url: '/omGepant',

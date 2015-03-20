@@ -69,8 +69,8 @@ angular.module('gePantApp')
                     var user = {
                         data : {
                             'user[fb_auth_token]':response.authResponse.accessToken,
-                            // 'user[language]':'English',
-                            // 'user[type]':'Doner'
+                            'user[language]':'English',
+                            'user[type]':'Doner'
                         }
                     };
                     var b = angular.extend(user, functions);

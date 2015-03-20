@@ -94,14 +94,4 @@ angular.module('gePantApp')
               }
             }
         })
-
-        //profile view 
-        //FIXME Before going to profile should download some data
-        .state('profile', {
-            url: '/m',
-            views: {
-                'page': { templateUrl: 'views/profile/profile.html' },
-                'nav-right': { templateUrl : 'views/navigation/navigation.html' }
-            }
-        })
       });

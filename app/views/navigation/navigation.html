@@ -1,12 +1,13 @@
 <ul ng-show="!user.userLogedIn" class="nav navbar-nav navbar-right">
-	<li>
-	    <a ui-sref="signup"><span>Skapa konto</span></a>
-	</li>
-	<li>
-	  	<a  ui-sref="login" class="navbar-btn btn btn-default">Logga in</a>
-	</li>
+    <li>
+        <a ui-sref="signup"><span>Skapa konto</span></a>
+    </li>
+    <li>
+        <a ui-sref="login" class="navbar-btn btn btn-default">Logga in</a>
+    </li>
 </ul>
-<ul class="nav navbar-nav navbar-right"  ng-show="user.userLogedIn">
+<!-- FIXME toggle not working -->
+<ul class="nav navbar-nav navbar-right" ng-show="user.userLogedIn">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="avatar"><i class="fa fa-lg fa-user"></i></span>
@@ -16,14 +17,16 @@
         <ul class="dropdown-menu">
             <li><a ui-sref="profile">Visa profil</a>
             </li>
-            <li><a href="#">Min pant</a>
+            <li><a ui-sref="profile.donations" ng-show='user.type=="Doner"'>Donations</a>
             </li>
-            <li><a href="#">Mina mål</a>
+            <li><a ui-sref="profile.donationRequest" ng-show='user.type=="Collector"'>Donation Requests</a>
+            </li>
+            <li><a ui-sref="profile.collections" ng-show='user.type=="Collector"'>Collections</a>
             </li>
             <li class="divider"></li>
-            <li><a href="#">Redigera profil</a>
+            <li><a ui-sref="profile.edit">Redigera profil</a>
             </li>
-            <li><a href="#">Inställningar</a>
+            <li><a ui-sref="profile.setting">Inställningar</a>
             </li>
             <li class="divider"></li>
             <li><a ui-sref="logout">Logga ut</a>

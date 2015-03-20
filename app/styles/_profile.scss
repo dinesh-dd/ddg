@@ -35,7 +35,6 @@
     overflow: hidden;
     font-size: 2.2em;
     line-height: 1;
-    border-bottom: 1px solid #eee
 }
 
 .ProfilePage aside .sharing .btn {
@@ -63,4 +62,19 @@ ul.stat-list li .stat-value,ol.stat-list li .stat-value {
     font-size: 300%;
     line-height: 1;
     font-weight: bold
+}
+
+.ProfilePage .avatar{
+    background : url(../images/avtar.jpg);
+    background-repeat:no-repeat;
+    background-size: auto 100%;
+}
+
+.bootstrap-switch-handle-off.bootstrap-switch-donator{
+    color: white;
+    background: #D3D3D3;   
+}
+.bootstrap-switch-handle-on.bootstrap-switch-donator{
+    background:#ffd100;
+    color:white;
 }
