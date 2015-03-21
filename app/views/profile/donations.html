@@ -1,0 +1,35 @@
+<h2>My Donations</h2>
+<div class='profile_list'>
+	<div ng-repeat="donation in donations" class='listitem'>
+		<div class='image avatar' style="{{donation.collector_image!=null && donation.collector_image!=''?'background-image:url('+donation.collector_image+')':''}}"></div>
+		<div class='container'>
+			<div class='things'>
+				<div class='thing' ng-show='donation.thing.PlasticBag!=0'>
+					{{donation.thing.PlasticBag}} PlasticBag
+				</div>
+				<div ng-show='donation.thing.PlasticBag!=0 && ( donation.thing.PaperBag!=0 || donation.thing.RefuseSack!=0)' class='sideline'></div>
+				<div class='thing' ng-show='donation.thing.PaperBag!=0'>
+					{{donation.thing.PaperBag}} PaperBag
+				</div>
+				<div ng-show='(donation.thing.PaperBag!=0 || donation.thing.PlasticBag!=0 ) && donation.thing.RefuseSack!=0 && donation.thing.PaperBag!=0' class='sideline'></div>
+				<div class='thing'  ng-show='donation.thing.RefuseSack!=0'>
+					{{donation.thing.RefuseSack}} RefuseSack
+				</div>
+				<br>
+			</div>
+			<div class='name' ng-show='donation.status!="accepted"'>
+				<b>Donation is not accepted</b>
+			</div>
+			<div class='name'  ng-show='donation.status=="accepted"'>
+				<b>Donated to :</b> {{donation.collector_Name}}
+				<div class='location'>
+					<i class="fa fa-lg fa-fw fa-map-marker"></i>
+					{{donation.location}}
+				</div>
+			</div>
+			<div class='time'>
+				At {{donation.created_at | date:'medium'}}
+			</div>
+		</div>
+	</div>	
+</div>

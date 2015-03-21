@@ -1,0 +1,45 @@
+<h2>My Donation Requests</h2>
+<div class='profile_list'>
+	<div ng-repeat="donation in donations" class='listitem'>
+		<div class='image avatar' style="{{donation.collector_image!=null && donation.collector_image!=''?'background-image:url('+donation.collector_image+')':''}}"></div>
+		<div class='container'>
+			<div class='things'>
+				<div class='thing' ng-show='donation.thing.PlasticBag!=0'>
+					{{donation.thing.PlasticBag}} PlasticBag
+				</div>
+				<div ng-show='donation.thing.PlasticBag!=0 && ( donation.thing.PaperBag!=0 || donation.thing.RefuseSack!=0)' class='sideline'></div>
+				<div class='thing' ng-show='donation.thing.PaperBag!=0'>
+					{{donation.thing.PaperBag}} PaperBag
+				</div>
+				<div ng-show='(donation.thing.PaperBag!=0 || donation.thing.PlasticBag!=0 ) && donation.thing.RefuseSack!=0 && donation.thing.PaperBag!=0' class='sideline'></div>
+				<div class='thing'  ng-show='donation.thing.RefuseSack!=0'>
+					{{donation.thing.RefuseSack}} RefuseSack
+				</div>
+				<br>
+			</div>
+			<div class='name' >
+				<b>Donation by:</b> {{donation.donar_name}}
+				<div class='location'>
+					<i class="fa fa-lg fa-fw fa-map-marker"></i>
+					{{donation.location}}
+				</div>
+			</div>
+			<div class='time'>
+				At {{donation.created_at | date:'medium'}}
+			</div>
+			<div class='row'>
+				<div class='col-xs-6 btnparent'>
+					<button class='btn btn-primary col-xs-12' ng-click='accept()'>
+						Accept
+					</button>
+				</div>
+				<div class='col-xs-6 btnparent'>
+					<button class='btn btn-danger col-xs-12' ng-click='decline()'>
+						Decline
+					</button>
+				</div>
+			</div>
+		</div>
+
+	</div>	
+</div>

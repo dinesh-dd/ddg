@@ -1,5 +1,6 @@
 'use strict';
-var apiUrl  = 'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/';
+// var apiUrl  = 'http://192.168.1.35/WorkSpace/OfficeWork/GPent/Gepant/app/api/';
+var apiUrl = 'http://shreya.cs:3000/api/gepant/';
 /**
  * @ngdoc service
  * @name gePantApp.MemberApi
@@ -11,49 +12,37 @@ angular.module('gePantApp')
     .service('MemberApi', ['$resource', function($resource) {
     return $resource(apiUrl + ':methodName/:id', {
         method: '@method',
-        id: '@id'
+        id: '@id',
+         
     }, {
-        get: {
-            method: 'GET',
-            params: {
-                methodName: 'GetMemberById'
-            }
-        },
         current: {
             method: 'GET',
             params: {
-                methodName: 'GetCurrentMember'
+                methodName: 'session_data.json'
             }
-        },
-        query: {
-            method: 'GET',
-            params: {
-                methodName: 'GetAllMembers'
-            },
-            isArray: !0
         },
         create: {
             method: 'POST',
             params: {
-                methodName: 'AddMember'
-            }
+                methodName: 'sign_up.json'
+            },
         },
         login: {
             method: 'POST',
             params: {
-                methodName: 'login'
+                methodName: 'login.json'
             }
         },
         loginByFacebook: {
             method: 'POST',
             params: {
-                methodName: 'MemberLoginByFacebook'
+                methodName: 'login_with_facebook.json'
             }
         },
         logout: {
             method: 'GET',
             params: {
-                methodName: 'MemberLogout'
+                methodName: 'logout.json'
             }
         }
     });

@@ -1,0 +1,49 @@
+<form name="form" id="loginForm" ng-submit="tryLogin()" novalidate autocomplete="off">	
+	<h2>Edit Profile</h2>
+	<main id="page" class="container ProfilePage">
+	<div class = 'row'>
+		<div class='image avatar'></div>
+		<div class='input_container'>
+			<input type="text" ng-model="u.name" name="email" class="form-control" id="pName" placeholder="Name">
+		</div>
+        <hr>
+	</div>
+
+	<div class = 'row'>
+		<div>
+			<h4>Location</h4>
+		</div>
+		<div class="form-group">
+            <input type="text" ng-model="u.email" name="email" class="form-control" id="pEmail" placeholder="location">
+        </div>
+	</div>
+
+	<div class = 'row'>
+		<!-- map view here  -->
+		<hr>
+	</div>
+
+	<div class = 'row'>
+		<div>
+			<h4>Pledge</h4>
+		</div>
+		<div>
+			<div class="form-group">
+	            <input type="text" ng-model="p.pledge" name="Pledge" class="form-control" id="pPledge" placeholder="Pledge">
+	        </div>
+		</div>
+		<hr>
+	</div>
+
+	<div class = 'row'>
+		<div>
+			<h4>Objective</h4>
+		</div>
+		<div>
+			<div class="form-group">
+	            <textarea rows=3 type="text" ng-model="p.objective" name="Objective" class="form-control" id="pObjective" placeholder="Objective">
+	        </div>
+		</div>
+	</div>
+    
+</form>

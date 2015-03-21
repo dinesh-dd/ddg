@@ -1,12 +1,15 @@
 angular.module('gePantApp')
 .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.when('/om-gepant','om-gepant/omGepant');
         $stateProvider
         .state('home', {
             url: '/',
             views: {
                 'page': { templateUrl: 'views/home.html' },
-                'nav-right': { templateUrl : 'views/navigation/navigation.html' }
+                'nav-right': { 
+                    templateUrl : 'views/navigation/navigation.html',
+                }
             }
         })
 
@@ -47,6 +50,7 @@ angular.module('gePantApp')
             views: {
               'modal@': {
                 templateUrl: 'views/logout.html',
+                controller:'LogoutCtrl'
               }
             }
         })
@@ -57,6 +61,7 @@ angular.module('gePantApp')
             views: {
               'modal@': {
                 templateUrl: 'views/signup.html',
+                controller:'SignupCtrl'
               }
             }
         })
@@ -68,16 +73,8 @@ angular.module('gePantApp')
             views: {
               'modal@': {
                 templateUrl: 'views/addDonation.html',
+                controller:'AdddonationCtrl'
               }
-            }
-        })
-
-        //profile view 
-        .state('profile', {
-            url: '/m',
-            views: {
-                'page': { templateUrl: 'views/profile/profile.html' },
-                'nav-right': { templateUrl : 'views/navigation/navigation.html' }
             }
         })
       });

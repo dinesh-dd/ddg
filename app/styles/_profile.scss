@@ -1,49 +1,3 @@
-.ProfilePage article header {
-    position: relative
-}
-
-.ProfilePage article header .cover {
-    height: 0;
-    padding-bottom: 40%;
-    position: relative
-}
-
-.ProfilePage article header .cover .logo {
-    position: absolute;
-    bottom: -32.5%;
-    left: 5%;
-    width: 25%;
-    height: 0;
-    padding-bottom: 25%;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: -2px 3px 0 rgba(0,0,0,0.1)
-}
-
-.ProfilePage article header .cover .logo .inner {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 50%;
-    margin: 5px
-}
-
-.ProfilePage article header h1 {
-    padding: 2.5% 2.5% 2.5% 32.5%;
-    overflow: hidden;
-    font-size: 2.2em;
-    line-height: 1;
-    border-bottom: 1px solid #eee
-}
-
-.ProfilePage aside .sharing .btn {
-    padding-left: 0;
-    padding-right: 0;
-    margin-bottom: 5px
-}
-
 ul.stat-list,ul.stat-list li,ol.stat-list,ol.stat-list li {
     list-style: none;
     padding: 0;
@@ -63,4 +17,133 @@ ul.stat-list li .stat-value,ol.stat-list li .stat-value {
     font-size: 300%;
     line-height: 1;
     font-weight: bold
+}
+
+.ProfilePage{
+    .ats-switch.switch-success span.switch-left{
+        color: #fff;
+        background: #FFD100;        
+    }
+    .avatar{
+        background : url(../images/avtar.jpg);
+        background-repeat:no-repeat;
+        background-size: auto 100%;
+    }
+    .bootstrap-switch-handle-off.bootstrap-switch-donator{
+        color: white;
+        background: #D3D3D3;   
+    }
+    .bootstrap-switch-handle-on.bootstrap-switch-donator{
+        background:#ffd100;
+        color:white;
+    }
+    .image{
+        position: absolute;
+        height: 100px;
+        width: 100px;
+        top: 54px;
+        border-radius: 50%;
+        border: 4px solid white;
+        box-shadow: 2px 2px rgba(0,0,0,0.25), 0 0 1px rgba(0, 0, 0, 0.25);        
+    }
+    .input_container{
+        height: 72px;
+        width: 100%;
+        padding-left:114px;
+    }
+    article{
+        border-left: 0px solid #eee !important;
+        padding:0px !important;
+    }
+    article header {
+        position: relative
+    }
+
+    article header .cover {
+        height: 0;
+        padding-bottom: 40%;
+        position: relative
+    }
+
+    article header .cover .logo {
+        position: absolute;
+        bottom: -32.5%;
+        left: 5%;
+        width: 25%;
+        height: 0;
+        padding-bottom: 25%;
+        border-radius: 50%;
+        background: #fff;
+        box-shadow: -2px 3px 0 rgba(0,0,0,0.1)
+    }
+
+    article header .cover .logo .inner {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 50%;
+        margin: 5px
+    }
+
+    article header h1 {
+        padding: 2.5% 2.5% 2.5% 32.5%;
+        overflow: hidden;
+        font-size: 2.2em;
+        line-height: 1;
+    }
+
+    aside .sharing .btn {
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 5px
+    }
+
+    .profile_list{
+        background-color: #fff;
+        box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.25);
+        border-radius: 2px;
+        margin: 0 0 10px 0;
+        .listitem{
+            border-bottom:1px solid rgb(213, 211, 211);
+            padding:12px;
+            position:relative;
+            .image{
+                position: absolute;
+                height: 70px;
+                width: 70px;
+                top: 10px;
+            }
+            .container{
+                padding-left: 77px;
+            }
+            .time{
+                font-size: 13px;
+                color: rgb(189, 189, 189);
+            }
+            .things{
+                color:rgb(136, 136, 136);
+                .thing{
+                    display: inline-block;
+                }
+                .sideline{
+                    width: 1px;
+                    height: 15px;
+                    background: rgb(136, 136, 136);
+                    display: inline-block;
+                }
+            }
+            .location{
+                display: inline-block;
+            }
+            .row{
+                margin-left: -70px;
+                padding-top: 10px;
+            }
+            .btnparent{
+                padding:10px;
+            }
+        }
+    }
 }

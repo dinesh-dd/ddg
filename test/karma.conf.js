@@ -31,8 +31,8 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/ui-bootstrap-tpls-0.12.1/index.js',
       'bower_components/angular-facebook/lib/angular-facebook.js',
-      'bower_components/ng-breadcrumbs/dist/ng-breadcrumbs.min.js',
       'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
+      'bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
