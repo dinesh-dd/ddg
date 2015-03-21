@@ -47,22 +47,27 @@ angular.module('gePantApp')
         return c = {
         	login: function(user) {
                 typeof user  == "object"  && MemberApi.login(user, function(a, d) {
-                	user.success(a, d);
+                    //check for the valid user 
+                	  user.success(a, d);
                  // // a.IsValidAndExists ? (user.preventUserRefresh || (c = angular.extend(c, a)), user.success && user.success(a, d)) : user.error && user.error(a, d)
-                }, user.error)
+                }, user.error);
             },
             loginByFacebook: function(user) {
-                // return user.success();
-                Facebook.login(function(response) {
-                        console.log('this is inside the rsponse');
-                        console.log(response);
-                        // log(response.authResponse.accessToken);
-                        return user.success();
-                        // var e = {properties: d.properties || {}};
-                        // e.properties.accessToken = b.authResponse.accessToken, a.loginByFacebook(e, function(a, b) {
-                        //     a.IsValidAndExists ? (d.preventUserRefresh || (c = angular.extend(c, a)), d.success && d.success(a, b)) : d.error && d.error(a, b)
-                        // }, d.error)
-                })
+                MemberApi.loginByFacebook(user,function(a,d){
+                    //check for the valid user
+                    user.success(a,d);
+                },user.error);
+                // // return user.success();
+                // Facebook.login(function(response) {
+                //         console.log('this is inside the rsponse');
+                //         console.log(response);
+                //         // log(response.authResponse.accessToken);
+                //         return user.success();
+                //         // var e = {properties: d.properties || {}};
+                //         // e.properties.accessToken = b.authResponse.accessToken, a.loginByFacebook(e, function(a, b) {
+                //         //     a.IsValidAndExists ? (d.preventUserRefresh || (c = angular.extend(c, a)), d.success && d.success(a, b)) : d.error && d.error(a, b)
+                //         // }, d.error)
+                // })
             }
         }
     }]);

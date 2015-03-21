@@ -64,17 +64,19 @@ angular.module('gePantApp')
       //login with facebook 
       $scope.tryFbLogin = function() {
             functions.trying();
-            // UserService.loginByFacebook(functions);
             Facebook.login(function(response) {
                 if (response.status == "connected") {
-                    console.log(response);
-                    functions.success();  
+                    UserService.loginByFacebook(functions);
+                    // console.log(response);
+                    // functions.success();  
                 } else {
                     functions.error();  
                 }
             });
       }
 
+
+      //functions related to facebook
       $scope.getLoginStatus = function() {
         Facebook.getLoginStatus(function(response) {
             if(response.status === 'connected') {
@@ -85,11 +87,11 @@ angular.module('gePantApp')
         });
       };
 
-        $scope.me = function() {
-            Facebook.api('/me', function(response) {
-                $scope.user = response;
-            });
-        };
+      $scope.me = function() {
+          Facebook.api('/me', function(response) {
+              $scope.user = response;
+          });
+      };
     }]);
 
 
