@@ -5,12 +5,10 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -53,6 +51,23 @@
                     <a ui-sref="om-gepant.omGepant" class="menu1089 level1 count0 index1 om-gepant active active1 first last"><span>Om Gepant</span></a>
                 </li>
               </ul>
+              <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="name">{{user.language || English}}</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a ui-sref="profile">English</a>
+                            </li>
+                            <li>
+                                <a ui-sref="profile.donations">Swidish</a>
+                            </li>
+                        </ul>
+                    </li>
+              </ul>
+
               <div ui-view="nav-right" ng-controller='NavigationCtrl'></div>
             </div>
           </div>
@@ -75,12 +90,8 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/ui-bootstrap-tpls-0.12.1/index.js"></script>
     <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
-    <script src="bower_components/ng-breadcrumbs/dist/ng-breadcrumbs.min.js"></script>
     <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
-    <script src="bower_components/angular-localization/angular-localization.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
-    <script src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js"></script>
+    <script src="bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -103,6 +114,9 @@
         <script src="scripts/directives/autoscale.js"></script>
         <script src="scripts/directives/panelstepstatus.js"></script>
         <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/collections.js"></script>
+        <script src="scripts/controllers/donations.js"></script>
+        <script src="scripts/controllers/donationrequest.js"></script>
         <!-- endbuild -->
 </body>
 </html>

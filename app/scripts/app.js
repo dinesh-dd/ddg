@@ -21,13 +21,21 @@ angular
         'ncy-angular-breadcrumb',
         'facebook',
         'ngCookies',
-        'frapontillo.bootstrap-switch'
+        'toggle-switch'
+        // 'frapontillo.bootstrap-switch',
     ])
     .run(function($rootScope) {
         $rootScope.user = {
             userLogedIn:false
         }
+        $rootScope.user.language = $window.navigator.language;
     })
+    // .run(function($rootScope,$window) {
+    //     $rootScope.user = {
+    //         userLogedIn:false
+    //     }
+    // })
+    
     .run(function(UserService,$rootScope) {
         console.log('inside the enter');
         var response = {
