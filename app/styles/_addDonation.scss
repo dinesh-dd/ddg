@@ -1,0 +1,179 @@
+#add-donation-wizard {
+    .steps {
+        position: relative;
+        padding-bottom: 100px;
+        min-height: 300px
+    }
+
+    .steps .buttons {
+        bottom: 0;
+        right: 0
+    }
+
+    form {
+        margin: 20px 0
+    }
+
+    .bag {
+        padding: 2%
+    }
+
+    .bag:hover .icon .round-inner {
+        background: rgba(46,53,72,0.5)
+    }
+
+    .bag .icon {
+        cursor: pointer;
+        margin: 0 8% 8% 8%
+    }
+
+    .bag .icon .round-inner {
+        padding: 5%;
+        background: rgba(46,53,72,0.3);
+        border: 5px solid #fff
+    }
+
+    .bag .icon:hover .round-inner {
+        background: rgba(46,53,72,0.7)
+    }
+
+    .bag.has-value .icon .round-inner {
+        background: #2e3548
+    }
+
+    .map {
+        width: 80%;
+        min-width: 220px;
+        margin: 5% 0 5% auto
+    }
+
+    .map .map-preview {
+        background: rgba(153,153,153,0.1);
+        border: 7px solid #fff
+    }
+
+    .round {
+        position:relative;
+        .round-format img {
+            width: 100%;
+            height: auto
+        }
+        .round-inner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            text-align: center
+        }
+        .round-fill {
+            height: 100%;
+            width: 100%;
+            border-radius: 50%
+        }   
+    }
+    .counter-container {
+        .counter-field {
+            width: 60px;
+            display: inline-block;
+            text-align: center;
+            padding: 0
+        }
+        a {
+            color: #2e3548
+        }
+        a,.counter-container a:hover {
+            text-decoration: none
+        }
+    }
+    @media (max-width: 767px) {
+        .counter-container {
+            a {
+                display: block;
+                margin: 5px auto;
+            }
+        }
+    }
+
+    .nextButtonsContainer{
+        height: 46px;
+        width: 100px;
+        margin: 0px auto;
+        .status-icon {
+            width: 50px;
+            font-size: 120%;
+            .icon {
+                transition: 0.3s;
+                -webkit-transition: 0.3s;
+                -ms-transition: 0.3s;
+                -moz-transition: 0.3s;
+                -o-transition: 0.3s;
+                padding: 13px;
+                width: 45px;
+                height: 45px;
+                overflow: hidden;
+                border-radius: 50%;
+                border: 2px solid
+            }
+        }
+        .enable{
+            background: rgb(247, 246, 246);
+            color: rgb(115, 115, 115);
+        }
+        .disable{
+            background: rgb(215, 215, 215);
+            color: darkgrey;
+        }
+    }
+
+    .glyphicon-star:before{
+        color:rgb(255, 209, 0);
+        font-size: 1.5em;
+    }
+    .glyphicon-star-empty:before{
+        content:"\e006";
+        color:#CBCBC8;
+        font-size: 1.5em;
+    }
+    .collectors{
+        margin: 10px auto;
+        position:relative;
+        padding: 0px;
+        width: auto;
+        display: block;
+        max-width: 440px;
+        .collector{
+            background-color: #fff;
+            box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.25);
+            border-radius: 2px;
+            margin: 0 0 10px 0;
+            float: left;
+            width: 210px;
+            position:relative;
+            margin-right: 10px;
+            min-height:285px;
+            padding: 8px;
+            .image{
+                position: absolute;
+                height: 50px;
+                width: 50px;
+                top: 8px;
+            }
+            .container{
+                padding-left: 57px;
+            }
+            .fa-map-marker{
+                width:0.5em;
+            }
+            .left{
+                margin-left:-49px; 
+            }
+        }
+        .active{
+            background: rgb(195, 228, 242);
+        }
+    }
+}

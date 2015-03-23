@@ -3,10 +3,8 @@
 <div id="add-donation-wizard">
   <div class="modal-header">
     <h1>Ge bort pant</h1>
-    <a href="#/pop/close/canceled" class="close"></a>
+    <a href="#" class="close" ng-click='$close()'></a>
   </div>
-
-
 
 <div class="pages" ng-class="{'page1':step<4,'page2':step>=4,'page3':saved, 'sl-ide-right': goingBack}">
   
@@ -38,8 +36,6 @@
      </a>
    </div>
   </div>
-
-
 
   <div class="step step-4 page page2" id="adw-page2"><div ng-include="'/views/donation/add-wizard/4-summary.html'"></div></div>
   <div class="step step-5 page page3" id="adw-page3"><div ng-include="'/views/donation/add-wizard/5-saved.html'"></div></div>

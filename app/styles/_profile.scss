@@ -19,6 +19,12 @@ ul.stat-list li .stat-value,ol.stat-list li .stat-value {
     font-weight: bold
 }
 
+#header-splitter.profile{
+    background: #FFD100;
+    ol{
+        opacity:0.9
+    }
+}
 .ProfilePage{
     .ats-switch.switch-success span.switch-left{
         color: #fff;

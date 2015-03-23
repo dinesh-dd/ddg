@@ -33,6 +33,8 @@ module.exports = function(config) {
       'bower_components/angular-facebook/lib/angular-facebook.js',
       'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
       'bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js',
+      'bower_components/angular-underscore-module/angular-underscore-module.js',
+      'bower_components/underscore/underscore.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

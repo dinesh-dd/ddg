@@ -8,14 +8,8 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  	.controller('NavigationCtrl',[ '$scope','$rootScope', function ($scope,$rootScope) {
-		
-		
-    	// $scope.userLogedIn = false;
-    	// $scope.user = {
-    	// 	Name:'dinesh'
-    	// };
-    	// $scope.setUserLogin= function(isLoggedIn){
-    	// 	$scope.userLogedIn = isLoggedIn;
-    	// };
+  	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService', function ($scope,$rootScope,UserService) {
+		$scope.setLanguage = function(language){
+		  	UserService.setLanguage(language); 
+		}
   	}]);
