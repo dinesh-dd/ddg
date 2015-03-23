@@ -28,7 +28,7 @@ angular
         $rootScope.user = {
             userLogedIn:false
         }
-        $rootScope.user.language = $window.navigator.language;
+        // $rootScope.user.language = $window.navigator.language;
     })
     // .run(function($rootScope,$window) {
     //     $rootScope.user = {
