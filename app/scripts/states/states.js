@@ -13,12 +13,32 @@ angular.module('gePantApp')
             }
         })
 
+        //collector profile view
+        .state('collector', {
+            url: '/collector',
+            views: {
+                'page': { 
+                    templateUrl: 'views/collectorProfile.html',
+                    controller:'CollectorprofileCtrl'
+                 },
+                'nav-right': { 
+                    templateUrl : 'views/navigation/navigation.html',
+                }
+            } 
+        })
+
+        // .state('pop', {
+        //     url: '',
+        //     // views: {
+        //     //     'modal': { templateUrl: 'views/home.html' },
+        //     // }
+        // })
         //Login section
         //TODO add the service for the model
         .state('modal', {
             abstract: true,
-            parent: 'home',
-            url: 'pop/',
+            parent:'home',
+            url: '/pop/',
             onEnter: ['$modal', '$state', function($modal, $state) {
                 console.log('Open modal');
                 $modal.open({

@@ -1,0 +1,29 @@
+<main id="page" class="container ProfilePage collectorProfile">
+	<div class='container'>
+		<div class='image avatar' style="{{collection.donar_image!=null && collection.donar_image!=''?'background-image:url('+collection.donar_image+')':''}}"></div>
+		<div class='userDataContainer'>
+			<div class='name'>
+				<b>{{collector.name}}</b>
+			</div>
+			<div class='location'>
+				<i class="fa fa-lg fa-fw fa-map-marker"></i>
+				{{collector.location}}			
+			</div>
+			<div class='ratings'>
+				<rating ng-model="collector.star" max="5" readonly="true"></rating>
+			</div>
+		</div>
+		<h3 class='mtop1'>Pledge</h3>
+		$ {{collector.pledge}} 
+		<h3  class='mtop1'>Objective</h3>
+		{{collector.objective}}
+		<div ng-show='!user.userLogedIn'> <!-- fixme change this -->
+		<h3  class='mtop1'>Rate this user</h3>
+			<rating ng-model="collector.myStar" max="5" readonly="false"></rating>
+			<br>
+			<a class='btn btn-success btn-xm mtop1' ng-click='setStar()'>Submit rating</a>
+		</div>
+		<!-- //TODO set the id of the collector while donationg the new thing -->
+		<a ui-sref="addDonation" class="btn  mtop2 btn-lg btn-donator  text-size-125 btn-gepant-hover  bold">Donate</a>
+	</div>
+</main>

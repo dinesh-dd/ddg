@@ -1,0 +1,35 @@
+.collectorProfile{
+	.container{
+		position: relative;
+		padding:0px;
+	}
+	.image{
+		top:0px;
+		height: 121px;
+		width: 121px;
+	}
+	.name{
+		padding-top:7px;
+	}
+	.location{
+		.fa-fw{
+			width: 0.5em;
+		}
+	}
+	.location, .ratings{
+		padding-top:4px;
+	}
+	.userDataContainer{
+		padding-left :132px;
+		min-height: 121px;
+	}
+	.glyphicon-star:before{
+		color:rgb(255, 209, 0);
+		font-size: 1.5em;
+	}
+	.glyphicon-star-empty:before{
+		content:"\e006";
+		color:#CBCBC8;
+		font-size: 1.5em;
+	}
+}

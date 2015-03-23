@@ -1,5 +1,4 @@
 'use strict';
-// var apiUrl  = 'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/'
 /**
  * @ngdoc overview
  * @name gePantApp
@@ -21,21 +20,13 @@ angular
         'ncy-angular-breadcrumb',
         'facebook',
         'ngCookies',
-        'toggle-switch'
+        'toggle-switch',
+        'underscore'
         // 'frapontillo.bootstrap-switch',
     ])
-    .run(function($rootScope) {
-        $rootScope.user = {
-            userLogedIn:false
-        }
-        $rootScope.user.language = $window.navigator.language;
+    .run(function(UserService) {
+        UserService.setUser();
     })
-    // .run(function($rootScope,$window) {
-    //     $rootScope.user = {
-    //         userLogedIn:false
-    //     }
-    // })
-    
     .run(function(UserService,$rootScope) {
         console.log('inside the enter');
         var response = {
@@ -62,3 +53,14 @@ angular
     .config(function($httpProvider) {
         $httpProvider.defaults.headers.post  = {'Content-Type': 'application/x-www-form-urlencoded'};
     });
+ 
+var GLOBALS = {
+    map: {
+        region:'',
+        components:''       
+    },
+    // apiUrl:'http://shreya.cs:3000/api/gepant/'
+    apiUrl:'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/'
+};
+
+var mergedParams = [];

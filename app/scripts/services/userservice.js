@@ -8,7 +8,7 @@
  * Service in the gePantApp.
  */
 angular.module('gePantApp')
-	.service("UserService", ["MemberApi", function(MemberApi) {
+	.service("UserService", ["MemberApi","$rootScope","$window", function(MemberApi,$rootScope,$window) {
         var validateUser = function(user,response,d){
             //TODO check for the user errors
             console.log('validation of user');
@@ -18,8 +18,38 @@ angular.module('gePantApp')
                 return user.success(response, d);    
             }
         }
+        var setLanguage = function(language){
+            debugger;   
+            var returnLanguage = null;
+            switch(language){
+                case 'en-US':
+                case 'English':
+                    returnLanguage = 'English';
+                    break;
+                case 'sv':
+                case 'Swidish':
+                    returnLanguage = 'Swidish';
+                    break;
+                default:
+                    returnLanguage = 'English';
+                    break;
+            }
+            $rootScope.user.language = returnLanguage;
+        }
         var c = {};
         return c = {
+            setLanguage: setLanguage,
+            setUser:function(user){
+                if ( typeof user == "object" ){
+                    //TODO set the object here 
+                } else {
+                    $rootScope.user = {
+                        userLogedIn:false
+                    } 
+                    // setLanguage($window.navigator.language);
+                    setLanguage('sv');
+                }
+            },
         	login: function(user) {
                 typeof user  == "object"  && MemberApi.login(user.data,user, function(a, d) {
                   	validateUser(user,a,d);

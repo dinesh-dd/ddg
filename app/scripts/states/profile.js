@@ -9,30 +9,48 @@ angular.module('gePantApp').config(function($stateProvider) {
                     controller:'ProfileCtrl'
                 },
                 'nav-right': { templateUrl : 'views/navigation/navigation.html' }
+            },
+            ncyBreadcrumb: {
+                label: 'Profile'
             }
         })
         .state('profile.setting', {
             url: '/setting',
-            templateUrl: 'views/profile/setting.html'
+            templateUrl: 'views/profile/setting.html',
+            ncyBreadcrumb: {
+                label: 'Setting'
+            }
         })
         .state('profile.edit', {
             url: '/edit',
-            templateUrl: 'views/profile/edit.html'
+            templateUrl: 'views/profile/edit.html',
+            ncyBreadcrumb: {
+                label: 'Edit Profile'
+            }
         })
         .state('profile.collections', {
             url: '/collections',
             templateUrl: 'views/profile/collections.html',
-            controller:'CollectionsCtrl'
+            controller:'CollectionsCtrl',
+            ncyBreadcrumb: {
+                label: 'Collections'
+            }
         })
         .state('profile.donations', {
             url: '/donations',
             templateUrl: 'views/profile/donations.html',
-            controller:'DonationsCtrl'
+            controller:'DonationsCtrl',
+            ncyBreadcrumb: {
+                label: 'Donations'
+            }
         })
         .state('profile.donationRequest', {
             url: '/donationRequests',
             templateUrl: 'views/profile/donationrequest.html',
-            controller:'DonationrequestCtrl'
+            controller:'DonationrequestCtrl',
+            ncyBreadcrumb: {
+                label: 'Donatin Requests'
+            }
         })
     })
    

@@ -1,6 +1,5 @@
 'use strict';
 // var apiUrl  = 'http://192.168.1.35/WorkSpace/OfficeWork/GPent/Gepant/app/api/';
-var apiUrl = 'http://shreya.cs:3000/api/gepant/';
 /**
  * @ngdoc service
  * @name gePantApp.MemberApi
@@ -10,7 +9,7 @@ var apiUrl = 'http://shreya.cs:3000/api/gepant/';
  */
 angular.module('gePantApp')
     .service('MemberApi', ['$resource', function($resource) {
-    return $resource(apiUrl + ':methodName/:id', {
+    return $resource(GLOBALS.apiUrl + ':methodName/:id', {
         method: '@method',
         id: '@id',
          

@@ -1,10 +1,43 @@
-
 <form name="form" step-data="stepData['whose']" ng-submit="setStep(-1)" novalidate>
-<fieldset>
-  <h3 class="splitter">Kommer snart...</h3>
-
-  <div class="buttons">
-    <button class="btn btn-info btn-sm">Vidare till nästa steg <i class="fa fa-arrow-down"></i></button>
-  </div>
-</fieldset>
+    <fieldset>
+        <div class='nextButtonsContainer'>
+            <span class="ng-isolate-scope status-icon">
+			  	<span class="icon fa fa-fw fa-chevron-left enable" 
+			  		  ng-class="currStep.pages==0 || currStep.currentPage==1?'disable':'enable'">
+			  	</span>
+            </span>
+            <span class="ng-isolate-scope status-icon">
+	            <span class="icon fa fa-fw fa-chevron-right enable" 
+	            	  ng-class="currStep.pages==0 || currStep.currentPage==currStep.pages?'disable':'enable'">
+	            </span>
+            </span>
+        </div>
+        <div class='collectors container ProfilePage' ng-show='!currStep.isLoading'>
+        	<div ng-repeat="collector in currStep.collectors" class='collector'>
+				<div class='image avatar' style="{{collector.image!=null && collector.image!=''?'background-image:url('+collector.image+')':''}}"></div>
+				<div class='container'>
+					<div class='name'>
+						<b>{{collector.name}}</b>
+						<div class='location'>
+						<i class="fa fa-lg fa-fw fa-map-marker"></i>
+							{{collector.location}}
+						</div>
+					</div>
+					<div class='star mtophalf left'>
+						<rating ng-model="collector.star" max="5" readonly="false"></rating>
+					</div>
+					<div class='Objective mtophalf left'>
+						<b>Objective</b> : {{collector.objective}}
+					</div>
+					<div class='Pledge mtophalf left'>
+						<b>Pledge</b> :  ${{collector.pledge}}
+					</div>
+				</div>
+			</div>
+        </div>
+        <div class='spinner' ng-show='currStep.isLoading'></div>
+        <div class="buttons">
+            <button class="btn btn-info btn-sm">Vidare till nästa steg <i class="fa fa-arrow-down"></i></button>
+        </div>
+    </fieldset>
 </form>

@@ -1,9 +1,28 @@
+<!--Navigation bar for the language --> 
+<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="name">{{user.language || 'Swidish'}}</span>
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a ng-click='setLanguage("English")'>English</a>
+            </li>
+            <li>
+                <a ng-click='setLanguage("Swidish")'>Swidish</a>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
 <ul ng-show="user.userLogedIn" class="nav navbar-nav navbar-right">
     <li>
-        <a ui-sref="signup"><span>Skapa konto</span></a>
+        <a ui-sref="signup"><span>Sign Up</span></a>
     </li>
     <li>
-        <a ui-sref="login" class="navbar-btn btn btn-default">Logga in</a>
+        <a ui-sref="login" class="navbar-btn btn btn-default">Log in</a>
     </li>
 </ul>
 <!-- FIXME toggle not working -->
@@ -15,7 +34,7 @@
             <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-            <li><a ui-sref="profile">Visa profil</a>
+            <li><a ui-sref="profile">View Profile</a>
             </li>
             <li><a ui-sref="profile.donations" ng-show='user.type=="Doner"'>Donations</a>
             </li>
@@ -24,12 +43,12 @@
             <li><a ui-sref="profile.collections" ng-show='user.type=="Collector"'>Collections</a>
             </li>
             <li class="divider"></li>
-            <li><a ui-sref="profile.edit">Redigera profil</a>
+            <li><a ui-sref="profile.edit">Edit profile</a>
             </li>
-            <li><a ui-sref="profile.setting">Inställningar</a>
+            <li><a ui-sref="profile.setting">Setting</a>
             </li>
             <li class="divider"></li>
-            <li><a ui-sref="logout">Logga ut</a>
+            <li><a ui-sref="logout">Log out</a>
             </li>
         </ul>
     </li>
