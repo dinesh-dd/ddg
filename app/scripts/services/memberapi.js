@@ -32,6 +32,12 @@ angular.module('gePantApp')
                 methodName: 'login.json'
             }
         },
+        signUpByFacebook:{
+            method: 'POST',
+            params: {
+                methodName: 'sign_up_with_facebook.json'
+            }
+        },
         loginByFacebook: {
             method: 'POST',
             params: {
@@ -42,6 +48,24 @@ angular.module('gePantApp')
             method: 'GET',
             params: {
                 methodName: 'logout.json'
+            }
+        },
+        editProfile:{
+            method: 'POST',
+            params: {
+                methodName: 'edit_profile.json'
+            }
+        },
+        updateSetting:{
+            method: 'POST',
+            params: {
+                methodName: 'change_settings.json'
+            }
+        },
+        language_setting:{
+            method: 'POST',
+            params: {
+                methodName: 'language_setting.json'
             }
         }
     });

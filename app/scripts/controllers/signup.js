@@ -11,12 +11,7 @@ angular.module('gePantApp')
     .controller('SignupCtrl', ['$scope', 'UserService', '$timeout', '$location', '$state', 'Facebook','$rootScope', function($scope, UserService, $timeout, $location, $state, Facebook,$rootScope) {
         $scope.u = {}
         $scope.u.type = 'Doner';
-       	
-       	 //FIXME remove this fixed data as soon as possible
-        $scope.u.name = 'dinesh';
-        $scope.u.email = 'dinesh@complitech.net';
-        $scope.u.password = '12345678aA';
-       
+       	       
         var functions = {
             trying: function() {
                 $scope.status = 'trying',
@@ -42,6 +37,18 @@ angular.module('gePantApp')
                 $scope.loginError = !0;
             }
         };
+
+        /**
+         * @method gotoLogin 
+         * function to go to login state 
+         */
+        $scope.gotoLogin= function(){
+            console.log('inside goto login');
+            $scope.$close();
+            setTimeout(function() {
+                $state.go('login');    
+            }, 400);
+        };
         
         //signup
         //FIXME set the language here
@@ -50,7 +57,7 @@ angular.module('gePantApp')
             var user = {
                 data : {
                     "user[username]":$scope.u.name,
-                    "user[language]":'English',
+                    "user[language]":$rootScope.user.language || 'Swidish',
                     "user[type]":$scope.u.type,
                     "user[organization_name]":$scope.u.orgnr,
                     "user[email]":$scope.u.email,
@@ -69,16 +76,16 @@ angular.module('gePantApp')
                     var user = {
                         data : {
                             'user[fb_auth_token]':response.authResponse.accessToken,
-                            'user[language]':'English',
-                            'user[type]':'Doner'
+                            'user[language]':$rootScope.user.language || 'Swidish',
+                            'user[type]':$scope.u.type,
                         }
                     };
                     var b = angular.extend(user, functions);
-                    UserService.loginByFacebook(b); 
+                    UserService.signUpByFacebook(b); 
                 } else {
                     functions.error();  
                 }
-            });
+            },{scope: 'email'});
         }
 
         $scope.getLoginStatus = function() {

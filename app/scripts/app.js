@@ -21,7 +21,8 @@ angular
         'facebook',
         'ngCookies',
         'toggle-switch',
-        'underscore'
+        'underscore',
+        'LocalStorageModule'
         // 'frapontillo.bootstrap-switch',
     ])
 
@@ -29,7 +30,7 @@ angular
         UserService.setUser();
     })
     .run(function(UserService,$rootScope) {
-        console.log('inside the enter');
+        console.log('Entering the app');
         var response = {
             success : function(response){
                 console.log('success');
@@ -54,14 +55,5 @@ angular
     .config(function($httpProvider) {
         $httpProvider.defaults.headers.post  = {'Content-Type': 'application/x-www-form-urlencoded'};
     });
- 
-var GLOBALS = {
-    map: {
-        region:'',
-        components:''       
-    },
-    // apiUrl:'http://shreya.cs:3000/api/gepant/'
-    apiUrl:'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/'
-};
 
 var mergedParams = [];

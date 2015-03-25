@@ -4,49 +4,63 @@
     </div>
 </div>
 <main id="page" class="container ProfilePage">
-
-	<article class="col-sm-8" ng-show="$state.current.name === 'profile'">
-		<header>
-			<div class="cover bg-donator">
-				<div class="logo"><div class="inner avatar bg-donator-faded"></div></div>
-			</div>
-			<h1>{{user.name}}</h1>
-			<hr>
-			<h3>My Pledge</h3>
-				$1000 <!-- FIXME Set the value here from the data -->
-			<hr>
-			<h3>My Objective</h3>
-			This is my Objective to collect the donations  <!-- FIXME Set the value here from the data -->
-		</header>
-	</article>	
-
-	<article class="col-sm-8" ng-show="$state.current.name !== 'profile'">
-		<div ui-view></div>
-	</article>
-
-	<aside class="col-sm-4">
-		<hr class="visible-xs">
-		<p class="add-donation-button text-size-125"><a href="#/pop/addDonation/1276-dinesh" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Ladle pledge</a></p>
-		
-		<hr>
-						
-		<div class="faststat">
-			<ul class="stat-list">
-				<li><p><span class="stat-label">Number of days on Gepant </span> <span class="stat-value">38</span></p></li>
-				<li><p><span class="stat-label">Jewels donations this month </span> <span class="stat-value">0</span></p></li>
-				<li><p><span class="stat-label">Jewels donations totaling </span> <span class="stat-value">11</span></p></li>
-			</ul>
-		</div>
-					
-		<hr>
-
-		<div class="sharing">
-			
-			<div class="row">
-				<!-- <div class="fb-share-button"  data-layout="button_count"></div> -->
-				<div class="col-md-6"><div href="#" data-href="http://localhost:9000/#/profile" class=" fb-share-button btn btn-sm btn-fb fullwidth"><i class="fa fa-fw fa-lg fa-facebook"></i> Share on Facebook</div></div>
-				<div class="col-md-6"><a href="#" class="btn btn-sm btn-tw fullwidth"><i class="fa fa-fw fa-lg fa-twitter"></i> Share on Twitter</a></div>
-			</div>
-		</div>		
-	</aside>
+    <article class="col-sm-8" ng-show="$state.current.name === 'profile'">
+        <header>
+            <div class="cover bg-donator">
+                <div class="logo">
+                    <div class="inner avatar bg-donator-faded"></div>
+                </div>
+            </div>
+            <h1>{{user.name}}</h1>
+            <hr>
+            <h3>My Pledge</h3> ${{user.pledge || 0}}
+            <hr>
+            <h3>My Objective</h3> {{user.objective || '-- No Objective Yet --'}}
+        </header>
+    </article>
+    <article class="col-sm-8" ng-show="$state.current.name !== 'profile'">
+        <div ui-view></div>
+    </article>
+    <aside class="col-sm-4">
+        <hr class="visible-xs">
+        <p class="add-donation-button text-size-125"><a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Ladle pledge</a></p>
+        <hr>
+        <div class="faststat">
+            <ul class="stat-list">
+                <li>
+                    <p><span class="stat-label">Number of days on Gepant </span> <span class="stat-value">{{user.daysOnGepant || 0}}</span></p>
+                </li>
+                <li>
+                    <p><span class="stat-label">Jewels donations this month </span> <span class="stat-value">{{user.donationsThisMonth || 0}}</span></p>
+                </li>
+                <li>
+                    <p><span class="stat-label">Jewels donations totaling </span> <span class="stat-value">{{user.donationsTotal || 0}}</span></p>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div class="sharing">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href='http://www.facebook.com/share.php?u=gepant.dev.denkan.se' target='_blank' class='btn btn-sm btn-fb fullwidth'>
+                        <i class="fa fa-fw fa-lg fa-facebook"></i> Share on Facebook
+                    </a>
+                </div>
+                <div class="col-md-12">
+                    <a href="http://gepant.dev.denkan.se" class="btn btn-sm btn-tw fullwidth tweet"
+                                target="_blank">
+                        <i class="fa fa-fw fa-lg fa-twitter"></i> Share on Twitter
+                    </a>
+                    <script>
+                    $('a.tweet').click(function(e) {
+                        e.preventDefault();
+                        var loc = $(this).attr('href');
+                        window.open('http://twitter.com/share?url=' + loc );
+                        // can share text with &text=
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </aside>
 </main>

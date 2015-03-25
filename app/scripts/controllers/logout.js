@@ -8,7 +8,7 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  .controller('LogoutCtrl', function ($scope,$rootScope,$state,$cookieStore,UserService,$timeout) {
+  .controller('LogoutCtrl', function ($scope,$rootScope,$state,$cookieStore,UserService,$timeout,Facebook) {
     	$scope.u={};
     	var logout = function(){
             $rootScope.user = {
@@ -24,9 +24,8 @@ angular.module('gePantApp')
     	$scope.logout =function(){
     		UserService.logout({});
     		$cookieStore.remove("token");
-   //  		angular.forEach($cookies, function (v, k) {
-			//     $cookieStore.remove("token");
-			// });
 			logout();
+            Facebook.logout();
     	}
+
   });

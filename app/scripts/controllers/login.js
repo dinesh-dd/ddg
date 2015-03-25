@@ -37,6 +37,18 @@ angular.module('gePantApp')
 	        }
         };
     	// console.log('this is inside the login controller'+ $scope.u);
+
+        /**
+         * @method gotoSignUp 
+         * function to go to login state 
+         */
+        $scope.gotoSignUp= function(){
+            console.log('inside goto signup');
+            $scope.$close();
+            setTimeout(function() {
+                $state.go('signup');    
+            }, 400);
+        };
       
         //login 
     	$scope.tryLogin =function(){
@@ -57,8 +69,12 @@ angular.module('gePantApp')
             Facebook.login(function(response) {
                 if (response.status == "connected") {
                     console.log(response);
-                    $scope.u.fb_auth_token = response.authResponse.accessToken;
-                    var b = angular.extend($scope.u, functions);
+                     var user = {
+                        data : {
+                            'user[fb_auth_token]':response.authResponse.accessToken,
+                        }
+                    };
+                    var b = angular.extend(user, functions);
                     UserService.loginByFacebook(b); 
                 } else {
                     functions.error();  

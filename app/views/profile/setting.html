@@ -1,10 +1,26 @@
-<h2>Setting</h2>
-<h5 style='float:left'>Email Notifications&nbsp;&nbsp; &nbsp;&nbsp;</h5>
-<toggle-switch
-            model="switchStatus"
-            class="switch-success">
-          <toggle-switch>
-<!-- <input bs-switch ng-model="notification" 
-				type="checkbox" 
-				switch-on-color='donator'
-				switch-off-color="donator"> -->
+<div class="container">
+	<h2>Setting</h2>
+	<h5 style='float:left'>Email Notifications&nbsp;&nbsp; &nbsp;&nbsp;</h5>
+	<toggle-switch
+	            model="user.email_setting"
+	            class="switch-success">
+	          </toggle-switch>
+	<div class="mtop1">
+		<button ng-click='updateSettings()'
+			class="btn btn-success">
+			Update Setting
+		</button>
+		<div ng-switch="setttingStatus" class='mtop1'>
+			<div ng-switch-when="trying" class="alert alert-info">
+				Changing settings ... 
+				<i class="fa fa-refresh loadicon"></i>
+			</div>
+			<div ng-switch-when="success" class="alert alert-success">
+				Settings changed successfully
+			</div>
+			<div ng-switch-when="error" class="alert alert-danger">
+				Error in change settings
+			</div>
+		</div>
+	</div>
+</div>

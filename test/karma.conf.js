@@ -35,6 +35,7 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js',
       'bower_components/angular-underscore-module/angular-underscore-module.js',
       'bower_components/underscore/underscore.js',
+      'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
