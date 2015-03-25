@@ -6,25 +6,6 @@
  * @description
  * # panelStepStatus
  */
-// angular.module('gePantApp')
-// 	.directive('panelStepStatus', function() {
-// 	    return {
-// 	        restrict: "A",
-// 	        scope: {
-// 	            stepData: "=panelStepStatus",
-// 	        },
-// 	        template: '<span class="icon fa fa-fw" ng-class="classes"></span>',
-// 	        link: function(a, b) {
-// 	                angular.element(b).addClass("status-icon"),
-// 	                a.classes = "",
-// 	                a.$watch("[stepData.open,stepData.validated,stepData.validate()]",
-// 	                function() {
-// 	                        a.stepData.validated ? a.classes = a.stepData.validate() ? "fa-check" : "fa-exclamation" : a.stepData.loading ? a.classes = "fa-refresh loadicon" : (a.classes = "fa-plus", a.stepData.open && (a.classes += " open"))
-// 	                }, !0)
-// 	        }
-// 	    }
-// 	})
-
 angular.module('gePantApp')
     .directive("bagSummary", function() {
         return {
@@ -116,7 +97,7 @@ angular.module('gePantApp')
                 b.$on("$routeChangeStart", function() {
                     var d = String(b.hrefDynamic).split("/"),
                         e = String(a.location.hash).split("/");
-                    // mergedParams = [];
+                        mergedParams = [];
                     for (var f in e)
                         mergedParams.push(d[f] && "*" != d[f] ? d[f] : e[f]);
                     angular.element(c).attr("href", mergedParams.join("/"))
