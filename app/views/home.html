@@ -1,4 +1,5 @@
 <div ng-controller="CarouselDemoCtrl">
+     <div ui-view></div>
     <div style="height: 305px" id='carousel'>
         <carousel interval="myInterval">
             <slide ng-repeat="slide in slides" active="slide.active" class="{{slide.class}}">

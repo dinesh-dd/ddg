@@ -38,7 +38,7 @@ angular.module('gePantApp')
         .state('modal', {
             abstract: true,
             parent:'home',
-            url: '/pop/',
+            url: 'pop/',
             onEnter: ['$modal', '$state', function($modal, $state) {
                 console.log('Open modal');
                 $modal.open({
