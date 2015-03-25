@@ -1,10 +1,30 @@
 <!doctype html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <style type="text/css">
+    .ui-resolve {
+        color: red;
+        background: green;
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+    <script type="text/javascript">
+    var GLOBALS = {
+        map: {
+            region: 'SE',
+            components: ''
+        },
+        // apiUrl:'http://shreya.cs:3000/api/gepant/'
+        apiUrl: 'http://192.168.1.27:3001/api/gepant/'
+            // apiUrl:'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/'
+    };
+    </script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -16,49 +36,43 @@
     <link rel="shortcut icon" href="/images/logo-gepant-icon.png">
     <!-- endbuild -->
     <!-- Setting the fonts-->
-
     <!-- FIXME setting the fonts gives the 403 error -->
     <!-- <link rel="stylesheet" href="http://use.typekit.net/c/baabb5/1w;brandon-grotesque,2,Y2r:R:i7,Y2j:R:n3,Y2q:R:n7;proxima-nova,2,b5x:R:i4,b61:R:i7,b5w:R:n4,bBh:R:n7/a?3bb2a6e53c9684ffdc9a9aff1f5b2a628abf9b77fd94669c7b4f1a72bf1fd949ab09afa78545d316b2f9b9b84c2df6e3f4d8841b598d20a464c2f921f3acd15ad5be4d436f523e5ae308a0773f476983bac9a49c624d3aaa8f5ecb4699d6ef"> -->
-    
-  </head>
-  <body ng-app="gePantApp">
+</head>
+
+<body ng-app="gePantApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Add your site or application content here -->
     <section id='site'>
-      <div class="header" id="site-nav">
-        <div class="navbar navbar-default" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="#/">
-                <img src="images/logo-gepant.png" alt="GePant.se">
-              </a>
+        <div class="header" id="site-nav">
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#/">
+                            <img src="images/logo-gepant.png" alt="GePant.se">
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="js-navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a ui-sref="om-gepant.omGepant" class="menu1089 level1 count0 index1 om-gepant active active1 first last"><span>If Gepant</span></a>
+                            </li>
+                        </ul>
+                        <div ui-view="nav-right" ng-controller='NavigationCtrl'></div>
+                    </div>
+                </div>
             </div>
-
-            <div class="collapse navbar-collapse" id="js-navbar-collapse">
-              <ul class="nav navbar-nav">
-                <li>
-                    <a ui-sref="om-gepant.omGepant" class="menu1089 level1 count0 index1 om-gepant active active1 first last"><span>If Gepant</span></a>
-                </li>
-              </ul>
-
-              <div ui-view="nav-right" ng-controller='NavigationCtrl'></div>
-            </div>
-          </div>
         </div>
-      </div>
-      <div ui-view='page'></div>
-      <footer></footer>
+        <div ui-view='page'></div>
+        <footer></footer>
     </section>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -78,36 +92,42 @@
     <script src="bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js"></script>
     <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/states/states.js"></script>
-        <script src="scripts/states/help.js"></script>
-        <script src="scripts/states/profile.js"></script>
-        <script src="scripts/controllers/help.js"></script>
-        <script src="scripts/controllers/carouseldemo.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/controllers/topnav.js"></script>
-        <script src="scripts/controllers/navigation.js"></script>
-        <script src="scripts/services/myservice.js"></script>
-        <script src="scripts/services/userservice.js"></script>
-        <script src="scripts/services/memberapi.js"></script>
-        <script src="scripts/controllers/popcontroller.js"></script>
-        <script src="scripts/controllers/signup.js"></script>
-        <script src="scripts/controllers/logout.js"></script>
-        <script src="scripts/controllers/adddonation.js"></script>
-        <script src="scripts/directives/autoscale.js"></script>
-        <script src="scripts/directives/panelstepstatus.js"></script>
-        <script src="scripts/controllers/profile.js"></script>
-        <script src="scripts/controllers/collections.js"></script>
-        <script src="scripts/controllers/donations.js"></script>
-        <script src="scripts/controllers/donationrequest.js"></script>
-        <script src="scripts/controllers/collectorprofile.js"></script>
-        <script src="scripts/services/preloadservice.js"></script>
-        <script src="scripts/services/mapservice.js"></script>
-        <script src="scripts/services/donationapi.js"></script>
-        <script src="scripts/services/donationservice.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/states/states.js"></script>
+    <script src="scripts/states/help.js"></script>
+    <script src="scripts/states/profile.js"></script>
+    <script src="scripts/controllers/help.js"></script>
+    <script src="scripts/controllers/carouseldemo.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/topnav.js"></script>
+    <script src="scripts/controllers/navigation.js"></script>
+    <script src="scripts/services/myservice.js"></script>
+    <script src="scripts/services/userservice.js"></script>
+    <script src="scripts/services/memberapi.js"></script>
+    <script src="scripts/controllers/popcontroller.js"></script>
+    <script src="scripts/controllers/signup.js"></script>
+    <script src="scripts/controllers/logout.js"></script>
+    <script src="scripts/controllers/adddonation.js"></script>
+    <script src="scripts/directives/autoscale.js"></script>
+    <script src="scripts/directives/panelstepstatus.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
+    <script src="scripts/controllers/collections.js"></script>
+    <script src="scripts/controllers/donations.js"></script>
+    <script src="scripts/controllers/donationrequest.js"></script>
+    <script src="scripts/controllers/collectorprofile.js"></script>
+    <script src="scripts/services/preloadservice.js"></script>
+    <script src="scripts/services/mapservice.js"></script>
+    <script src="scripts/services/donationapi.js"></script>
+    <script src="scripts/services/donationservice.js"></script>
+    <script src="scripts/controllers/searchmap.js"></script>
+    <script src="scripts/services/geolocation.js"></script>
+    <script src="scripts/controllers/profilesetting.js"></script>
+    <script src="scripts/controllers/editprofile.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>

@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('gePantApp')
 .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
@@ -27,13 +29,7 @@ angular.module('gePantApp')
             } 
         })
 
-        // .state('pop', {
-        //     url: '',
-        //     // views: {
-        //     //     'modal': { templateUrl: 'views/home.html' },
-        //     // }
-        // })
-        //Login section
+        
         //TODO add the service for the model
         .state('modal', {
             abstract: true,

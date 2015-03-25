@@ -17,7 +17,7 @@
 </ul>
 
 
-<ul ng-show="user.userLogedIn" class="nav navbar-nav navbar-right">
+<ul ng-show="!user.userLogedIn" class="nav navbar-nav navbar-right">
     <li>
         <a ui-sref="signup"><span>Sign Up</span></a>
     </li>
@@ -26,7 +26,7 @@
     </li>
 </ul>
 <!-- FIXME toggle not working -->
-<ul class="nav navbar-nav navbar-right" ng-show="!user.userLogedIn">
+<ul class="nav navbar-nav navbar-right" ng-show="user.userLogedIn">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="avatar"><i class="fa fa-lg fa-user"></i></span>

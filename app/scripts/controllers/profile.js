@@ -8,8 +8,6 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  .controller('ProfileCtrl', function ($scope,$state) {
-    	//insert the $state in the profile
+  .controller('ProfileCtrl', function ($scope,$state,$rootScope,UserService) {
     	$scope.$state = $state;
-    	$scope.notification = true;
   });

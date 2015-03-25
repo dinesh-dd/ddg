@@ -19,7 +19,6 @@ angular.module('gePantApp')
             }
         }
         var setLanguage = function(language){
-            debugger;   
             var returnLanguage = null;
             switch(language){
                 case 'en-US':
@@ -65,6 +64,11 @@ angular.module('gePantApp')
                     validateUser(user,a,d);
                 }, user.error)
             },
+            signUpByFacebook:function(user) {
+                typeof user  == "object"  && MemberApi.signUpByFacebook(user.data,user,function(a, d) {
+                    validateUser(user,a,d);
+                }, user.error)
+            },
             createUser:function(user){
                 typeof user  == "object"  && MemberApi.create(user.data,user, function(a, d) {
                     validateUser(user,a,d);
@@ -74,6 +78,21 @@ angular.module('gePantApp')
                 typeof user  == "object"  && MemberApi.logout(user, function(a, d) {
                     console.log('getting success in logout');
                 }, user.error);
+            },
+            updateSetting:function(user){
+                typeof user  == "object"  && MemberApi.updateSetting(user.data,user, function(a, d) {
+                    validateUser(user,a,d);
+                }, user.error)
+            },
+            editProfile:function(user){
+                typeof user  == "object"  && MemberApi.editProfile(user.data,user, function(a, d) {
+                    validateUser(user,a,d);
+                }, user.error)  
+            },
+            language_setting:function(user){
+                typeof user  == "object"  && MemberApi.language_setting(user.data,user, function(a, d) {
+                    validateUser(user,a,d);
+                }, user.error)  
             }
         }
     }]);

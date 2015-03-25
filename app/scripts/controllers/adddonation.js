@@ -93,13 +93,16 @@ angular.module('gePantApp')
                     setData: function() {
                         i.extend($scope.donation.postalCodeGeo, $scope.donation.streetGeo)
                     },
-                    getPostalCode: function($scope) {
-                        return $scope = $scope.replace(/[^0-9]/g, ""), h.searchAddress($scope, function(b) {
+                    getPostalCode: function(a) {
+                        debugger;
+                        return a = a.replace(/[^0-9]/g, ""),
+                        h.searchAddress(a, function(b) {
+                            debugger;
                             var UserService = h.formatAddresses(b.data.results);
                             return UserService = i.filter(UserService, function(b) {
-                                return b.postal_code && b.postal_code.substring(0, $scope.length) === $scope
-                            }), UserService = i.sortBy(UserService, function($scope) {
-                                return $scope.formatted_address_postal
+                                return b.postal_code && b.postal_code.substring(0, a.length) === a
+                            }), UserService = i.sortBy(UserService, function(a) {
+                                return a.formatted_address_postal
                             })
                         })
                     },
@@ -113,7 +116,7 @@ angular.module('gePantApp')
                     getStreet: function(b) {
                         return h.searchAddress({
                             address: b,
-                            // components: GLOBALS.map.components + "|postal_code:" + $scope.donation.postalCodeGeo.postal_code
+                            components: GLOBALS.map.components + "|postal_code:" + $scope.donation.postalCodeGeo.postal_code
                         }, function($scope) {
                             var b = h.formatAddresses($scope.data.results);
                             return b = i.filter(b, function($scope) {

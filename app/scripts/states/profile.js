@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('gePantApp').config(function($stateProvider) {
         $stateProvider 
         //FIXME Before going to profile should download some data
@@ -17,6 +19,7 @@ angular.module('gePantApp').config(function($stateProvider) {
         .state('profile.setting', {
             url: '/setting',
             templateUrl: 'views/profile/setting.html',
+            controller:'ProfilesettingCtrl',
             ncyBreadcrumb: {
                 label: 'Setting'
             }
@@ -24,6 +27,7 @@ angular.module('gePantApp').config(function($stateProvider) {
         .state('profile.edit', {
             url: '/edit',
             templateUrl: 'views/profile/edit.html',
+            controller:'EditprofileCtrl',
             ncyBreadcrumb: {
                 label: 'Edit Profile'
             }

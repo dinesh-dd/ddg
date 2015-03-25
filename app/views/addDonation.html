@@ -1,53 +1,78 @@
-
-
 <div id="add-donation-wizard">
-  <div class="modal-header">
-    <h1>Ge bort pant</h1>
-    <a href="#" class="close" ng-click='$close()'></a>
-  </div>
-
-<div class="pages" ng-class="{'page1':step<4,'page2':step>=4,'page3':saved, 'sl-ide-right': goingBack}">
-  
-  <div class="panel-group page page1" id="adw-page1">
-    <div class="panel panel-default step step-0" ng-class="{open:isStep(0)}">
-      <div class="panel-heading"><a ng-click="setStep(0)"><h4>1. Vad vill du ge bort? </h4><span panel-step-status="stepData['what']"></span></a></div>
-      <div collapse="!isStep(0)"><div class="panel-body" ng-include="'/views/donation/add-wizard/0-what.html'"></div></div>
+    <div class="modal-header">
+        <!-- <h1>Ge bort pant</h1> -->
+        <h1>Give away a pledge</h1>
+        <a href="#" class="close" ng-click='$close()'></a>
     </div>
-
-    <div class="panel panel-default step step-1" ng-class="{open:isStep(1)}">
-      <div class="panel-heading"><a ng-click="setStep(1)"><h4>2. Dina kontaktuppgifter</h4><span panel-step-status="stepData['who']"></span></a></div>
-      <div collapse="!isStep(1)"><div class="panel-body" ng-include="'/views/donation/add-wizard/1-who.html'"></div></div>
+    <div class="pages" ng-class="{'page1':step<4,'page2':step>=4,'page3':saved, 'sl-ide-right': goingBack}">
+        <div class="panel-group page page1" id="adw-page1">
+            <div class="panel panel-default step step-0" ng-class="{open:isStep(0)}">
+                <div class="panel-heading">
+                    <a ng-click="setStep(0)">
+                        <!--  <h4>1. Vad vill du ge bort? </h4> -->
+                        <h4>1. What do you give away? </h4> 
+                        <span panel-step-status="stepData['what']"></span>
+                    </a>
+                </div>
+                <div collapse="!isStep(0)">
+                    <div class="panel-body" ng-include="'/views/donation/add-wizard/0-what.html'"></div>
+                </div>
+            </div>
+            <div class="panel panel-default step step-1" ng-class="{open:isStep(1)}">
+                <div class="panel-heading">
+                    <a ng-click="setStep(1)">
+                        <!-- <h4>2. Dina kontaktuppgifter</h4> -->
+                        <h4>2. Your contact information</h4>
+                        <span panel-step-status="stepData['who']"></span>
+                    </a>
+                </div>
+                <div collapse="!isStep(1)">
+                    <div class="panel-body" ng-include="'/views/donation/add-wizard/1-who.html'"></div>
+                </div>
+            </div>
+            <div class="panel panel-default step step-2" ng-class="{open:isStep(2)}">
+                <div class="panel-heading">
+                    <a ng-click="setStep(2)">
+                        <!-- <h4>3. Var finns panten?</h4> -->
+                        <h4>3. Where is the pledge ?</h4>
+                        <span panel-step-status="stepData['where']"></span>
+                    </a>
+                </div>
+                <div collapse="!isStep(2)">
+                    <div class="panel-body" ng-include="'/views/donation/add-wizard/2-where.html'"></div>
+                </div>
+            </div>
+            <div class="panel panel-default step step-3" ng-class="{open:isStep(3)}">
+                <div class="panel-heading">
+                    <a ng-click="setStep(3)">
+                        <!-- <h4>4. Vem vill du skänka till?</h4> -->
+                        <h4>4. Who would you like to donate ?</h4>
+                        <span panel-step-status="stepData['whose']"></span>
+                    </a>
+                </div>
+                <div collapse="!isStep(3)">
+                    <div class="panel-body" ng-include="'/views/donation/add-wizard/3-whose.html'"></div>
+                </div>
+            </div>
+            <div class="panel-button">
+                <a href="#/pop/addDonation/{{selectedCollector}}/summary" class="btn btn-info fullwidth" ng-cl-ick="gotoSummary()">
+                    <!-- <span>Gå vidare till granskning</span> -->
+                    <span>Proceed to review</span>
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="step step-4 page page2" id="adw-page2">
+            <div ng-include="'/views/donation/add-wizard/4-summary.html'"></div>
+        </div>
+        <div class="step step-5 page page3" id="adw-page3">
+            <div ng-include="'/views/donation/add-wizard/5-saved.html'"></div>
+        </div>
     </div>
-
-    <div class="panel panel-default step step-2" ng-class="{open:isStep(2)}">
-      <div class="panel-heading"><a ng-click="setStep(2)"><h4>3. Var finns panten?</h4><span panel-step-status="stepData['where']"></span></a></div>
-      <div collapse="!isStep(2)"><div class="panel-body" ng-include="'/views/donation/add-wizard/2-where.html'"></div></div>
-    </div>
-
-    <div class="panel panel-default step step-3" ng-class="{open:isStep(3)}">
-      <div class="panel-heading"><a ng-click="setStep(3)"><h4>4. Vem vill du skänka till?</h4><span panel-step-status="stepData['whose']"></span></a></div>
-      <div collapse="!isStep(3)"><div class="panel-body" ng-include="'/views/donation/add-wizard/3-whose.html'"></div></div>
-    </div>
-   
-   <div class="panel-button">
-     <a href="#/pop/addDonation/{{selectedCollector}}/summary" class="btn btn-info fullwidth" ng-cl-ick="gotoSummary()">
-       <span>Gå vidare till granskning</span>
-       <i class="fa fa-arrow-right"></i>
-     </a>
-   </div>
-  </div>
-
-  <div class="step step-4 page page2" id="adw-page2"><div ng-include="'/views/donation/add-wizard/4-summary.html'"></div></div>
-  <div class="step step-5 page page3" id="adw-page3"><div ng-include="'/views/donation/add-wizard/5-saved.html'"></div></div>
-</div>
-
-
-<!--
+    <!--
 <h4>donation</h4><pre>{{donation | json}}</pre>
 <h4>getStep</h4><pre>{{getStep() | json}}</pre>
 <h4>currStep</h4><pre>{{currStep | json}}</pre>
 <h4>stepData</h4><pre>{{stepData | json}}</pre>
 -->
-
-
 </div>

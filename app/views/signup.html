@@ -1,23 +1,40 @@
 <header class="modal-header">
-    <h1>Skapa nytt konto</h1>
+    <!-- <h1>Skapa nytt konto</h1> -->
+    <h1>Create new account</h1>
     <a href="#" class="close" ng-click='$close()'></a>
 </header>
 <div class="modal-body fat-v">
 
 
     <div ng-switch="status">
-        <div ng-switch-when="trying" class="alert alert-info">försöker registrera dig ... <i class="fa fa-refresh loadicon"></i>
+        <div ng-switch-when="trying" class="alert alert-info">
+            <!-- försöker registrera dig ...  -->
+            trying to register ...
+            <i class="fa fa-refresh loadicon"></i>
         </div>
-        <div ng-switch-when="success" class="alert alert-success">Signerad Up : D</div>
-        <div ng-switch-when="error" class="alert alert-danger">Fel i sign up</div>
+        <div ng-switch-when="success" class="alert alert-success">  
+            <!-- Signerad Up : D -->
+            Signed up: D
+        </div>
+        <div ng-switch-when="error" class="alert alert-danger">
+            <!-- Fel i sign up -->
+            Error in sign up
+        </div>
     </div>
 
     <div class="account-type as-table clearfix">
-        <h3 class="splitter col-sm-4 as-cell">Jag vill främst&nbsp;</h3>
+        <h3 class="splitter col-sm-4 as-cell">
+            I would mainly&nbsp;
+            <!-- Jag vill främst&nbsp; -->
+        </h3>
         <div class="col-sm-8 as-cell">
-            <button class="btn btn-xs" ng-class="{'btn-donator col-xs-8':u.type=='Doner','btn-inactive col-xs-4':u.type!='Doner'}" ng-click="u.type='Doner'"><span class="text-size-125"><strong>ge</strong> pant</span>
+            <button class="btn btn-xs" ng-class="{'btn-donator col-xs-8':u.type=='Doner','btn-inactive col-xs-4':u.type!='Doner'}" ng-click="u.type='Doner'">
+                <span class="text-size-125"><strong>give</strong> pledge</span>
+                <!-- <span class="text-size-125"><strong>ge</strong> pant</span> -->
             </button>
-            <button class="btn btn-xs" ng-class="{'btn-collector col-xs-8':u.type=='Collector','btn-inactive col-xs-4':u.type!='Collector'}" ng-click="u.type='Collector'"><span class="text-size-125"><strong>få</strong> pant</span>
+            <button class="btn btn-xs" ng-class="{'btn-collector col-xs-8':u.type=='Collector','btn-inactive col-xs-4':u.type!='Collector'}" ng-click="u.type='Collector'">
+                <!-- <span class="text-size-125"><strong>få</strong> pant</span> -->
+                <span class="text-size-125"><strong>get</strong> mortgage</span>
             </button>
         </div>
     </div>
@@ -25,26 +42,33 @@
     <hr />
 
     <div class="or-fbLogin">
-        <button class="btn btn-fb fullwidth" ng-click="tryFbLogin()"><i class="fa fa-lg fa-fw fa-facebook"></i> Logga in via ditt Facebook-konto</button>
+        <button class="btn btn-fb fullwidth" ng-click="tryFbLogin()">
+            <i class="fa fa-lg fa-fw fa-facebook"></i> 
+            <!-- Logga in med Facebook -->
+            Log in with Facebook
+        </button>
     </div>
 
     <hr />
 
     <form name="form" id="createAccountForm" ng-submit="createAccount()" novalidate>
-        <h3 class="splitter">Eller registrera dig manuellt</h3>
-
+        <!-- <h3 class="splitter">Eller registrera dig manuellt</h3> -->
+        <h3 class="splitter"> Or sign up manually</h3>
         <div class="form-group">
-            <input type="text" ng-model="u.name" required name="name" class="form-control" id="caName" placeholder="Namn">
+        <!-- placeholder="Namn" -->
+            <input type="text" ng-model="u.name" required name="name" class="form-control" id="caName" placeholder="Name">
             <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.name.$dirty && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange namn"></i>
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.name.$valid"></i>
         </div>
         <div class="form-group">
-            <input type="email" ng-model="u.email" required name="email" class="form-control" id="caEmail" placeholder="E-postadress">
+            <!-- placeholder="E-postadress" -->
+            <input type="email" ng-model="u.email" required name="email" class="form-control" id="caEmail" placeholder="Email Address">
             <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.email.$dirty && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange en giltig e-postadress"></i>
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
         </div>
         <div class="form-group">
-            <input type="password" ng-model="u.password" required name="password" class="form-control" id="caPass" placeholder="Lösenord" ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/">
+        <!-- placeholder="Lösenord" -->
+            <input type="password" ng-model="u.password" required name="password" class="form-control" id="caPass" placeholder="Password" ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/">
             <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.password.$dirty && form.password.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra."></i>
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.password.$valid"></i>
         </div>
@@ -52,19 +76,27 @@
         <div ng-show="u.type=='Collector'">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" ng-model="u.isOrganization" name="isOrganization"> Kontot avser organisation/förening
+                    <input type="checkbox" ng-model="u.isOrganization" name="isOrganization">
+                    <!-- Kontot avser organisation/förening -->
+                    Account is related organization / association
                 </label>
             </div>
             <div class="form-group" ng-show="u.isOrganization">
-                <input type="text" ng-model="u.orgnr" name="orgnr" class="form-control" id="caOrgnr" placeholder="Organisationsnummer" ng-required="u.isOrganization">
+                <!-- placeholder="Organisationsnummer" -->
+                <input type="text" ng-model="u.orgnr" name="orgnr" class="form-control" id="caOrgnr" placeholder="Organization" ng-required="u.isOrganization">
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.orgnr.$dirty && form.orgnr.$invalid"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.orgnr.$valid"></i>
             </div>
         </div>
 
-        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Skapa konto <i ng-show="form.$valid" class="fa fa-thumbs-up"></i>
+        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
+            <!-- Skapa konto  -->
+            Create Account <i ng-show="form.$valid" class="fa fa-thumbs-up"></i>
         </button>
-        <a href="#/pop/login" class="btn">Har du redan konto? <strong>Logga in</strong></a>
+        <a ng-click='gotoLogin()' class="btn">
+            Already have account? <strong>Log in</strong>
+            <!-- ar du redan konto? <strong>Logga in</strong> -->
+        </a>
 
     </form>
 </div>
