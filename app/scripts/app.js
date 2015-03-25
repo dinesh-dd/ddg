@@ -25,6 +25,7 @@ angular
         'LocalStorageModule'
         // 'frapontillo.bootstrap-switch',
     ])
+
     .run(function(UserService) {
         UserService.setUser();
     })
