@@ -79,7 +79,7 @@ angular.module('gePantApp')
                 } else {
                     functions.error();  
                 }
-            });
+            },{scope: 'email'});
         }
 
       //functions related to facebook

@@ -3,26 +3,19 @@
         <carousel interval="myInterval">
             <slide ng-repeat="slide in slides" active="slide.active" class="{{slide.class}}">
                 <img ng-src="images/slider-image.png" style="margin:auto;">
-                <!-- FIXME change me -->
                 <div class="item-content ng-scope" autoscale="1200">
                     <div class="carousel-caption">
                         <div class="carousel-caption-inner">
-                            <h1><font><font>Want to get rid of your pledge cans and bottles?</font></font></h1>
+                            <h1>{{ 'html.homecarosalHeader' | translate }}</h1>
                             <p class="mtop1 mbot1">
-                                <font>
-                                    <font>By using Gepant get individuals and organizations an opportunity to add to their finances and donors lose their cans and bottles, while contributing to a more environmentally friendly Sweden.</font>
-                                </font>
+                                {{ 'html.homecarosalContent' | translate }}
                             </p>
                             <p>
                                 <a ui-sref="addDonation" class="btn btn-primary">
-                                    <font>
-                                        <font>Give away a pledge </font>
-                                    </font>
+                                    {{ 'button.addDonation' | translate }}
                                 </a>
                                 <a ui-sref="signup" class="btn">
-                                    <font>
-                                        <font>Collect pledges</font>
-                                    </font>
+                                    {{ 'button.collectPledge' | translate }}
                                 </a>
                             </p>
                         </div>
@@ -33,7 +26,7 @@
     </div>
     <div class='searchResult container' ng-controller='SearchmapCtrl'>
         <div class="box container">
-            <h2>Where do you live?</h2>
+            <h2>{{ 'header.where' | translate }}</h2>
             <p class="control">
                 <span class="loading">
                     <i class="fa fa-refresh loadicon" ng-show="loadingLocations"></i>
@@ -41,7 +34,8 @@
                 <input type="text" 
                     class="form-control input-lg searchBar" 
                     ng-model="myPlace" 
-                    placeholder="Ange stad, postnummer eller adress" autofocus typeahead="address as address.formatted_address for address in getLocation($viewValue) | filter:$viewValue" 
+                    placeholder="{{ 'placeholder.enterAddress' | translate }}"
+                    autofocus typeahead="address as address.formatted_address for address in getLocation($viewValue) | filter:$viewValue" 
                     typeahead-min-length="2" 
                     typeahead-wait-ms="300" 
                     typeahead-loading="loadingLocations" 

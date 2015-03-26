@@ -13,17 +13,19 @@
 				<rating ng-model="collector.star" max="5" readonly="true"></rating>
 			</div>
 		</div>
-		<h3 class='mtop1'>Pledge</h3>
+		<h3 class='mtop1'>{{ 'html.goalMoney' | translate }}</h3>
 		$ {{collector.pledge}} 
-		<h3  class='mtop1'>Objective</h3>
+		<h3  class='mtop1'>{{ 'html.objective' | translate }}</h3>
 		{{collector.objective}}
-		<div ng-show='!user.userLogedIn'> <!-- fixme change this -->
-		<h3  class='mtop1'>Rate this user</h3>
+		<div ng-show='user.userLogedIn'> <!-- fixme change this -->
+		<h3  class='mtop1'>{{ 'html.rateUser' | translate }}</h3>
 			<rating ng-model="collector.myStar" max="5" readonly="false"></rating>
 			<br>
-			<a class='btn btn-success btn-xm mtop1' ng-click='setStar()'>Submit rating</a>
+			<a class='btn btn-success btn-xm mtop1' ng-click='setStar()'>{{ 'html.submitRating' | translate }}</a>
 		</div>
 		<!-- //TODO set the id of the collector while donationg the new thing -->
-		<a ui-sref="addDonation" class="btn  mtop2 btn-lg btn-donator  text-size-125 btn-gepant-hover  bold">Donate</a>
+		<div>
+			<a ui-sref="addDonation" class="btn  mtop2 btn-lg btn-donator  text-size-125 btn-gepant-hover  bold">{{ 'html.donate' | translate }}</a>
+		</div>
 	</div>
 </main>

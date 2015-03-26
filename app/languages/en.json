@@ -1,0 +1,57 @@
+{
+	"header":{
+		"login":"Log in",
+		"signUp":"Sign up",
+		"createAccount":"Create new account",
+		"logout":"Log out",
+		"where":"Where do you live?",
+		"giveDonation":"Give away a pledge",
+		"donateWhat":"1. What do you give away?",
+		"donateWho":"2. Your contact information",
+		"donateWhere":"3. Where is the pledge ?",
+		"donateWhom":"4. Who would you like to donate ?"
+	},
+	"message":{
+		"trylogin":"Trying to login ...",
+		"loginSuccess":"Logged in! :D",
+		"loginFailure":"Login failed",
+		"trySignUp":"trying to register ...",
+		"signupSuccess":"Signed up: D",
+		"signupFailure":"Error in sign up"
+	},
+	"placeholder":{
+		"email":"Email Address",
+		"password":"Password",
+		"name":"Name",
+		"org":"Organization",
+		"enterAddress":"Enter city , zip code or address"
+	},
+	"button":{
+		"fbLogin":"Log in with Facebook",
+		"createAccount":"Create Account",
+		"collectPledge":"Collect pledges",
+		"addDonation":"Give away a pledge",
+		"proceedReview":"Proceed to review"
+	},
+	"html":{
+		"loginEmail":"Or login via email address",
+		"signupHere":"Are you missing account? ",
+		"signupMannual":"Or sign up manually",
+		"iWould":"I would mainly",
+		"relatedOrg":"Account is related to organization / association",
+		"give":"give",
+		"get":"get",
+		"pledge":"pledge",
+		"alreadyAccount":"Already have account?",
+		"logoutConfirm":"Do you want to log out?",
+		"logoutYes":"Yes, sign out",
+		"logoutNo":"No, cancel",
+		"homecarosalHeader":"Want to get rid of your pledge cans and bottles?",
+		"homecarosalContent":"By using Gepant get individuals and organizations an opportunity to add to their finances and donors lose their cans and bottles, while contributing to a more environmentally friendly Sweden.",
+		"goalMoney":"Pledge",
+		"objective":"Objective",		
+		"rateUser":"Rate this user",
+		"submitRating":"Submit rating",
+		"donate":"Donate"
+	}
+}

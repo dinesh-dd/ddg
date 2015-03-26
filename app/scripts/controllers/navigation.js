@@ -8,8 +8,14 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService', function ($scope,$rootScope,UserService) {
-		$scope.setLanguage = function(language){
+  	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService','$translate', function ($scope,$rootScope,UserService,$translate) {
+	    var languageCode = {
+            'English':'en',
+            'Swidish':'sv'
+        }
+
+    	$scope.setLanguage = function(language){
+            $translate.use(languageCode[language]);
 		  	UserService.setLanguage(language); 
     		var request = {
     			success:function(){

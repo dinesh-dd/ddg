@@ -22,8 +22,9 @@ angular
         'ngCookies',
         'toggle-switch',
         'underscore',
-        'LocalStorageModule'
-        // 'frapontillo.bootstrap-switch',
+        'LocalStorageModule',
+        'pascalprecht.translate'
+        //'frapontillo.bootstrap-switch',
     ])
 
     .run(function(UserService) {
@@ -46,6 +47,15 @@ angular
         }
         UserService.session(response)
     })
+
+    .config(function($translateProvider) {
+        $translateProvider.useStaticFilesLoader({
+            prefix: '/languages/',
+            suffix: '.json'
+        });
+        $translateProvider.preferredLanguage('sv');
+    })
+
     .config(['$animateProvider',function ($animateProvider) {
         $animateProvider.classNameFilter(/carousel/);
     }])

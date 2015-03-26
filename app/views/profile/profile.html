@@ -13,9 +13,14 @@
             </div>
             <h1>{{user.name}}</h1>
             <hr>
-            <h3>My Pledge</h3> ${{user.pledge || 0}}
-            <hr>
-            <h3>My Objective</h3> {{user.objective || '-- No Objective Yet --'}}
+            <div ng-show='user.type=="Collector"'>
+                <h3>My Pledge</h3> ${{user.pledge || 0}}
+                <hr>
+            </div>
+            <div ng-show='user.type=="Collector"'>
+                <h3>My Objective</h3> {{user.objective || '-- No 
+                Objective Yet --'}}
+            </div>
         </header>
     </article>
     <article class="col-sm-8" ng-show="$state.current.name !== 'profile'">
@@ -23,7 +28,11 @@
     </article>
     <aside class="col-sm-4">
         <hr class="visible-xs">
-        <p class="add-donation-button text-size-125"><a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Ladle pledge</a></p>
+        <p class="add-donation-button text-size-125">
+            <!-- <a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Ladle pledge</a>-->
+            <a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Give pledge</a>
+            
+        </p>
         <hr>
         <div class="faststat">
             <ul class="stat-list">

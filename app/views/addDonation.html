@@ -1,7 +1,7 @@
 <div id="add-donation-wizard">
     <div class="modal-header">
         <!-- <h1>Ge bort pant</h1> -->
-        <h1>Give away a pledge</h1>
+        <h1>{{ 'header.submitRating' | translate }}</h1>
         <a href="#" class="close" ng-click='$close()'></a>
     </div>
     <div class="pages" ng-class="{'page1':step<4,'page2':step>=4,'page3':saved, 'sl-ide-right': goingBack}">
@@ -10,7 +10,7 @@
                 <div class="panel-heading">
                     <a ng-click="setStep(0)">
                         <!--  <h4>1. Vad vill du ge bort? </h4> -->
-                        <h4>1. What do you give away? </h4> 
+                        <h4>{{ 'header.donateWhat' | translate }}</h4>
                         <span panel-step-status="stepData['what']"></span>
                     </a>
                 </div>
@@ -22,7 +22,7 @@
                 <div class="panel-heading">
                     <a ng-click="setStep(1)">
                         <!-- <h4>2. Dina kontaktuppgifter</h4> -->
-                        <h4>2. Your contact information</h4>
+                        <h4>{{ 'header.donateWho' | translate }}</h4>
                         <span panel-step-status="stepData['who']"></span>
                     </a>
                 </div>
@@ -34,7 +34,7 @@
                 <div class="panel-heading">
                     <a ng-click="setStep(2)">
                         <!-- <h4>3. Var finns panten?</h4> -->
-                        <h4>3. Where is the pledge ?</h4>
+                        <h4>{{ 'header.donateWhere' | translate }}</h4>
                         <span panel-step-status="stepData['where']"></span>
                     </a>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="panel-heading">
                     <a ng-click="setStep(3)">
                         <!-- <h4>4. Vem vill du skänka till?</h4> -->
-                        <h4>4. Who would you like to donate ?</h4>
+                        <h4>{{ 'header.donateWhom' | translate }}</h4>
                         <span panel-step-status="stepData['whose']"></span>
                     </a>
                 </div>
@@ -55,9 +55,10 @@
                 </div>
             </div>
             <div class="panel-button">
-                <a href="#/pop/addDonation/{{selectedCollector}}/summary" class="btn btn-info fullwidth" ng-cl-ick="gotoSummary()">
+                <!-- ng-click="gotoSummary()" -->
+                <a href="#/pop/addDonation/{{selectedCollector}}/summary" class="btn btn-info fullwidth"  ng-click="$close()">
                     <!-- <span>Gå vidare till granskning</span> -->
-                    <span>Proceed to review</span>
+                    <span>{{ 'header.proceedReview' | translate }}</span>
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>

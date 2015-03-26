@@ -1,0 +1,51 @@
+{
+	"header":{
+		"login":"Logga in",
+		"signUp":"Registrera dig",
+		"createAccount":"Skapa nytt konto",
+		"logout":"Logga ut",
+		"where":"Var befinner du dig?"
+	},
+	"message":{
+		"trylogin":"Försöker logga in...",
+		"loginSuccess":"Loggar in! :D",
+		"loginFailure":"Inloggningen misslyckades",
+		"trySignUp":"försöker registrera dig ...",
+		"signupSuccess":"Signerad Up : D",
+		"signupFailure":"Fel i sign up"
+	},
+	"placeholder":{
+		"email":"E-postadress",
+		"password":"Lösenord",
+		"name":"Namn",
+		"org":"Organisationsnummer",
+		"enterAddress":"Ange stad, postnummer eller adress"
+	},
+	"button":{
+		"fbLogin":"Logga in med Facebook",
+		"createAccount":"Skapa konto",
+		"collectPledge":"Samla ihop pant",
+		"addDonation":"Ge bort pant"
+	},
+	"html":{
+		"loginEmail":"Eller logga in via e-postadress",
+		"signupHere":"Saknar du konto?",
+		"signupMannual":"Eller registrera dig manuellt",
+		"iWould":"Jag vill främst",
+		"relatedOrg":"Kontot avser organisation/förening",
+		"give":"ge",
+		"get":"få",
+		"pledge":"pant",
+		"alreadyAccount":"ar du redan konto?",
+		"logoutConfirm":"Vill du logga ut?",
+		"logoutYes":"Ja, logga ut",
+		"logoutNo":"Nej, avbryt",
+		"homecarosalHeader":"Vill du bli av med dina pantburkar och flaskor?",
+		"homecarosalContent":"Genom att använda Gepant får privatpersoner och föreningar en möjlighet att dryga ut sin ekonomi och donatorerna blir av med sina burkar och flaskor, samtidigt som detta bidrar till ett mer miljövänligt Sverige.Ge bort pant Samla ihop pant",
+		"goalMoney":"Pledge",
+		"objective":"Objektiv",		
+		"rateUser":"Betygsätt den här användaren",
+		"submitRating":"Skicka betyg",
+		"donate":"Donera"
+	}
+}

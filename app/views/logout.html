@@ -1,10 +1,16 @@
 <header class="modal-header">
-    <h1>Logga ut</h1>
+    <h1>{{ 'header.logout' | translate }}</h1>
     <a href="#" class="close" ng-click='$close()'></a>
 </header>
 <div class="modal-body fat-v text-center">
-    <h3>Vill du logga ut?</h3>
-    <button class="btn btn-danger fullwidth mbot1 mtop1" ng-click="logout()">Ja, logga ut &nbsp; <i class="fa fa-lg fa-sign-out"></i></button>
-    <a href="#" ng-click='$close()' class="btn btn-default fullwidth">Nej, avbryt &nbsp; <i class="fa fa-lg fa-times-circle"></i></a>
+    <h3>{{ 'html.logoutConfirm' | translate }}</h3>
+    <button class="btn btn-danger fullwidth mbot1 mtop1" ng-click="logout()">
+        {{ 'html.logoutYes' | translate }} &nbsp;
+    	<i class="fa fa-lg fa-sign-out"></i>
+    </button>
+    <a href="#" ng-click='$close()' class="btn btn-default fullwidth">
+        {{ 'html.logoutNo' | translate }} &nbsp;
+        <i class="fa fa-lg fa-times-circle"></i>
+    </a>
     <p>&nbsp;</p>
 </div>

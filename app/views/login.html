@@ -1,52 +1,42 @@
 <header class="modal-header">
-	<!-- <h1>Logga in</h1> -->
-	<h1>Log in</h1>
+	<h1>{{ 'header.login' | translate }}</h1>
 	<a href="#" class="close" ng-click='$close()'></a>
 </header>
 <div class="modal-body fat-v">
 	<div ng-switch="status">
 		<div ng-switch-when="trying" class="alert alert-info">
-			<!-- Försöker logga in...  -->
-			Trying to login ... 
+			{{ 'message.trylogin' | translate }}
 			<i class="fa fa-refresh loadicon"></i>
 		</div>
 		<div ng-switch-when="success" class="alert alert-success">
-			<!-- Loggar in! :D -->
-			Logged in! :D
+			{{ 'message.loginSuccess' | translate }}
 		</div>
 		<div ng-switch-when="error" class="alert alert-danger">
-			<!-- Inloggningen misslyckades -->
-			Login failed
+			{{ 'message.loginFailure' | translate }}
 		</div>
 	</div>
 	<div class="or-fbLogin">
 		<button class="btn btn-fb fullwidth" ng-click="tryFbLogin()">
 			<i class="fa fa-lg fa-fw fa-facebook"></i> 
-			<!-- Logga in via ditt Facebook-konto -->
-			 Log in with your Facebook account
+			{{ 'button.fbLogin' | translate }}
 		</button>
 	</div>
 	<hr />
 	<form name="form" id="loginForm" ng-submit="tryLogin()" novalidate autocomplete="off">
 		<h3 class="splitter">
-			<!-- Eller logga in via e-postadress -->
-			Or login via email address
+			{{ 'html.loginEmail' | translate }}
 		</h3>
 		<div class="form-group">
-			<!-- placeholder="E-postadress" -->
-			<input type="text" ng-model="u.email" name="email" class="form-control" id="lEmail" placeholder="Email Address">
+			<input type="text" ng-model="u.email" name="email" class="form-control" id="lEmail" placeholder="{{ 'placeholder.email' | translate }}">
 		</div>
 		<div class="form-group">
-		 	<!-- placeholder="Lösenord" -->
-			<input type="password" ng-model="u.password" name="password" class="form-control" id="lPass" placeholder="Password">
+			<input type="password" ng-model="u.password" name="password" class="form-control" id="lPass" placeholder="{{ 'placeholder.password' | translate }}">
 		</div>
 		<button type="submit" class="btn btn-success">
-			<!-- Logga in -->
-			Log in 
+			{{ 'header.login' | translate }}
 		</button>
 		<a class="btn" href="#" ng-click='gotoSignUp()'>
-			Are you missing account?  <strong>Sign up</strong>
-			<!-- Saknar du konto? <strong>Registrera dig</strong> -->
+			{{ 'html.signupHere' | translate }} <strong>{{'header.signUp' | translate}}</strong>
 		</button>
 	</form>
 </div>
