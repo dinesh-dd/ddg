@@ -1,55 +1,81 @@
-<!--Navigation bar for the language --> 
+<!--Navigation bar for the language -->
 <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="name">{{user.language || 'Swidish'}}</span>
-            <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-            <li>
-                <a ng-click='setLanguage("English")'>English</a>
-            </li>
-            <li>
-                <a ng-click='setLanguage("Swidish")'>Swidish</a>
-            </li>
-        </ul>
-    </li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			<span class="name">{{user.language || 'Swidish'}}</span>
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu">
+			<li>
+				<a ng-click='setLanguage("English")'>English</a>
+			</li>
+			<li>
+				<a ng-click='setLanguage("Swidish")'>Swidish</a>
+			</li>
+		</ul>
+	</li>
 </ul>
-
-
+<!-- Navigation section for login -->
 <ul ng-show="!user.userLogedIn" class="nav navbar-nav navbar-right">
-    <li>
-        <a ui-sref="signup"><span>Sign Up</span></a>
-    </li>
-    <li>
-        <a ui-sref="login" class="navbar-btn btn btn-default">Log in</a>
-    </li>
+	<li>
+		<a ui-sref="signup">
+			<span>
+				{{ 'header.signup' | translate }}
+			</span>
+		</a>
+	</li>
+	<li>
+		<a ui-sref="login" class="navbar-btn btn btn-default">
+			{{ 'header.login' | translate }}
+		</a>
+	</li>
 </ul>
-<!-- FIXME toggle not working -->
+<!-- Navigation section for user profile -->
 <ul class="nav navbar-nav navbar-right" ng-show="user.userLogedIn">
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="avatar"><i class="fa fa-lg fa-user"></i></span>
-            <span class="name">{{user.name}}</span>
-            <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu user">
-            <li><a ui-sref="profile">View Profile</a>
-            </li>
-            <li><a ui-sref="profile.donations" ng-show='user.type=="Doner"'>Donations</a>
-            </li>
-            <li><a ui-sref="profile.donationRequest" ng-show='user.type=="Collector"'>Donation Requests</a>
-            </li>
-            <li><a ui-sref="profile.collections" ng-show='user.type=="Collector"'>Collections</a>
-            </li>
-            <li class="divider"></li>
-            <li><a ui-sref="profile.edit">Edit profile</a>
-            </li>
-            <li><a ui-sref="profile.setting">Setting</a>
-            </li>
-            <li class="divider"></li>
-            <li><a ui-sref="logout">Log out</a>
-            </li>
-        </ul>
-    </li>
+	<li class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			<span class="avatar"><i class="fa fa-lg fa-user"></i></span>
+			<span class="name">{{user.name}}</span>
+			<b class="caret"></b>
+		</a>
+		<ul class="dropdown-menu user">
+			<li>
+				<a ui-sref="profile">
+					{{ 'navigation.viewProfile' | translate }}
+				</a>
+			</li>
+			<li>
+				<a ui-sref="profile.donations"> 
+			  		{{ 'navigation.donations' | translate }}
+				</a>
+			</li>
+			<li>
+				<a ui-sref="profile.donationRequest" ng-show='user.type=="Collector"'>
+				{{ 'navigation.donationRequest' | translate }}
+				</a>
+			</li>
+			<li>
+				<a ui-sref="profile.collections" ng-show='user.type=="Collector"'>
+					{{ 'navigation.collections' | translate }}
+				</a>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a ui-sref="profile.edit">
+				{{ 'navigation.editProfile' | translate }}
+				</a>
+			</li>
+			<li>
+				<a ui-sref="profile.setting">
+					{{ 'navigation.setting' | translate }}
+				</a>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a ui-sref="logout">
+					{{ 'header.logout' | translate }}
+				</a>
+			</li>
+		</ul>
+	</li>
 </ul>

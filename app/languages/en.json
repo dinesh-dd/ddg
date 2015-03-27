@@ -1,7 +1,7 @@
 {
 	"header":{
-		"login":"Log in",
-		"signUp":"Sign up",
+		"login":"Log In",
+		"signUp":"Sign Up",
 		"createAccount":"Create new account",
 		"logout":"Log out",
 		"where":"Where do you live?",
@@ -25,6 +25,14 @@
 		"name":"Name",
 		"org":"Organization",
 		"enterAddress":"Enter city , zip code or address"
+	},
+	"navigation":{
+		"viewProfile":"View Profile",
+		"donations":"Donations",
+		"donationRequest":"Donation Requests",
+		"collections":"Collections",
+		"editProfile":"Edit profile",
+		"setting":"Setting"
 	},
 	"button":{
 		"fbLogin":"Log in with Facebook",

@@ -4,7 +4,12 @@
 		"signUp":"Registrera dig",
 		"createAccount":"Skapa nytt konto",
 		"logout":"Logga ut",
-		"where":"Var befinner du dig?"
+		"where":"Var befinner du dig?",
+		"giveDonation":"Ge bort pant",
+		"donateWhat":"1. Vad vill du ge bort?",
+		"donateWho":"2. Dina kontaktuppgifter",
+		"donateWhere":"3. Var finns panten?",
+		"donateWhom":"4. Vem vill du skänka till?"
 	},
 	"message":{
 		"trylogin":"Försöker logga in...",
@@ -21,11 +26,20 @@
 		"org":"Organisationsnummer",
 		"enterAddress":"Ange stad, postnummer eller adress"
 	},
+	"navigation":{
+		"viewProfile":"Visa profil",
+		"donations":"Donationer",
+		"donationRequest":"Donationer förfrågningar",
+		"collections":"samlingar",
+		"editProfile":"Redigera profil",
+		"setting":"Inställningar"
+	},
 	"button":{
 		"fbLogin":"Logga in med Facebook",
 		"createAccount":"Skapa konto",
 		"collectPledge":"Samla ihop pant",
-		"addDonation":"Ge bort pant"
+		"addDonation":"Ge bort pant",
+		"proceedReview":"Gå vidare till granskning"
 	},
 	"html":{
 		"loginEmail":"Eller logga in via e-postadress",
