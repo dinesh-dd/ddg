@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <!-- placeholder="Telefonnummer" -->
-                <input type="tel" ng-model="donation.contactTelephone" required name="tel" class="form-control" placeholder="Telephone Number">
+                <input type="number" ng-minlength="10" ng-maxlength="15" ng-model="donation.contactTelephone" required name="tel" class="form-control" placeholder="Telephone Number">
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.tel.$dirty || currStep.validated) && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange telefonnummer"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.tel.$valid"></i>
             </div>

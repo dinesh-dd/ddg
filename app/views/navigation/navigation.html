@@ -1,11 +1,11 @@
 <!--Navigation bar for the language -->
 <ul class="nav navbar-nav navbar-right">
 	<li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		<a href="#" class="dropdown-toggle smallLink" data-toggle="dropdown">
 			<span class="name">{{user.language || 'Swidish'}}</span>
 			<b class="caret"></b>
 		</a>
-		<ul class="dropdown-menu">
+		<ul class="dropdown-menu language">
 			<li>
 				<a ng-click='setLanguage("English")'>English</a>
 			</li>
@@ -20,7 +20,7 @@
 	<li>
 		<a ui-sref="signup">
 			<span>
-				{{ 'header.signup' | translate }}
+				{{ 'header.signUp' | translate }}
 			</span>
 		</a>
 	</li>
@@ -33,7 +33,7 @@
 <!-- Navigation section for user profile -->
 <ul class="nav navbar-nav navbar-right" ng-show="user.userLogedIn">
 	<li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		<a href="#" class="dropdown-toggle smallLink" data-toggle="dropdown">
 			<span class="avatar"><i class="fa fa-lg fa-user"></i></span>
 			<span class="name">{{user.name}}</span>
 			<b class="caret"></b>
@@ -45,14 +45,12 @@
 				</a>
 			</li>
 			<li>
-				<a ui-sref="profile.donations"> 
+				<a ui-sref="profile.donations" ng-show='user.type=="Doner"'> 
 			  		{{ 'navigation.donations' | translate }}
 				</a>
 			</li>
 			<li>
-				<a ui-sref="profile.donationRequest" ng-show='user.type=="Collector"'>
-				{{ 'navigation.donationRequest' | translate }}
-				</a>
+				<a style="overflow: hidden;white-space: pre-line;" ui-sref="profile.donationRequest" ng-show='user.type=="Collector"'>{{ 'navigation.donationRequest' | translate }}</a>
 			</li>
 			<li>
 				<a ui-sref="profile.collections" ng-show='user.type=="Collector"'>

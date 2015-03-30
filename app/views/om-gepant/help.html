@@ -1,28 +1,35 @@
-
 <!-- Help view container -->
 <div id="header-splitter">
     <div class="container">
-        <div ncy-breadcrumb></div>
+        <ol class="breadcrumb">
+            <li>
+               <a href="#/om-gepant" class="ng-binding ng-scope">{{ 'help.navigation.ifGepant' | translate }}</a>
+            </li>
+            <li>
+                <span class="ng-binding ng-scope">{{currentLink | translate }}</span>
+            </li>
+        </ol>
     </div>
 </div>
-
 <section id="site-content">
-  <main id="page" class="container">
-    <article class="col-sm-9 pull-right">
-        <div ui-view></div>
-    </article>
-    <aside class="col-sm-3" id='help-aside'>
-        <div class="row visible-xs mbot2"><hr></div>
-        <h4 class="mtop1">
-            <a ui-sref="om-gepant.omGepant" title="Om Gepant">Om Gepant</a>
+    <main id="page" class="container">
+        <article class="col-sm-9 pull-right">
+            <div ui-view></div>
+        </article>
+        <aside class="col-sm-3" id='help-aside'>
+            <div class="row visible-xs mbot2">
+                <hr>
+            </div>
+            <h4 class="mtop1">
+            <a ui-sref="om-gepant.omGepant" title="Om Gepant">{{ 'help.navigation.ifGepant' | translate }}</a>
         </h4>
-        <div class="aside-nav">
-            <ul class="nav navbar-nav">
-                <li ng-repeat="nav in navs" ui-sref-active="active">
-                    <a ui-sref='{{nav.link}}'><span>{{nav.text}}</span></a> 
-                </li>
-            </ul>
-        </div>
-    </aside>
-  </main>
+            <div class="aside-nav">
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="nav in navs" ui-sref-active="active">
+                        <a ui-sref='{{nav.link}}'><span>{{nav.text | translate }}</span></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
 </section>

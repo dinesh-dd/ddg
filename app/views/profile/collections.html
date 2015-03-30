@@ -1,24 +1,24 @@
-<h2>My collections</h2>
+<h2>{{ 'header.myCollections' | translate }}</h2>
 <div class='profile_list'>
 	<div ng-repeat="collection in collections" class='listitem'>
 		<div class='image avatar' style="{{collection.donar_image!=null && collection.donar_image!=''?'background-image:url('+collection.donar_image+')':''}}"></div>
 		<div class='container'>
 			<div class='things'>
 				<div class='thing' ng-show='collection.thing.PlasticBag!=0'>
-					{{collection.thing.PlasticBag}} PlasticBag
+					{{collection.thing.PlasticBag}} {{ 'html.plasticBag' | translate }}
 				</div>
 				<div ng-show='collection.thing.PlasticBag!=0 && ( collection.thing.PaperBag!=0 || collection.thing.RefuseSack!=0)' class='sideline'></div>
 				<div class='thing' ng-show='collection.thing.PaperBag!=0'>
-					{{collection.thing.PaperBag}} PaperBag
+					{{collection.thing.PaperBag}} {{ 'html.paperBag' | translate }}
 				</div>
 				<div ng-show='(collection.thing.PaperBag!=0 || collection.thing.PlasticBag!=0 ) && collection.thing.RefuseSack!=0 && collection.thing.PaperBag!=0' class='sideline'></div>
 				<div class='thing'  ng-show='collection.thing.RefuseSack!=0'>
-					{{collection.thing.RefuseSack}} RefuseSack
+					{{collection.thing.RefuseSack}} {{ 'html.refuseSack' | translate }}
 				</div>
 				<br>
 			</div>
 			<div class='name'>
-				<b>Donation by :</b> {{collection.donar_name}}
+				<b>{{ 'html.donationBy' | translate }}</b> {{collection.donar_name}}
 				<div class='location'>
 				<i class="fa fa-lg fa-fw fa-map-marker"></i>
 					{{collection.location}}

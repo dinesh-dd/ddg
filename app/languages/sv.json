@@ -9,7 +9,16 @@
 		"donateWhat":"1. Vad vill du ge bort?",
 		"donateWho":"2. Dina kontaktuppgifter",
 		"donateWhere":"3. Var finns panten?",
-		"donateWhom":"4. Vem vill du skänka till?"
+		"donateWhom":"4. Vem vill du skänka till?",
+		"myCollections":"Mina samlingar",
+		"myDonationRequests":"Mina Donation Framställningar",
+		"myDonations":"Mina donationer",
+		"emailNotification":"E-postmeddelanden",
+		"myPledge":"Min Pledge",
+		"myObjective":"Min Mål",
+		"numberOfDays":"Antal dagar på Gepant",
+		"donationsThisMonth":"Samlade donationer denna månad",
+		"donationsTotal":"Samlade donationer totalt"
 	},
 	"message":{
 		"trylogin":"Försöker logga in...",
@@ -17,7 +26,10 @@
 		"loginFailure":"Inloggningen misslyckades",
 		"trySignUp":"försöker registrera dig ...",
 		"signupSuccess":"Signerad Up : D",
-		"signupFailure":"Fel i sign up"
+		"signupFailure":"Fel i sign up",
+		"changeSetting":"Ändra inställningar ...",
+		"settingChange":"Inställningar förändrats framgångsrikt",
+		"errorSetting":"Fel i ändra inställningar"
 	},
 	"placeholder":{
 		"email":"E-postadress",
@@ -39,7 +51,15 @@
 		"createAccount":"Skapa konto",
 		"collectPledge":"Samla ihop pant",
 		"addDonation":"Ge bort pant",
-		"proceedReview":"Gå vidare till granskning"
+		"proceedReview":"Gå vidare till granskning",
+		"accept":"Acceptera",
+		"decline":"Avböj",
+		"updateSetting":"Uppdatera Inställning",
+		"on":"på",
+		"off":"off",
+		"givePledge":"Skänk pant",
+		"shareFB":"Dela på Facebook",
+		"shareTW":"Dela på Twitter"
 	},
 	"html":{
 		"loginEmail":"Eller logga in via e-postadress",
@@ -60,6 +80,62 @@
 		"objective":"Objektiv",		
 		"rateUser":"Betygsätt den här användaren",
 		"submitRating":"Skicka betyg",
-		"donate":"Donera"
+		"donate":"Donera",
+		"donationBy":"Donation av :",
+		"plasticBag":"plastkasse",
+		"paperBag":"pappkasse",
+		"refuseSack":"sopsäckar",
+		"donationTo":"Donation Till:",
+		"donationNAccept":"Donation accepteras inte"
+	},
+	"help":{
+		"navigation":{
+			"ifGepant":"Om Gepant",
+			"howWork":"Hur funkar det?",
+			"wantToDonate":"Vill du donera pant?",
+			"collectPledge":"Vill du samla pant?",
+			"whyGive":"Varför ge pant?",
+			"whoWe":"Vilka är vi?",
+			"press":"Press"
+		},
+		"header":{
+			"howWork":"Hur funkar det?",
+			"wantToDonate":"Vill du skänka pant?",
+			"alternative":"Alternativ"
+		},
+		"html":{
+			"howWork":"Gepant är en mötesplats mellan de som har pant och de som vill panta. Konceptet går ut på att de som har burkar och flaskor, men som inte har möjlighet att panta kan enkelt kontakta de orgainsationer/individer som registrerat sig för att hämta upp pant. Genom Gepant kan organisationer/individer tjäna mer pengar, de som donerar blir av med sina burkar och flaskor samtidigt som Gepant bidrar till ett mer miljövänligt Sverige.",
+			"ifGepant":"Genom att använda Gepant får privatpersoner och föreningar en möjlighet att dryga ut sin ekonomi och donatorerna blir av med sina burkar och flaskor, samtidigt som detta bidrar till ett mer miljövänligt Sverige.",
+			"press":"Press-material i stil med loggos, högupplösta bilder, kontaktuppgifter m.m?",
+			"whyGive1":"Varje år slängs det 200 miljoner burkar/flaskor i Sverige som skulle kunna ha återanvänts. Om du inte har möjlighet att själv panta kan du enkelt kontakta en organisation/individ som registerat sig för att hämta upp pant i ditt område. Det tar mindre än 1 minut och du hjälper då till att stödja du en organisation/individ nära dig samtidigt som du hjälper till att bidra till ett renare Sverige.",
+			"whyGive2":"Du kan ge pant för att du vill slippa hanteringen av den och samtidigt stödja lokala organisationer/individer som samlar pant för olika ändamål som du kan se under projketbeskrivningen.",
+			"whoWe1":"Vi är ett gäng entreprenörer som vill bidra till mer hållbart Sverige och förenkla sättet att stödja lokala organisationer - genom att donera pant som man slipper panta själv.",
+			"wantToDonate1":"Tryck på gepant knappen, välj vad du vill skänka bort, fyll i dina uppgifter och välj vem du vill donera till.",
+			"wantToDonate2":"Donera genom 3 enkla steg:",
+			"wantToDonate3":"Uppskatta hur mycket pant du har",
+			"wantToDonate4":"Välj när panten kan bli upphämtad",
+			"wantToDonate5":"Välj vem du vill donera till",
+			"wantToDonate6":"Tänk på att du även kan donera utländska och tillplattade burkar till föreningar som ingår i Returpacks föreningskocept.",
+			"collectPledge1":"Om du vill samla pant till dig själv eller till en organisation som du representerar kan du",
+			"collectPledge2":"registrera dig här",
+			"collectPledge3":"Det är helt kostnadsfritt och du kommer igång direkt.",
+			"collectPledge4":"Om du/ni är en orgnisation eller individ som vill samla burkar via vår hemsida registrera er och lägg en kort beskrivning till vilken ändamål ni/du samlar panten och varför ska de som donerar välja just dig.",
+			"collectPledge5":"Ju bättre projektbeskrivning man gör och desto större chans är att de som donerar kommer att välja er.",
+			"collectPledge6":"Markera också vänligt om ni tar emot utländska burkar.",
+			"collectPledge7":"Kan man få pengar även för utländska burkar - ja det kan man!",
+			"collectPledge8":"Genom samarbete med Returpack kan vi hjälpa er få ersättning både för utländka och tillplattade burkar",
+			"collectPledge9":"Anmäll er på",
+			"collectPledge10":"Hela erbjudandet är kostnadsfritt och Returpack sponsrar även med ett återvinningskärl i wellpapp.",
+			"collectPledge11":"Ersättning",
+			"collectPledge12":"Ni får en schablonersättning per säck:",
+			"collectPledge13":"Full säck med PET-flaskor:",
+			"collectPledge14":"Full säck med burkar:",
+			"collectPledge15":"Hur fungerar det?",
+			"collectPledge16":"Anmäl er som kund genom att ringa eller mejla Returpacks kundtjänst;",
+			"collectPledge17":"Vi skickar er kostnadsfritt säckar och etiketter (för identifiering av era säckar).",
+			"collectPledge18":"Ni samlar pant och lägger PET-flaskor i en säck och burkar i en annan. Även tillplattade burkar och burkar utan pant är tillåtna och ersätts.",
+			"collectPledge19":"Säcken/säckarna lämnas sedan in på valfritt inlämningsställe.",
+			"collectPledge20":"Returpack betalar er för säckarna, till det bankgiro- eller plusgironr som ni angivit."
+		}
 	}
 }

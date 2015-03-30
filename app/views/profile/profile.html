@@ -14,11 +14,15 @@
             <h1>{{user.name}}</h1>
             <hr>
             <div ng-show='user.type=="Collector"'>
-                <h3>My Pledge</h3> ${{user.pledge || 0}}
+                <h3>
+                    {{ 'header.myPledge' | translate }}
+                </h3> 
+                ${{user.pledge || 0}}
                 <hr>
             </div>
             <div ng-show='user.type=="Collector"'>
-                <h3>My Objective</h3> {{user.objective || '-- No 
+                <h3>{{ 'header.myObjective' | translate }}</h3> 
+                {{user.objective || '-- No 
                 Objective Yet --'}}
             </div>
         </header>
@@ -30,20 +34,20 @@
         <hr class="visible-xs">
         <p class="add-donation-button text-size-125">
             <!-- <a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Ladle pledge</a>-->
-            <a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Give pledge</a>
+            <a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">{{ 'button.givePledge' | translate }}</a>
             
         </p>
         <hr>
         <div class="faststat">
             <ul class="stat-list">
                 <li>
-                    <p><span class="stat-label">Number of days on Gepant </span> <span class="stat-value">{{user.daysOnGepant || 0}}</span></p>
+                    <p><span class="stat-label">{{ 'header.numberOfDays' | translate }} </span> <span class="stat-value">{{user.daysOnGepant || 0}}</span></p>
                 </li>
                 <li>
-                    <p><span class="stat-label">Jewels donations this month </span> <span class="stat-value">{{user.donationsThisMonth || 0}}</span></p>
+                    <p><span class="stat-label">{{ 'header.donationsThisMonth' | translate }}</span> <span class="stat-value">{{user.donationsThisMonth || 0}}</span></p>
                 </li>
                 <li>
-                    <p><span class="stat-label">Jewels donations totaling </span> <span class="stat-value">{{user.donationsTotal || 0}}</span></p>
+                    <p><span class="stat-label">{{ 'header.donationsTotal' | translate }}</span> <span class="stat-value">{{user.donationsTotal || 0}}</span></p>
                 </li>
             </ul>
         </div>
@@ -52,13 +56,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <a href='http://www.facebook.com/share.php?u=gepant.dev.denkan.se' target='_blank' class='btn btn-sm btn-fb fullwidth'>
-                        <i class="fa fa-fw fa-lg fa-facebook"></i> Share on Facebook
+                        <i class="fa fa-fw fa-lg fa-facebook"></i> 
+                        {{ 'button.shareFB' | translate }}
                     </a>
                 </div>
                 <div class="col-md-12">
                     <a href="http://gepant.dev.denkan.se" class="btn btn-sm btn-tw fullwidth tweet"
                                 target="_blank">
-                        <i class="fa fa-fw fa-lg fa-twitter"></i> Share on Twitter
+                        <i class="fa fa-fw fa-lg fa-twitter"></i>
+                        {{ 'button.shareFB' | translate }}
                     </a>
                     <script>
                     $('a.tweet').click(function(e) {

@@ -9,7 +9,17 @@
 		"donateWhat":"1. What do you give away?",
 		"donateWho":"2. Your contact information",
 		"donateWhere":"3. Where is the pledge ?",
-		"donateWhom":"4. Who would you like to donate ?"
+		"donateWhom":"4. Who would you like to donate ?",
+		"myCollections":"My collections",
+		"myDonationRequests":"My Donation Requests",
+		"myDonations":"My Donations",
+		"emailNotification":"Email Notifications",
+		"myPledge":"My Pledge",
+		"myObjective":"My Objective",
+		"numberOfDays":"Number of days on Gepant",
+		"donationsThisMonth":"Jewels donations this month",
+		"donationsTotal":"Jewels donations totaling",
+		"editProfile":"Edit Profile"
 	},
 	"message":{
 		"trylogin":"Trying to login ...",
@@ -17,7 +27,10 @@
 		"loginFailure":"Login failed",
 		"trySignUp":"trying to register ...",
 		"signupSuccess":"Signed up: D",
-		"signupFailure":"Error in sign up"
+		"signupFailure":"Error in sign up",
+		"changeSetting":"Changing settings ... ",
+		"settingChange":"Settings changed successfully",
+		"errorSetting":"Error in change settings"
 	},
 	"placeholder":{
 		"email":"Email Address",
@@ -39,7 +52,15 @@
 		"createAccount":"Create Account",
 		"collectPledge":"Collect pledges",
 		"addDonation":"Give away a pledge",
-		"proceedReview":"Proceed to review"
+		"proceedReview":"Proceed to review",
+		"accept":"Accept",
+		"decline":"Decline",
+		"updateSetting":"Update Setting",
+		"on":"on",
+		"off":"off",
+		"givePledge":"Give Pledge",
+		"shareFB":"Share on Facebook",
+		"shareTW":"Share on Twitter"
 	},
 	"html":{
 		"loginEmail":"Or login via email address",
@@ -60,6 +81,62 @@
 		"objective":"Objective",		
 		"rateUser":"Rate this user",
 		"submitRating":"Submit rating",
-		"donate":"Donate"
+		"donate":"Donate",
+		"donationBy":"Donation by :",
+		"plasticBag":"PlasticBag",
+		"paperBag":"PaperBag",
+		"refuseSack":"RefuseSack",
+		"donationTo":"Donation To:",
+		"donationNAccept":"Donation is not accepted"
+	},
+	"help":{
+		"navigation": {
+			"ifGepant": "If Gepant",
+			"howWork": "How does it work ?",
+			"wantToDonate": "Would you donate pledge ?",
+			"collectPledge": "Do you want to collect pledges ?",
+			"whyGive": "Why give a pledge ?",
+			"whoWe": "What are we ?",
+			"press" : "Press"
+		},
+		"header" : {
+			"howWork":"How does it work ?",
+			"wantToDonate":"Would you give a pledge ?",
+			"alternative" :"Options"
+		},
+		"html":{
+			"howWork":"Gepant is a meeting place between those who have pledged and those who want to pledge. The concept is that those cans and bottles, but who are unable to pledge can easily contact the orgainsationer / individuals who signed up for to pick up a pledge. By Gepant enables organizations / individuals earn more money, those who donate will lose their cans and bottles while Gepant contribute to a more environmentally friendly Sweden. ",
+			"ifGepant":"By using Gepant get individuals and organizations an opportunity to add to their finances and donors lose their cans and bottles, while contributing to a more environmentally friendly Sweden.",
+			"press": "The press material in style with stencils, high resolution images, contact details etc?",
+			"whyGive1":"Every year it is discarded 200 million cans / bottles in Sweden that could have been reused. If you do not have the opportunity to pledge, you can easily contact an organization / individual who registered themselves to pick up pledges in your area. It takes less than 1 minute and you will then help to support your organization / individual close to you while you are helping to contribute to a cleaner Sweden. ",
+			"whyGive2": "You can give a pledge that you want to avoid handling the while supporting local organizations / individuals who collect pledges for various purposes as you can see below projket description.",
+			"whoWe1":"We're a bunch of entrepreneurs who want to contribute to more sustainable Sweden and simplify the way to support local organizations - by donating pledge that they will not pledge myself.",
+			"wantToDonate1": "Press gepant button, choose what you want to give away, fill in your details and choose who you want to donate to.",
+			"wantToDonate2": "Donating through three simple steps:",
+			"wantToDonate3": "Estimate how much you pledge",
+			"wantToDonate4": "Select when the pledge can be picked up,",
+			"wantToDonate5": "Choose who you want to donate to",
+			"wantToDonate6": "Remember that you can also donate foreign and flattened cans to compounds contained in Returpack föreningskocept.",
+			"collectPledge1": "If you want to collect pledges to yourself or to an organization that you represent, you can",
+			"collectPledge2" :"register here",
+			"collectPledge3" :"It's completely free and you can get started right away.",
+			"collectPledge4": "If you / you are an orgnisation or individual who wants to collect cans through our website please register and add a brief description of the purpose you / you collect the pledge and why should those who donate choose you.",
+			"collectPledge5" :"The better description of the project you are doing and the greater the chance is that those who donate will choose you.",
+			"collectPledge6": "Mark also friendly if you receive foreign cans.",
+			"collectPledge7": "Can you get money even for foreign jars - yes it can!",
+			"collectPledge8": "Through cooperation with Returpack we can help you get compensation for both utländka and flattened cans",
+			"collectPledge9": "Report on you",
+			"collectPledge10": "The entire offer is free of charge and Returpack also sponsors a recycling bins made of corrugated board.",
+			"collectPledge11": "Replacement",
+			"collectPledge12": "You get a lump sum compensation per sack:",
+			"collectPledge13": "Full sack of PET bottles:",
+			"collectPledge14": "Full bag of cans:",
+			"collectPledge15": "How does it work?",
+			"collectPledge16": "Report you as a client by calling or e-mailing Returpack customer service;",
+			"collectPledge17": "We will send you free bags and labels (for identification of your bags).",
+			"collectPledge18": "You collect pledges and adds PET bottles in a bag and cans in another. Even flattened cans and jars without the pledge is permissible and replaced.",
+			"collectPledge19": "The bag / bags are then filed at any entry point.",
+			"collectPledge20": "Returpack pay you for the bags, the bank giro or plusgironr that you have entered."
+		}
 	}
 }
