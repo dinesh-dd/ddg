@@ -9,7 +9,9 @@
 		"donateWhat":"1. What do you give away?",
 		"donateWho":"2. Your contact information",
 		"donateWhere":"3. Where is the pledge ?",
-		"donateWhom":"4. Who would you like to donate ?"
+		"donateWhom":"4. Who would you like to donate ?",
+		"contactInfo":"Your contact information",
+		"contactInfo2":"contact information"
 	},
 	"message":{
 		"trylogin":"Trying to login ...",
@@ -17,14 +19,24 @@
 		"loginFailure":"Login failed",
 		"trySignUp":"trying to register ...",
 		"signupSuccess":"Signed up: D",
-		"signupFailure":"Error in sign up"
+		"signupFailure":"Error in sign up",
+		"enterBag":"You should enter at least one bag;)",
+		"enterName":"Please state name",
+		"validEmail":"Please enter a valid email address",
+		"validPassword":"Invalid password. Your password must be at least 8 characters, contain upper and lowercase letters and at least one number.",
+		"enterPhone":"Please enter the phone number",
+		"correctInfo":"This information is not correct . Please correct",
+		"markedField":"-marked field",
+		"mouseOver":"( mouse over for more information) .",
+		"provideLogin":"Please log in or specify your details to proceed"
 	},
 	"placeholder":{
 		"email":"Email Address",
 		"password":"Password",
 		"name":"Name",
 		"org":"Organization",
-		"enterAddress":"Enter city , zip code or address"
+		"enterAddress":"Enter city , zip code or address",
+		"telephone":"Telephone Number"
 	},
 	"navigation":{
 		"viewProfile":"View Profile",
@@ -39,7 +51,8 @@
 		"createAccount":"Create Account",
 		"collectPledge":"Collect pledges",
 		"addDonation":"Give away a pledge",
-		"proceedReview":"Proceed to review"
+		"proceedReview":"Proceed to review",
+		"nextStep":"On to the next step"
 	},
 	"html":{
 		"loginEmail":"Or login via email address",
@@ -60,6 +73,10 @@
 		"objective":"Objective",		
 		"rateUser":"Rate this user",
 		"submitRating":"Submit rating",
-		"donate":"Donate"
+		"donate":"Donate",
+		"numPlasticBag":"Number plastic bag",
+		"numPaperBag":"Number paperboard bag",
+		"numRefuceSac":"Number refuse sacks",
+		"thankYou":"Thank you!"
 	}
 }

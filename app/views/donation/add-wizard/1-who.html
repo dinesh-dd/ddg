@@ -1,22 +1,17 @@
 <ul class="nav nav-tabs" ng-show="!user.isLogged()">
     <li ng-class="{active:currStep.tab!='login'}"  class="hidden-xs">
         <a href="javascript:;" ng-click="currStep.tab='anonymous';currStep.validated=false;">
-            <!-- Dina kontaktuppgifter -->
-            <!-- Your contact information -->
-            Your contact information
+            {{ 'header.contactInfo' | translate }} 
         </a>
     </li>
     <li ng-class="{active:currStep.tab!='login'}" class='visible-xs-block smallContact'>
         <a href="javascript:;" ng-click="currStep.tab='anonymous';currStep.validated=false;">
-            <!-- Dina kontaktuppgifter -->
-            <!-- Your contact information -->
-            contact information
+            {{ 'header.contactInfo2' | translate }} 
         </a>
     </li>
     <li ng-class="{active:currStep.tab=='login'}">
         <a href="javascript:;" ng-click="currStep.tab='login';currStep.validated=false;">
-            <!-- Logga in -->
-            Log in
+            {{ 'header.login' | translate }} 
         </a>
     </li>
 </ul>
@@ -24,21 +19,18 @@
     <form ng-switch-default name="form" step-data="stepData['who']" ng-submit="nextStep(true)" novalidate autocomplete="off">
         <fieldset>
             <div class="form-group">
-                <!-- placeholder="Namn" -->
-                <input type="text" ng-model="donation.contactName" required name="name" class="form-control" placeholder="Name">
-                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.name.$dirty || currStep.validated) && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange namn"></i>
+                <input type="text" ng-model="donation.contactName" required name="name" class="form-control" placeholder="{{ 'placeholder.name' | translate }}">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.name.$dirty || currStep.validated) && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterName' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.name.$valid"></i>
             </div>
             <div class="form-group">
-                <!-- placeholder="E-postadress" -->
-                <input type="email" ng-model="donation.contactEmail" required name="email" class="form-control" placeholder="Email">
-                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.email.$dirty || currStep.validated) && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange en giltig e-postadress"></i>
+                <input type="email" ng-model="donation.contactEmail" required name="email" class="form-control" placeholder="{{ 'placeholder.email' | translate }}">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.email.$dirty || currStep.validated) && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.validEmail' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
             </div>
             <div class="form-group">
-                <!-- placeholder="Telefonnummer" -->
-                <input type="tel" ng-model="donation.contactTelephone" required name="tel" class="form-control" placeholder="Telephone Number">
-                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.tel.$dirty || currStep.validated) && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange telefonnummer"></i>
+                <input type="tel" ng-model="donation.contactTelephone" required name="tel" class="form-control" placeholder="{{ 'placeholder.telephone' | translate }}">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.tel.$dirty || currStep.validated) && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPhone' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.tel.$valid"></i>
             </div>
             <!--
@@ -56,16 +48,12 @@
 </div>
 -->
             <div class="alert alert-danger pop" ng-show="currStep.validated && form.$invalid">
-                <!-- Uppgifterna är inte korrekt ifyllda. Var god korrigera  -->
-                This information is not correct . Please correct
-                <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i><!-- -markerade fält -->-marked field</span>
-                <!-- (för musen över för mer information). -->
-                ( mouse over for more information) .
+                <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i>{{ 'message.correctInfo' | translate }}</span>
+                {{ 'message.mouseOver' | translate }}
             </div>
             <div class="buttons">
                 <button class="btn btn-info btn-sm">
-                    <!-- Vidare till nästa steg -->
-                    On to the next step
+                    {{ 'button.nextStep' | translate }}
                     <i class="fa fa-chevron-right fa-lg"></i>
                 </button>
             </div>
@@ -74,41 +62,34 @@
     <form ng-switch-when="login" name="form" id="loginForm" ng-submit="tryLogin()" novalidate autocomplete="off">
         <div ng-switch="currStep.loginStatus">
             <div ng-switch-when="trying" class="alert alert-info">
-                <!-- Försöker logga in... -->Logged in! :D<i class="fa fa-refresh loadicon"></i>
+               {{ 'message.trylogin' | translate }}<i class="fa fa-refresh loadicon"></i>
             </div>
             <div ng-switch-when="success" class="alert alert-success">
-                <!-- Loggar in! :D -->Logged in! :D</div>
+                {{ 'message.loginSuccess' | translate }}</div>
             <div ng-switch-when="error" class="alert alert-danger">
-                <!-- Inloggningen misslyckades -->
-                Login failed
+                {{ 'message.loginFailure' | translate }}
             </div>
-            <div ng-switch-default class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">Var god logga in eller ange dina uppgifter för att fortsätta</div>
+            <div ng-switch-default class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">{{ 'message.provideLogin' | translate }}</div>
         </div>
         <a href="javascript:;" class="btn btn-fb fullwidth" ng-click="tryFbLogin()"><i class="fa fa-lg fa-fw fa-facebook"></i> 
-        <!-- Logga in med Facebook -->
-            Log in with Facebook
+            {{ 'button.fbLogin' | translate }}
         </a>
         <hr>
         <h3 class="splitter mtop2">
-            <!-- Eller logga in via e-postadress -->
-            Or login via email address
+            {{ 'html.loginEmail' | translate }}
         </h3>
         <div class="form-group">
-            <!-- placeholder="E-postadress" -->
-            <input type="text" ng-model="currStep.login.email" name="email" class="form-control" id="lEmail" placeholder="Email">
+            <input type="text" ng-model="currStep.login.email" name="email" class="form-control" id="lEmail" placeholder="{{ 'placeholder.email' | translate }}">
         </div>
         <div class="form-group">
-            <!-- placeholder="Lösenord" -->
-            <input type="password" ng-model="currStep.login.password" name="password" class="form-control" id="lPass" placeholder="Password">
+            <input type="password" ng-model="currStep.login.password" name="password" class="form-control" id="lPass"  placeholder="{{ 'placeholder.password' | translate }}">
         </div>
         <button type="submit" class="btn btn-success btn-sm">
-            <!-- Logga in -->
-            Log in
+            {{ 'header.login' | translate }}
         </button>
         <div class="buttons">
             <button class="btn btn-info btn-sm">
-                <!-- Vidare till nästa steg  -->
-                On to the next step
+                {{ 'button.nextStep' | translate }}
                 <i class="fa fa-arrow-down"></i>
             </button>
         </div>

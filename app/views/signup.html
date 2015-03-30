@@ -49,17 +49,17 @@
         <h3 class="splitter">{{ 'html.signupMannual' | translate }}</h3>
         <div class="form-group">
             <input type="text" ng-model="u.name" required name="name" class="form-control" id="caName" placeholder="{{ 'placeholder.name' | translate }}">
-            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.name.$dirty && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange namn"></i>
+            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.name.$dirty && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterName' | translate }}"></i>
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.name.$valid"></i>
         </div>
         <div class="form-group">
             <input type="email" ng-model="u.email" required name="email" class="form-control" id="caEmail" placeholder="{{ 'placeholder.email' | translate }}">
-            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.email.$dirty && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange en giltig e-postadress"></i>
+            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.email.$dirty && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.validEmail' | translate }}"></i>
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
         </div>
         <div class="form-group">
             <input type="password" ng-model="u.password" required name="password" class="form-control" id="caPass" placeholder="{{ 'placeholder.password' | translate }}" ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/">
-            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.password.$dirty && form.password.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra."></i>
+            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.password.$dirty && form.password.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.validPassword' | translate }}"></i>
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.password.$valid"></i>
         </div>
 

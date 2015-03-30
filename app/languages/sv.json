@@ -9,7 +9,9 @@
 		"donateWhat":"1. Vad vill du ge bort?",
 		"donateWho":"2. Dina kontaktuppgifter",
 		"donateWhere":"3. Var finns panten?",
-		"donateWhom":"4. Vem vill du skänka till?"
+		"donateWhom":"4. Vem vill du skänka till?",
+		"contactInfo":"Dina kontaktuppgifter",
+		"contactInfo2":"Dina kontaktuppgifter"
 	},
 	"message":{
 		"trylogin":"Försöker logga in...",
@@ -17,14 +19,24 @@
 		"loginFailure":"Inloggningen misslyckades",
 		"trySignUp":"försöker registrera dig ...",
 		"signupSuccess":"Signerad Up : D",
-		"signupFailure":"Fel i sign up"
+		"signupFailure":"Fel i sign up",
+		"enterBag":"Du bör ange åtminstone en påse ;)",
+		"enterName":"Var god ange namn",
+		"validEmail":"Var god ange en giltig e-postadress",
+		"validPassword":"Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra.",
+		"enterPhone":"Ange telefonnumret",
+		"correctInfo":"Uppgifterna är inte korrekt ifyllda. Var god korrigera",
+		"markedField":"-markerade fält",
+		"mouseOver":"(för musen över för mer information).",
+		"provideLogin":"Var god logga in eller ange dina uppgifter för att fortsätta"
 	},
 	"placeholder":{
 		"email":"E-postadress",
 		"password":"Lösenord",
 		"name":"Namn",
 		"org":"Organisationsnummer",
-		"enterAddress":"Ange stad, postnummer eller adress"
+		"enterAddress":"Ange stad, postnummer eller adress",
+		"telephone":"Telefonnummer"
 	},
 	"navigation":{
 		"viewProfile":"Visa profil",
@@ -39,7 +51,8 @@
 		"createAccount":"Skapa konto",
 		"collectPledge":"Samla ihop pant",
 		"addDonation":"Ge bort pant",
-		"proceedReview":"Gå vidare till granskning"
+		"proceedReview":"Gå vidare till granskning",
+		"nextStep":"Vidare till nästa steg"
 	},
 	"html":{
 		"loginEmail":"Eller logga in via e-postadress",
@@ -60,6 +73,10 @@
 		"objective":"Objektiv",		
 		"rateUser":"Betygsätt den här användaren",
 		"submitRating":"Skicka betyg",
-		"donate":"Donera"
+		"donate":"Donera",
+		"numPlasticBag":"Antal plastkasse",
+		"numPaperBag":"Antal pappkasse",
+		"numRefuceSac":"Antal sopsäckar",
+		"thankYou":"Tack!"
 	}
 }
