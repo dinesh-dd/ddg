@@ -15,12 +15,12 @@ angular.module('gePantApp')
                 param1: null
             }
         };
-        e.preload(["/views/donation/add-wizard/0-what.html",
-                "/views/donation/add-wizard/1-who.html",
-                "/views/donation/add-wizard/2-where.html",
-                "/views/donation/add-wizard/3-whose.html",
-                "/views/donation/add-wizard/4-summary.html",
-                "/views/donation/add-wizard/5-saved.html"
+        e.preload(["views/add-wizard/0-what.html",
+                "views/add-wizard/1-who.html",
+                "views/add-wizard/2-where.html",
+                "views/add-wizard/3-whose.html",
+                "views/add-wizard/4-summary.html",
+                "views/add-wizard/5-saved.html"
             ]),
             // $scope.selectedCollector = k.current.params.param1,
             // $scope.gotoPage = function(b, UserService, d) {
@@ -94,7 +94,6 @@ angular.module('gePantApp')
                         i.extend($scope.donation.postalCodeGeo, $scope.donation.streetGeo)
                     },
                     getPostalCode: function(a) {
-                        debugger;
                         return a = a.replace(/[^0-9]/g, ""),
                         h.searchAddress(a, function(b) {
                             debugger;

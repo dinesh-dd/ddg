@@ -13,7 +13,7 @@
                     </a>
                 </div>
                 <div collapse="!isStep(0)">
-                    <div class="panel-body" ng-include="'/views/donation/add-wizard/0-what.html'"></div>
+                    <div class="panel-body" ng-include="'./views/add-wizard/0-what.html'"></div>
                 </div>
             </div>
             <div class="panel panel-default step step-1" ng-class="{open:isStep(1)}">
@@ -24,7 +24,7 @@
                     </a>
                 </div>
                 <div collapse="!isStep(1)">
-                    <div class="panel-body" ng-include="'/views/donation/add-wizard/1-who.html'"></div>
+                    <div class="panel-body" ng-include="'./views/add-wizard/1-who.html'"></div>
                 </div>
             </div>
             <div class="panel panel-default step step-2" ng-class="{open:isStep(2)}">
@@ -35,7 +35,7 @@
                     </a>
                 </div>
                 <div collapse="!isStep(2)">
-                    <div class="panel-body" ng-include="'/views/donation/add-wizard/2-where.html'"></div>
+                    <div class="panel-body" ng-include="'./views/add-wizard/2-where.html'"></div>
                 </div>
             </div>
             <div class="panel panel-default step step-3" ng-class="{open:isStep(3)}">
@@ -46,7 +46,7 @@
                     </a>
                 </div>
                 <div collapse="!isStep(3)">
-                    <div class="panel-body" ng-include="'/views/donation/add-wizard/3-whose.html'"></div>
+                    <div class="panel-body" ng-include="'./views/add-wizard/3-whose.html'"></div>
                 </div>
             </div>
             <div class="panel-button">
@@ -58,10 +58,10 @@
             </div>
         </div>
         <div class="step step-4 page page2" id="adw-page2">
-            <div ng-include="'/views/donation/add-wizard/4-summary.html'"></div>
+            <div ng-include="'./views/add-wizard/4-summary.html'"></div>
         </div>
         <div class="step step-5 page page3" id="adw-page3">
-            <div ng-include="'/views/donation/add-wizard/5-saved.html'"></div>
+            <div ng-include="'./views/add-wizard/5-saved.html'"></div>
         </div>
     </div>
     <!--

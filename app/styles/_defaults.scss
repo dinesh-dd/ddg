@@ -95,7 +95,10 @@ img {
 }
 
 .dropdown-menu.user{
-    min-width: 180px;
+    min-width: 196px;
+}
+.dropdown-menu.language{
+    min-width: 110px;
 }
 
 .navbar-right .dropdown-menu {
@@ -192,4 +195,10 @@ img {
         }
     }
     
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

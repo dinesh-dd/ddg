@@ -1,25 +1,27 @@
 <div class="container">
-	<h2>Setting</h2>
-	<h5 style='float:left'>Email Notifications&nbsp;&nbsp; &nbsp;&nbsp;</h5>
+	<h2>{{ 'navigation.setting' | translate }}</h2>
+	<h5 style='float:left'>{{ 'header.emailNotification' | translate }}&nbsp;&nbsp; &nbsp;&nbsp;</h5>
 	<toggle-switch
 	            model="user.email_setting"
-	            class="switch-success">
+	            class="switch-success"
+	            off-label="{{ 'button.off' | translate }}"
+	            on-label="{{ 'button.on' | translate }}">
 	          </toggle-switch>
 	<div class="mtop1">
 		<button ng-click='updateSettings()'
 			class="btn btn-success">
-			Update Setting
+			{{ 'button.updateSetting' | translate }}
 		</button>
 		<div ng-switch="setttingStatus" class='mtop1'>
 			<div ng-switch-when="trying" class="alert alert-info">
-				Changing settings ... 
+				{{ 'message.changeSetting' | translate }}
 				<i class="fa fa-refresh loadicon"></i>
 			</div>
 			<div ng-switch-when="success" class="alert alert-success">
-				Settings changed successfully
+				{{ 'message.settingChange' | translate }}
 			</div>
 			<div ng-switch-when="error" class="alert alert-danger">
-				Error in change settings
+				{{ 'message.errorSetting' | translate }}
 			</div>
 		</div>
 	</div>

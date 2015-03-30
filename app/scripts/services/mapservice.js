@@ -84,6 +84,18 @@ angular.module('gePantApp')
                 throw "MapService: Missing positions";
             return a.position = new google.maps.LatLng(a.lat, a.lng), console.log(a), new google.maps.Marker(a)
         }
+
+        function setMapCenterWithMarker(mapid,options){
+            mapid = c.isObject(mapid) ? mapid : document.getElementById(mapid) || document.querySelector(mapid);
+            var mapOptions = {
+                zoom: 16,
+                center: new google.maps.LatLng(options.lat, options.lng)
+            };
+            var map = new google.maps.Map(mapid, mapOptions);
+            options.map = map;
+            h(options);
+        }
+     
         return initted = !1,
             function(b) {
                 a.mapServiceInit = function() {
@@ -97,6 +109,7 @@ angular.module('gePantApp')
                 formatAddress: e,
                 formatAddresses: f,
                 setMap: g,
-                setMapMarker: h
+                setMapMarker: h,
+                setMapCenterWithMarker:setMapCenterWithMarker
             }
     }]);

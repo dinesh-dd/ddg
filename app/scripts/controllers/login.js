@@ -53,7 +53,7 @@ angular.module('gePantApp')
         //login 
     	$scope.tryLogin =function(){
     		functions.trying();
-             var user = {
+            var user = {
                 data : {
                     "email":$scope.u.email,
                     "password":$scope.u.password

@@ -1,5 +1,7 @@
 <form name="form" id="loginForm" ng-submit="editProfile()" novalidate autocomplete="off">
-    <h2>Edit Profile</h2>
+    <h2>
+        {{ 'header.editProfile' | translate }}
+    </h2>
     <main id="page" class="container ProfilePage">
         <div class='row'>
             <div class='image avatar'></div>
@@ -7,21 +9,48 @@
                 <div class="form-group">
                     <input type="text" ng-model="u.name" name="name" class="form-control" id="pName" placeholder="Name" required/>
                     <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.name.$dirty && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Name is required"></i>
-                    <!-- <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.name.$valid"></i> -->
                 </div>
             </div>
             <hr>
         </div>
         <div class='row'>
             <div>
-                <h4>Location</h4>
+                <h4>
+                    Telephone Number
+                </h4>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="u.street_address" name="email" class="form-control" id="pEmail" placeholder="location" />
+                <input type="number" ng-minlength="10" ng-maxlength="15" ng-model="u.contact_no" name="tel" class="form-control" id="ptel" placeholder="Telephone Number" />
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.tel.$dirty && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Enter valid Telephone Number"></i>
             </div>
+            <hr>
         </div>
         <div class='row'>
-            <!-- map view here  -->
+            <div>
+                <h4>Postal Code</h4>
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="u.postal_code" name="postalCode" class="form-control" placeholder="zip code" autocomplete="off" typeahead="address as address.formatted_address_postal for address in getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setPostalCode()">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.postalCode.$dirty && form.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange postnummer"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.postalCode.$valid"></i> 
+            </div>
+            <hr>
+        </div>
+        <div class='row'>
+            <div>
+                <h4>Street Address</h4>
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="u.street_address" name="address" id="adw-address" required autocomplete="off" class="form-control" placeholder="Street Address" ng-disabled="form.postalCode.$invalid" typeahead="address as address.formatted_address_street for address in getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setStreet()">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.address.$dirty || currStep.validated) && form.address.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange adressen panten finns på"></i>
+                <i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$valid && !u.street_address.street_number" popover-trigger="mouseenter" popover-placement="left" popover="Du glömmer inte ange gatunummer också?"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.address.$valid && u.street_address.street_number"></i>
+            </div>
+        </div>
+        <div class='row' id="add-donation-wizard">
+            <div class="map" round style="margin: 5% auto;">
+                <div id="map-adw" class="map-preview round-fill"></div>
+            </div>
             <hr>
         </div>
         <div class='row' ng-show='u.type=="Collector"'>
@@ -32,7 +61,6 @@
                 <div class="form-group">
                     <input type="number" ng-model="u.pledge" name="pledge" class="form-control" placeholder="Pledge"/>
                     <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.pledge.$dirty && form.pledge.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Please enter valid pledge value"></i>
-                    <!-- <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.Pledge.$valid"></i> -->
                 </div>
             </div>
             <hr>
@@ -43,7 +71,7 @@
             </div>
             <div>
                 <div class="form-group">
-                    <textarea rows="3" type="text" ng-model="u.objective" name="Objective" class="form-control" id="pObjective" placeholder="Objective" />
+                    <textarea rows="3" ng-model="u.objective" name="Objective" class="form-control" id="pObjective" placeholder="Objective" />
                 </div>
             </div>
             <hr>
@@ -75,4 +103,5 @@
                 </div>
             </div>
         </div>
+    </main>
 </form>
