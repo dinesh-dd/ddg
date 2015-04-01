@@ -1,0 +1,36 @@
+.content_gg{
+	width: 270px;
+	.imageContent{
+		height: 63px;
+		width: 63px;
+		float: left;
+		position: absolute;
+		background-image: url("../images/location@2x.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		border-radius : 50%;
+		border:1px solid rgb(229, 229, 229)
+	}
+	.nameContent{
+		float: left;
+		padding-left:5px;
+		padding-left: 70px;
+	}
+	.nameContent .name{
+		font-size: 23px;
+		font-weight: bold;
+		width: 145px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color:#1B547B ;
+		display: block;
+		text-decoration: none;
+	}
+	.nameContent .distance{
+		font-size: 14px;
+		color: rgb(97, 108, 115);
+		padding-top: 4px;
+	}
+}
