@@ -244,9 +244,19 @@ angular.module('gePantApp')
                 }
             } catch (f) {}
         }, $scope.gotoSummary = function() {
-            $scope.validateAllSteps(!0, function(b) {
-                b ? ($scope.stepData.summary.validated = !1, $scope.setMap("map-adw2", $scope.donation.streetGeo), $scope.setStep(4)) : $scope.gotoPage("", !0, !0)
-            }, ["what", "who", "where", "whose"]), document.getElementById("adw-page2").style.display = "block"
+            // $scope.validateAllSteps(!0, function(b) {
+            //     b ? ($scope.stepData.summary.validated = !1,
+            //     $scope.setMap("map-adw2", $scope.donation.streetGeo),
+            //     $scope.setStep(4)) : $scope.gotoPage("", !0, !0)
+            // }, ["what", "who", "where", "whose"]), 
+            console.log('this is gotoSummery');
+            try{
+                $scope.setStep(4);
+                document.getElementById("adw-page2").style.display = "block"    
+            } catch(e){
+                console.log(e);
+            }
+            
         }, $scope.trySave = function() {
             $scope.validateStep($scope.stepData.summary, !0) && $scope.addDonation(function() {
                 $scope.gotoPage("saved", !0, !1)

@@ -11,7 +11,7 @@
 		"donateWhere":"3. Where is the pledge ?",
 		"donateWhom":"4. Who would you like to donate ?",
 		"contactInfo":"Your contact information",
-		"contactInfo2":"contact information"
+		"contactInfo2":"contact information",
 		"myCollections":"My collections",
 		"myDonationRequests":"My Donation Requests",
 		"myDonations":"My Donations",
@@ -21,7 +21,13 @@
 		"numberOfDays":"Number of days on Gepant",
 		"donationsThisMonth":"Jewels donations this month",
 		"donationsTotal":"Jewels donations totaling",
-		"editProfile":"Edit Profile"
+		"editProfile":"Edit Profile",
+		"profile":"Profile",
+		"enterPostal":"1. Start with your postcode",
+		"enterAdd":"2. Complete street address",
+		"justFinish":"Just finished!",
+		"contactDetail":"Contact Details",
+		"otherInfo":"Other Information"
 	},
 	"message":{
 		"trylogin":"Trying to login ...",
@@ -41,7 +47,14 @@
 		"provideLogin":"Please log in or specify your details to proceed",
 		"changeSetting":"Changing settings ... ",
 		"settingChange":"Settings changed successfully",
-		"errorSetting":"Error in change settings"
+		"errorSetting":"Error in change settings",
+		"changePro":"Changing Profile ...",
+		"changedPro":"Profile changed successfully",
+		"errorPro":"Error in edit profile",
+		"enterPostal":"Please enter your postcode",
+		"enterAdd":"Please enter the address of the pledge",
+		"streetNum":"Do not forget to enter the street number as well?",
+		"correctFld":"Please correct"
 	},
 	"placeholder":{
 		"email":"Email Address",
@@ -49,7 +62,12 @@
 		"name":"Name",
 		"org":"Organization",
 		"enterAddress":"Enter city , zip code or address",
-		"telephone":"Telephone Number"
+		"telephone":"Telephone Number",
+		"postalCode":"Postal Code",
+		"streetAdd":"Street Address",
+		"pledge":"Pledge",
+		"addr":"Address",
+		"moreinfo":"Ex . times that are convenient for collection , if you want to be called before , etc."
 	},
 	"navigation":{
 		"viewProfile":"View Profile",
@@ -73,7 +91,10 @@
 		"off":"off",
 		"givePledge":"Give Pledge",
 		"shareFB":"Share on Facebook",
-		"shareTW":"Share on Twitter"
+		"shareTW":"Share on Twitter",
+		"updateProfile":"Update Profile",
+		"change":"Change",
+		"chageAgain":"Go back and change"
 	},
 	"html":{
 		"loginEmail":"Or login via email address",
@@ -104,7 +125,16 @@
 		"paperBag":"PaperBag",
 		"refuseSack":"RefuseSack",
 		"donationTo":"Donation To:",
-		"donationNAccept":"Donation is not accepted"
+		"donationNAccept":"Donation is not accepted",
+		"thankForDonation":"Thank you for providing pledge !",
+		"confirmNewDonation":"Please look through the information below so everything is correct . Finish by checking the box below",
+		"allOk":"Everything ok?",
+		"clickButton":"and click the button",
+		"giveAwayPledge":"Giving away my pledge",
+		"confirmText":"Yes, I confirm that the above information is correct and that",
+		"iAgree":"I agree",
+		"terms":"terms of use",
+		"pleaseConfirm":"Please confirm"
 	},
 	"help":{
 		"navigation": {

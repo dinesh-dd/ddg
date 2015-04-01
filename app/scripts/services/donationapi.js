@@ -15,9 +15,9 @@ angular.module('gePantApp')
          
     }, {
         searchCollector: {
-            method: 'GET',
+            method: 'POST',
             params: {
-                methodName: 'searchCollectors.json'
+                methodName: 'search.json'
             }
         },
         collector: {

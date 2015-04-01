@@ -3,12 +3,7 @@
         margin-bottom:0px;  
         border-radius:0px;
     }
-    .smallLink {
-        padding-right: 7px !important;
-        padding-left: 7px !important;
-        min-width: 0px !important;
-    }
-
+    
     .navbar-brand img {
         width: 200px;
     }
@@ -82,6 +77,11 @@
             color: $font-color-wideScreen;
             font-weight: bold;
             min-width: 133px;
+        }
+        .smallLink {
+            padding-right: 7px !important;
+            padding-left: 7px !important;
+            min-width: 0px !important;
         }
         .navbar-default .navbar-nav > li > a:hover ,.open .navbar-nav > li > a {
             background: rgba(0,0,0,0);

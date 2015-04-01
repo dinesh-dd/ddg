@@ -12,9 +12,9 @@
             region: 'SE',
             components: 'country:SE'
         },
-        // apiUrl:'http://shreya.cs:3000/api/gepant/'
-        apiUrl: 'http://192.168.1.27:3001/api/gepant/'
-            // apiUrl:'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/'
+        apiUrl: 'http://192.168.1.27:3000/api/gepant/'
+        // apiUrl : '/api/gepant/'
+        // apiUrl:'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/'
     };
     </script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -33,11 +33,18 @@
 </head>
 
 <body ng-app="gePantApp">
+<!-- <body> -->
+    <!-- <div class='loader' ng-show='loading'>
+        loading indicator
+    </div> -->
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <section id='site'>
+    <div class="loading_f" ng-cloak="">
+        <p>Loading</p>
+    </div>
+    <section id='site' ng-cloak="">
         <div class="header" id="site-nav">
             <div class="navbar navbar-default" role="navigation">
                 <div class="container">

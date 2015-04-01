@@ -19,16 +19,16 @@ angular.module('gePantApp')
         var c = {};
         return c = {
             findCollectors:function(request){
-            	if( request.data.lat!= null || request.data.lang != null ){
-            		DonationApi.searchCollector(request.data,request, function(respones) {
-	                	validateResponse(request)
+            	if( request.data.latitude != null){
+            		DonationApi.searchCollector(request.data,request, function(response) {
+	                	validateResponse(request,response)
 	              }, request.error);	
             	}
             },
            	getCollector:function(id){
            		if( id!= null ){
-            		DonationApi.collector(request.data,request, function(respones) {
-	                	validateResponse(request)
+            		DonationApi.collector(request.data,request, function(response) {
+	                	validateResponse(request,response)
 	                }, request.error);	
             	}
            	},

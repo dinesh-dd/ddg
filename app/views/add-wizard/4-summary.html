@@ -4,16 +4,19 @@
 <fieldset>
 
 <div class="topinfo">
-<h2>Strax klara!</h2>
+<p>{{ 'header.justFinish' | translate }}</p>
 <p class=" mtop05 mbot05">
-<strong>Tack för att du vill ge din pant!</strong>
-Var god titta genom uppgifterna nedan så allt stämmer. Slutför genom att kryssa i rutan under <i class="nobr">Allt ok?</i> och klicka på knappen <i class="nobr">Ge bort min pant <span class="fa fa-thumbs-o-up"></span></i>.</p>
+<strong>{{ 'html.thankForDonation' | translate }}</strong>
+{{ 'html.confirmNewDonation' | translate }}
+<i class="nobr">{{ 'html.allOk' | translate }}</i> {{ 'html.clickButton' | translate }} <i class="nobr"> {{ 'html.giveAwayPledge' | translate }} <span class="fa fa-thumbs-o-up"></span></i>.</p>
 <hr>
 </div>
 
 <div class="summary">
 
-<h4>Min pant <a href="javascript:history.back();" href-dynamic="#/*/*/*/what" class="sublink">Ändra</a></h4>
+<h4>{{ 'header.myPledge' | translate }}<a href="javascript:history.back();" href-dynamic="#/*/*/*/what" class="sublink">
+{{ 'button.change' | translate }}
+</a></h4>
 <div bags-summary
 bags-small="donation.bagsSmall"
 bags-medium="donation.bagsMedium"
@@ -32,11 +35,11 @@ label-large-single="sopsäck" label-large-plural="sopsäckar"
 
 <div class="row">
 <div class="col-sm-6">
-  <h4>Kontaktuppgifter <a href="javascript:history.back();" href-dynamic="#/*/*/*/who" class="sublink">Ändra</a></h4>
-  <p>Namn: {{donation.contactName}}</p>
-  <p>E-post: {{donation.contactEmail}}</p>
-  <p>Telefon: {{donation.contactTelephone}}</p>
-  <p>Adress: {{donation.address}}, {{donation.city}}</p>
+  <h4>{{ 'header.contactDetail' | translate }}<a href="javascript:history.back();" href-dynamic="#/*/*/*/who" class="sublink">{{ 'button.change' | translate }}</a></h4>
+  <p>{{ 'placeholder.name' | translate }}: {{donation.contactName}}</p>
+  <p>{{ 'placeholder.email' | translate }}: {{donation.contactEmail}}</p>
+  <p>{{ 'placeholder.telephone' | translate }}: {{donation.contactTelephone}}</p>
+  <p>{{ 'placeholder.addr' | translate }}: {{donation.address}}, {{donation.city}}</p>
 </div>
 <div class="col-sm-6">
   <div class="map" round><div id="map-adw2" class="map-preview round-fill"></div></div>
@@ -45,21 +48,24 @@ label-large-single="sopsäck" label-large-plural="sopsäckar"
 
 <hr>
 
-<h4>Övrig information</h4>
+<h4>{{ 'header.otherInfo' | translate }}</h4>
   <div class="form-group">
-    <textarea ng-modal="donation.info" name="info" placeholder="Ex. tider som passar för avhämtning, om du vill bli uppringd innan etc." class="form-control" rows="4"></textarea>
+    <textarea ng-modal="donation.info" name="info" placeholder="{{ 'placeholder.moreinfo' | translate }}" class="form-control" rows="4"></textarea>
   </div>
   <!--div class="checkbox">
     <label><input type="checkbox" ng-model="donation.newsletter" /> Ja, tack till information från Gepant</label>
   </div-->
 
 <hr>
-<h4>Allt ok?</h4>
+<h4>{{ 'html.allOk' | translate }}</h4>
   <div class="checkbox">
     <label>
       <input type="checkbox" name="accept" ng-model="donation.acceptTerms" required /> 
-      Ja, jag bekräftar att uppgifterna ovan stämmer och att <span class="nobr">jag godkänner <a href="https://www.google.se/search?q=vem+skriver+användarvillkor%3F" target="_blank">användarvillkoren</a></span>
-      <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.accept.$dirty || currStep.validated) && form.accept.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god bekräfta"></i>
+      {{ 'html.confirmText' | translate }}<span class="nobr">{{ 'html.iAgree' | translate }}
+      <a href="https://www.google.se/search?q=vem+skriver+användarvillkor%3F" target="_blank">
+      {{ 'html.terms' | translate }}</a></span>
+
+      <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.accept.$dirty || currStep.validated) && form.accept.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'html.pleaseConfirm' | translate }}"></i>
       <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.accept.$valid"></i>    
     </label>
   </div>
@@ -67,12 +73,12 @@ label-large-single="sopsäck" label-large-plural="sopsäckar"
 <hr>
 </div><!--/.summary-->
 
-<p class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">Var god korrigera <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i>-markerade fält</span></p>
+<p class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">{{ 'message.correctFld' | translate }} <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i>{{ 'message.markedField' | translate }}</span></p>
 
 
   <div class="buttons">
-    <button class="btn mbot1 fullwidth" ng-class="{'btn-primary':form.$valid,'btn-info':form.$invalid}">Ge bort min pant &nbsp; <i class="fa fa-thumbs-o-up fa-lg"></i></button>
-    <a href="javascript:history.back();" class="btn btn-default btn-sm fullwidth"><i class="fa fa-arrow-left"></i> Gå tillbaka och ändra</a>
+    <button class="btn mbot1 fullwidth" ng-class="{'btn-primary':form.$valid,'btn-info':form.$invalid}">{{ 'html.giveAwayPledge' | translate }} &nbsp; <i class="fa fa-thumbs-o-up fa-lg"></i></button>
+    <a href="javascript:history.back();" class="btn btn-default btn-sm fullwidth"><i class="fa fa-arrow-left"></i>{{ 'html.chageAgain' | translate }}</a>
   </div>
 </fieldset>
 </form>

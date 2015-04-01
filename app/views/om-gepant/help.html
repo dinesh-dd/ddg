@@ -5,7 +5,7 @@
             <li>
                <a href="#/om-gepant" class="ng-binding ng-scope">{{ 'help.navigation.ifGepant' | translate }}</a>
             </li>
-            <li>
+            <li ng-show='currentLink!=""'>
                 <span class="ng-binding ng-scope">{{currentLink | translate }}</span>
             </li>
         </ol>

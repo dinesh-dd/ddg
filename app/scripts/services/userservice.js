@@ -38,17 +38,6 @@ angular.module('gePantApp')
         var c = {};
         return c = {
             setLanguage: setLanguage,
-            setUser:function(user){
-                if ( typeof user == "object" ){
-                    //TODO set the object here 
-                } else {
-                    $rootScope.user = {
-                        userLogedIn:false
-                    } 
-                    // setLanguage($window.navigator.language);
-                    setLanguage('sv');
-                }
-            },
         	login: function(user) {
                 typeof user  == "object"  && MemberApi.login(user.data,user, function(a, d) {
                   	validateUser(user,a,d);

@@ -20,7 +20,14 @@
 		"myObjective":"Min Mål",
 		"numberOfDays":"Antal dagar på Gepant",
 		"donationsThisMonth":"Samlade donationer denna månad",
-		"donationsTotal":"Samlade donationer totalt"
+		"donationsTotal":"Samlade donationer totalt",
+		"editProfile":"Edit Profil",
+		"profile":"Profil",
+		"enterPostal":"1. Börja med ditt postnummer",
+		"enterAdd":"2. Komplettera med gatuadress",
+		"justFinish":"Strax klara!",
+		"contactDetail":"Kontaktuppgifter",
+		"otherInfo":"Övrig information"
 	},
 	"message":{
 		"trylogin":"Försöker logga in...",
@@ -40,7 +47,14 @@
 		"provideLogin":"Var god logga in eller ange dina uppgifter för att fortsätta",
 		"changeSetting":"Ändra inställningar ...",
 		"settingChange":"Inställningar förändrats framgångsrikt",
-		"errorSetting":"Fel i ändra inställningar"
+		"errorSetting":"Fel i ändra inställningar",
+		"changePro":"Ändra profilen ...",
+		"changedPro":"Profil ändras framgångsrikt",
+		"errorPro":"Fel i redigerings profil",
+		"enterPostal":"Var god ange postnummer",
+		"enterAdd":"Var god ange adressen panten finns på",
+		"streetNum":"Du glömmer inte ange gatunummer också?",
+		"correctFld":"Var god korrigera"
 	},
 	"placeholder":{
 		"email":"E-postadress",
@@ -48,7 +62,12 @@
 		"name":"Namn",
 		"org":"Organisationsnummer",
 		"enterAddress":"Ange stad, postnummer eller adress",
-		"telephone":"Telefonnummer"
+		"telephone":"Telefonnummer",
+		"postalCode":"Postnummer",
+		"streetAdd":"Gatuadress",
+		"pledge":"Pant",
+		"addr":"Adress",
+		"moreinfo":"Ex. tider som passar för avhämtning, om du vill bli uppringd innan etc."
 	},
 	"navigation":{
 		"viewProfile":"Visa profil",
@@ -72,7 +91,10 @@
 		"off":"off",
 		"givePledge":"Skänk pant",
 		"shareFB":"Dela på Facebook",
-		"shareTW":"Dela på Twitter"
+		"shareTW":"Dela på Twitter",
+		"updateProfile":"Uppdatera Profil",
+		"change":"Ändra",
+		"chageAgain":"Gå tillbaka och ändra"
 	},
 	"html":{
 		"loginEmail":"Eller logga in via e-postadress",
@@ -103,7 +125,16 @@
 		"paperBag":"pappkasse",
 		"refuseSack":"sopsäckar",
 		"donationTo":"Donation Till:",
-		"donationNAccept":"Donation accepteras inte"
+		"donationNAccept":"Donation accepteras inte",
+		"thankForDonation":"Tack för att du vill ge din pant!",
+		"confirmNewDonation":"Var god titta genom uppgifterna nedan så allt stämmer. Slutför genom att kryssa i rutan under",
+		"allOk":"Allt ok?",
+		"clickButton":"och klicka på knappen",
+		"giveAwayPledge":"Ge bort min pant",
+		"confirmText":"Ja, jag bekräftar att uppgifterna ovan stämmer och att",
+		"iAgree":"jag godkänner",
+		"terms":"användarvillkoren",
+		"pleaseConfirm":"Var god bekräfta"
 	},
 	"help":{
 		"navigation":{

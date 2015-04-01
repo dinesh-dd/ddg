@@ -1,8 +1,21 @@
-<div id="header-splitter" class='profile'>
+<!-- <div id="header-splitter" class='profile'>
     <div class="container">
         <div ncy-breadcrumb></div>
     </div>
+</div> -->
+<div id="header-splitter" class='profile'>
+    <div class="container">
+        <ol class="breadcrumb">
+            <li>
+               <a href="#/profile" class="ng-binding ng-scope">{{ 'header.profile' | translate }}</a>
+            </li>
+            <li ng-show='currentLink!=""'>
+                <span class="ng-binding ng-scope">{{currentLink | translate }}</span>
+            </li>
+        </ol>
+    </div>
 </div>
+
 <main id="page" class="container ProfilePage">
     <article class="col-sm-8" ng-show="$state.current.name === 'profile'">
         <header>

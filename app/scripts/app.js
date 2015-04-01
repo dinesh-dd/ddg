@@ -27,29 +27,32 @@ angular
 		//'frapontillo.bootstrap-switch',
 	])
 
-	.run(function(UserService) {
-		UserService.setUser();
-	})
-	.run(function(UserService,$rootScope,$cookieStore) {
-		console.log($cookieStore.get("token"));
-		console.log('Entering the app');
-		var response = {
-			success : function(response){
-				console.log('success on session');
-				console.log(response.data.profileData);
-				$rootScope.user = response.data.profileData;
-				$rootScope.user.userLogedIn = true;
-			},
-			error : function(response){
-				console.log('failure');
-				$rootScope.user = {
-					userLogedIn:false
-				}
+	/**
+	 * set the breadcrumb from here
+	 */
+	.run(function($rootScope) {
+		function findName(currentLink){
+			var linkMap = {
+				'om-gepant.hur-funkar-det':'help.navigation.howWork',
+				'om-gepant.vill-du-donera-pant':'help.navigation.wantToDonate',
+				'om-gepant.vill-du-samla-pant':'help.navigation.collectPledge',
+				'om-gepant.varfoer-ge-pant':'help.navigation.whyGive',
+				'om-gepant.vilka-aer-vi':'help.navigation.whoWe',
+				'om-gepant.press':'help.navigation.press',
+				'profile.setting':'navigation.setting',
+				'profile.edit':'navigation.editProfile',
+				'profile.collections':'navigation.collections',
+				'profile.donations':'navigation.donations',
+				'profile.donationRequest':'navigation.donationRequest'
 			}
+			return linkMap[currentLink] || '';
 		}
-		UserService.session(response)
+		$rootScope.$on('$stateChangeStart', 
+        	function(event, toState, toParams, fromState, fromParams){ 
+              	$rootScope.currentLink = findName(toState.name);
+              	console.log('current state text is::'+$rootScope.currentLink);
+        	});
 	})
-
 	.config(function($translateProvider) {
 		$translateProvider.useStaticFilesLoader({
 			prefix: './languages/',

@@ -7,8 +7,8 @@
             <div class='image avatar'></div>
             <div class="input_container">
                 <div class="form-group">
-                    <input type="text" ng-model="u.name" name="name" class="form-control" id="pName" placeholder="Name" required/>
-                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.name.$dirty && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Name is required"></i>
+                    <input type="text" ng-model="u.name" name="name" class="form-control" id="pName" placeholder="{{ 'placeholder.name' | translate }}" required/>
+                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.name.$dirty && form.name.$invalid" popover-trigger="mouseenter" popover="{{ 'message.enterName' | translate }}"></i>
                 </div>
             </div>
             <hr>
@@ -16,34 +16,34 @@
         <div class='row'>
             <div>
                 <h4>
-                    Telephone Number
+                    {{ 'placeholder.telephone' | translate }}
                 </h4>
             </div>
             <div class="form-group">
-                <input type="number" ng-minlength="10" ng-maxlength="15" ng-model="u.contact_no" name="tel" class="form-control" id="ptel" placeholder="Telephone Number" />
-                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.tel.$dirty && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Enter valid Telephone Number"></i>
+                <input type="number" ng-minlength="10" ng-maxlength="15" ng-model="u.contact_no" name="tel" class="form-control" id="ptel" placeholder="{{ 'placeholder.telephone' | translate }}" />
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.tel.$dirty && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPhone' | translate }}"></i>
             </div>
             <hr>
         </div>
         <div class='row'>
             <div>
-                <h4>Postal Code</h4>
+                <h4>{{ 'placeholder.postalCode' | translate }}</h4>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="u.postal_code" name="postalCode" class="form-control" placeholder="zip code" autocomplete="off" typeahead="address as address.formatted_address_postal for address in getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setPostalCode()">
-                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.postalCode.$dirty && form.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange postnummer"></i>
+                <input type="text" ng-model="u.postal_code" name="postalCode" class="form-control" placeholder="{{ 'placeholder.postalCode' | translate }}" autocomplete="off" typeahead="address as address.formatted_address_postal for address in getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setPostalCode()">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.postalCode.$dirty && form.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPostal' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.postalCode.$valid"></i> 
             </div>
             <hr>
         </div>
         <div class='row'>
             <div>
-                <h4>Street Address</h4>
+                <h4>{{ 'placeholder.streetAdd' | translate }}</h4>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="u.street_address" name="address" id="adw-address" required autocomplete="off" class="form-control" placeholder="Street Address" ng-disabled="form.postalCode.$invalid" typeahead="address as address.formatted_address_street for address in getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setStreet()">
-                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.address.$dirty || currStep.validated) && form.address.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Var god ange adressen panten finns på"></i>
-                <i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$valid && !u.street_address.street_number" popover-trigger="mouseenter" popover-placement="left" popover="Du glömmer inte ange gatunummer också?"></i>
+                <input type="text" ng-model="u.street_address" name="address" id="adw-address" required autocomplete="off" class="form-control"  placeholder="{{ 'placeholder.streetAdd' | translate }}"  ng-disabled="form.postalCode.$invalid" typeahead="address as address.formatted_address_street for address in getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setStreet()">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.address.$dirty || currStep.validated) && form.address.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterAdd' | translate }}"></i>
+                <i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$valid && !u.street_address.street_number" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.streetNum' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.address.$valid && u.street_address.street_number"></i>
             </div>
         </div>
@@ -54,52 +54,56 @@
             <hr>
         </div>
         <div class='row' ng-show='u.type=="Collector"'>
+        <!-- <div class='row'> -->
             <div>
-                <h4>Pledge</h4>
+                <h4>{{ 'placeholder.pledge' | translate }}</h4>
             </div>
             <div>
                 <div class="form-group">
-                    <input type="number" ng-model="u.pledge" name="pledge" class="form-control" placeholder="Pledge"/>
+                    <input type="number" ng-model="u.pledge" name="pledge" class="form-control" placeholder="{{ 'placeholder.pledge' | translate }}"/>
                     <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.pledge.$dirty && form.pledge.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Please enter valid pledge value"></i>
                 </div>
             </div>
             <hr>
         </div>
         <div class='row' ng-show='u.type=="Collector"'>
+        <!-- <div class='row'> -->
             <div>
-                <h4>Objective</h4>
+                <h4>{{ 'html.objective' | translate }}</h4>
             </div>
             <div>
                 <div class="form-group">
-                    <textarea rows="3" ng-model="u.objective" name="Objective" class="form-control" id="pObjective" placeholder="Objective" />
+                    <textarea rows="3" ng-model="u.objective" name="Objective" class="form-control" id="pObjective" placeholder="{{ 'html.objective' | translate }}" />
                 </div>
             </div>
             <hr>
         </div>
         <div class='row' ng-show='u.type=="Collector"'>
+        <!-- <div class='row'> -->
             <div>
-                <h4>Organization</h4>
+                <h4>{{ 'placeholder.org' | translate }}</h4>
             </div>
             <div>
                 <div class="form-group">
-                    <input type="text" ng-model="u.organization_name" name="Pledge" class="form-control" id="pPledge" placeholder="Organization" />
+                    <input type="text" ng-model="u.organization_name" name="organization" class="form-control" id="pPledge"
+                     placeholder="{{ 'placeholder.org' | translate }}" />
                 </div>
             </div>
         </div>
         <div class="row">
             <button ng-click='editProfile()' class="btn btn-success" ng-disabled="form.$invalid">
-                Update Profile
+                {{ 'button.updateProfile' | translate }}
             </button>
             <div ng-switch="profileStatus" class='mtop1'>
                 <div ng-switch-when="trying" class="alert alert-info">
-                    Changing Profile ...
+                    {{ 'message.changePro' | translate }}
                     <i class="fa fa-refresh loadicon"></i>
                 </div>
                 <div ng-switch-when="success" class="alert alert-success">
-                    Profile changed successfully
+                    {{ 'message.changedPro' | translate }}
                 </div>
                 <div ng-switch-when="error" class="alert alert-danger">
-                    Error in edit profile
+                    {{ 'message.errorPro' | translate }}
                 </div>
             </div>
         </div>

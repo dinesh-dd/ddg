@@ -5,12 +5,46 @@ angular.module('gePantApp')
         $urlRouterProvider.otherwise('/');
         $urlRouterProvider.when('/om-gepant','om-gepant/omGepant');
         $stateProvider
+        .state('app', {
+            url: '',
+            abstract: true,
+            resolve: {
+                user: function($http,$rootScope) {
+                    //return $http.get('http://httpbin.org/delay/5');
+                    function setUser(response){
+                        debugger;
+                        if(typeof(response) == 'object' &&  response.data.result.rstatus != 0){
+                            $rootScope.user = response.data.data.profileData;
+                            $rootScope.user.userLogedIn = true;
+                            console.log($rootScope.user);
+                            return response.data.data.profileData;
+                        } else {
+                            $rootScope.user = {
+                                userLogedIn:false
+                            }
+                            console.log($rootScope.user);
+                            return null;
+                        }
+                    }
+                    return $http.get(GLOBALS.apiUrl+'session_data.json')
+                        .then(  
+                                function(response){ 
+                                    return setUser(response);
+                                }, 
+                                function(){ 
+                                    return setUser(null);
+                                }
+                        );
+                }
+            }
+        })
         .state('home', {
+            parent:'app',
             url: '/',
             views: {
-                'page': { templateUrl: 'views/home.html' },
-                'nav-right': { 
-                    templateUrl : 'views/navigation/navigation.html',
+                'page@': { templateUrl: 'views/home.html' },
+                'nav-right@': { 
+                    templateUrl : 'views/navigation/navigation.html'
                 }
             }
         })
@@ -19,17 +53,17 @@ angular.module('gePantApp')
         .state('collector', {
             url: '/collector',
             views: {
-                'page': { 
+                'page@': { 
                     templateUrl: 'views/collectorProfile.html',
                     controller:'CollectorprofileCtrl'
                  },
-                'nav-right': { 
+                'nav-right@': { 
                     templateUrl : 'views/navigation/navigation.html',
                 }
             } 
         })
 
-        
+        //--------------Model--------------
         //TODO add the service for the model
         .state('modal', {
             abstract: true,
@@ -44,9 +78,6 @@ angular.module('gePantApp')
                   $state.go('home');
               });
             }]
-            // onExit:['$modalInsance',function($moodalInstance){
-            //     console.log('on exit');
-            // }]
           })
 
           .state('login', {
@@ -82,7 +113,6 @@ angular.module('gePantApp')
             }
         })
         
-        //add new donation
         .state('addDonation', {
             url: 'addDonation/',
             parent: 'modal',

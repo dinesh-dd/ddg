@@ -1,6 +1,7 @@
 @import "buttons";
 @import "headers";
 @import "defaultBackGrounds";
+@import "map";
 
 //fonts 
 html{
@@ -201,4 +202,21 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.breakWord{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.loading_f {
+  display: none;
+}
+
+[ng-cloak].splash {
+  background-color: #428bca;
+  width: 100%;
+  text-align: center;
+  color: white;
+  display: block !important;
 }

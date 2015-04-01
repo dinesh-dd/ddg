@@ -8,7 +8,7 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-    .controller('SearchmapCtrl', ["$scope", "$http", "MapService", "GeoLocation", "localStorageService", function($scope, b, c, d) {
+    .controller('SearchmapCtrl', ["$scope", "$http", "MapService", "GeoLocation", "localStorageService","DonationService" ,function($scope, b, c, d,e,DonationService) {
         $scope.mapCollapse = !0, 
         $scope.mapCanvas = document.getElementById("start-map"), 
         $scope.map = {}, 
@@ -18,10 +18,9 @@ angular.module('gePantApp')
         }), 
         $scope.getLocation = function($scope) {
             return c.searchAddress($scope, function($scope) {
-                console.log($scope);
                 var b = [];
                 return _.each($scope.data.results, function($scope) {
-                    console.log($scope), b.push($scope)
+                    b.push($scope)
                 }), b
             })
         }, 
@@ -51,6 +50,61 @@ angular.module('gePantApp')
                     strokeWeight: 0,
                     editable: !0
                 });
-            i.setMap($scope.map), $scope.mapCollapse = !1
+            i.setMap($scope.map), $scope.mapCollapse = !1, 
+            setMarkers();
+        }
+        function setMarkers(){
+            var request = {
+                //TODO set the loadin indicator for api call
+                //TODO set the multiple marker and remove the infowindow of other marker
+                //TODO set the marker with image
+                //TODO on infowindow click open the profile
+                success : function(response){
+                    var collectors = response.data.collectors;
+                    console.log(collectors);
+                    var infowindow = new google.maps.InfoWindow();
+                    var marker;
+                    for (var i = 0; i < collectors.length; i++) {
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(collectors[i]['latitude'], collectors[i]['longitude']),
+                            map: $scope.map
+                        });
+
+                        var name = collectors[i].name;
+                        var location = collectors[i].location;
+                        var image = collectors[i].image || 'images/avtar.jpg'
+
+                        var contentString = '<div class="content_gg" id="content_gg">'+
+                        '<a class="imageContent" style="background-image:url('+image+')">'+
+                        '</a>\
+                        <div class="nameContent">\
+                            <a class="name">\
+                                '+name+'\
+                            </a>\
+                        <div class="distance">\
+                            '+location+'\
+                        </div>\
+                        </div>'+
+                        '</div>';
+
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                            return function() {
+                                infowindow.setContent(contentString);
+                                infowindow.open($scope.map, marker);
+                            }
+                        })(marker, i));
+                    }
+                }, 
+                error: function(response){
+                    console.error(response)
+                },
+                data:{
+                    latitude:60.1282423,
+                    longitude:18.645962,
+                    page:1,
+                    limit:100
+                }
+            }
+            DonationService.findCollectors(request)
         }
     }]);

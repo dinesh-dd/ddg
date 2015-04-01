@@ -78,9 +78,26 @@ module.exports = function (grunt) {
       options: {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
+        hostname: '192.168.1.35',
         //livereload: 35729
-	livereload: 35730
+	      livereload: 35730
+      },
+      server3: {
+            // proxies: [
+            //     {
+            //         context: '/api',
+            //         host: '192.168.1.27',
+            //         port:3000
+            //     }
+            // ],
+            proxies: [
+                {
+                    context: '/api',
+                    host: '192.168.1.27',
+                    port: 3000,
+                    https: false,
+                }
+            ]
       },
       livereload: {
         options: {
@@ -441,6 +458,7 @@ module.exports = function (grunt) {
     }
 
     grunt.task.run([
+      'configureProxies:server3',
       'clean:server',
       'wiredep',
       'concurrent:server',

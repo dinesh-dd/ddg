@@ -11,21 +11,14 @@ angular.module('gePantApp')
   	.controller('HelpCtrl', function ($scope,$rootScope,$filter,$state,$timeout) {
 
       $timeout(function(){
-          $scope.currentLink = findName($state.$current.name);
-          console.log($scope.currentLink);
+          $rootScope.currentLink = findName($state.$current.name);
+          console.log($rootScope.currentLink);
       },300);
 
       function findName(currentState){
           var single_object = $filter('filter')($scope.navs, function (d) {return d.link == currentState;})[0];
           return single_object ? single_object.text : '';
       }
-
-      // $rootScope.$off('$stateChangeStart');
-      $rootScope.$on('$stateChangeStart', 
-          function(event, toState, toParams, fromState, fromParams){ 
-              $scope.currentLink = findName(toState.name)
-              console.log('current state text is::'+$scope.currentLink);
-          });
 
   		$scope.navs = [
   			{

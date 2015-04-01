@@ -1,16 +1,16 @@
 <!--Navigation bar for the language -->
 <ul class="nav navbar-nav navbar-right">
 	<li class="dropdown">
-		<a href="#" class="dropdown-toggle smallLink" data-toggle="dropdown">
+		<a href="javascript:void(0)" class="dropdown-toggle smallLink" data-toggle="dropdown">
 			<span class="name">{{user.language || 'Swidish'}}</span>
 			<b class="caret"></b>
 		</a>
 		<ul class="dropdown-menu language">
 			<li>
-				<a ng-click='setLanguage("English")'>English</a>
+				<a href="javascript:void(0)" ng-click='setLanguage("English")'>English</a>
 			</li>
 			<li>
-				<a ng-click='setLanguage("Swidish")'>Swidish</a>
+				<a href="javascript:void(0)" ng-click='setLanguage("Swidish")'>Swedish</a>
 			</li>
 		</ul>
 	</li>
@@ -18,14 +18,14 @@
 <!-- Navigation section for login -->
 <ul ng-show="!user.userLogedIn" class="nav navbar-nav navbar-right">
 	<li>
-		<a ui-sref="signup">
+		<a ui-sref="signup" class="smallLink" style="min-width: 93px !important;padding-right: 10px !important">
 			<span>
 				{{ 'header.signUp' | translate }}
 			</span>
 		</a>
 	</li>
 	<li>
-		<a ui-sref="login" class="navbar-btn btn btn-default">
+		<a ui-sref="login" class="navbar-btn btn btn-default" style="margin-right: 14px;">
 			{{ 'header.login' | translate }}
 		</a>
 	</li>
@@ -33,7 +33,7 @@
 <!-- Navigation section for user profile -->
 <ul class="nav navbar-nav navbar-right" ng-show="user.userLogedIn">
 	<li class="dropdown">
-		<a href="#" class="dropdown-toggle smallLink" data-toggle="dropdown">
+		<a href="javascript:void(0)" class="dropdown-toggle smallLink" data-toggle="dropdown">
 			<span class="avatar"><i class="fa fa-lg fa-user"></i></span>
 			<span class="name">{{user.name}}</span>
 			<b class="caret"></b>
