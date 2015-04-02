@@ -11,8 +11,7 @@ angular.module('gePantApp')
   .service('DonationApi', ['$resource', function($resource) {
     return $resource(GLOBALS.apiUrl + ':methodName/:id', {
         method: '@method',
-        id: '@id',
-         
+        id: '@id'
     }, {
         searchCollector: {
             method: 'POST',
@@ -50,5 +49,11 @@ angular.module('gePantApp')
                 methodName: 'donationResponse.json'
             }
         },
+        submitRating:{
+            method: 'POST',
+            params: {
+                methodName: 'update_ratings.json'
+            }  
+        }
     });
 }]);

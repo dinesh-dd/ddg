@@ -57,7 +57,7 @@ angular.module('gePantApp')
             var user = {
                 data : {
                     "user[username]":$scope.u.name,
-                    "user[language]":$rootScope.user.language || 'Swidish',
+                    "user[language]":$rootScope.user.language || 'Swedish',
                     "user[type]":$scope.u.type,
                     "user[organization_name]":$scope.u.orgnr,
                     "user[email]":$scope.u.email,
@@ -76,7 +76,7 @@ angular.module('gePantApp')
                     var user = {
                         data : {
                             'user[fb_auth_token]':response.authResponse.accessToken,
-                            'user[language]':$rootScope.user.language || 'Swidish',
+                            'user[language]':$rootScope.user.language || 'Swedish',
                             'user[type]':$scope.u.type,
                         }
                     };

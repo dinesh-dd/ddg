@@ -8,7 +8,7 @@
  * Controller of the gePantApp for updating the profile
  */
 angular.module('gePantApp')
-  .controller('EditprofileCtrl', function ($scope,$rootScope,UserService,MapService,_,$timeout) {
+  .controller('EditprofileCtrl', function ($scope,$rootScope,UserService,MapService,_,$timeout,$http,fileUpload) {
   		$scope.profileStatus = '';
         $scope.u = {};
         angular.copy($rootScope.user,$scope.u);
@@ -42,7 +42,18 @@ angular.module('gePantApp')
                     'user[postal_code]':$scope.u.postal_code.formatted_address_postal,
                 }
             }
-    		UserService.editProfile(request);
+
+            var file = $scope.myFile;
+            var uploadUrl = GLOBALS.apiUrl+"edit_profile.json?"+$.param(request.data);
+            fileUpload.uploadFileToUrl(file, uploadUrl);
+
+            //THis is the data for the form 
+            // $http.post({
+            //     method: "POST",
+            //     url:GLOBALS.apiUrl+"edit_profile.json",
+            //     data:$.param(request.data)
+            // }).then(request.success,request.error)
+    		// UserService.editProfile(request);
     	},
 
         
@@ -90,4 +101,35 @@ angular.module('gePantApp')
             var b = { position: null,lat: $scope.u.latitude,lng: $scope.u.longitude,map: map,title: "" };
             MapService.setMapMarker(b);
         }
-  });
+  })
+
+
+.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}])
+.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl){
+        var fd = new FormData();
+        fd.append('file', file);
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(){
+        })
+        .error(function(){
+        });
+    }
+}]);

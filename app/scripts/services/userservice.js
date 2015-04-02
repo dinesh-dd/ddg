@@ -19,6 +19,8 @@ angular.module('gePantApp')
             }
         }
         var setLanguage = function(language){
+            var a = $window;
+            debugger;
             var returnLanguage = null;
             switch(language){
                 case 'en-US':
@@ -26,8 +28,8 @@ angular.module('gePantApp')
                     returnLanguage = 'English';
                     break;
                 case 'sv':
-                case 'Swidish':
-                    returnLanguage = 'Swidish';
+                case 'Swedish':
+                    returnLanguage = 'Swedish';
                     break;
                 default:
                     returnLanguage = 'English';
