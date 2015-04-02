@@ -9,13 +9,6 @@
  */
 angular.module('gePantApp')
   .service('DonationService',["DonationApi",function(DonationApi) {
-  		  var validateResponse = function(request,response){
-            if(response.result.rstatus==0){
-                return request.error(response);
-            } else {
-                return request.success(response);    
-            }
-        }
         var c = {};
         return c = {
             findCollectors:function(request){
@@ -25,13 +18,11 @@ angular.module('gePantApp')
 	              }, request.error);	
             	}
             },
-           	getCollector:function(id){
-           		if( id!= null ){
-            		DonationApi.collector(request.data,request, function(response) {
-	                	validateResponse(request,response)
-	                }, request.error);	
-            	}
-           	},
+            submitRating:function(request){
+                DonationApi.submitRating(request.data,request,function(response) {
+                    validateResponse(request,response)
+                }, request.error);  
+            },
            	collectors:function(){
            		//find the collectors
            	},

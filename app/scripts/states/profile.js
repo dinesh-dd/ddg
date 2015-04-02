@@ -31,7 +31,35 @@ angular.module('gePantApp').config(function($stateProvider) {
         .state('profile.donations', {
             url: '/donations',
             templateUrl: 'views/profile/donations.html',
-            controller:'DonationsCtrl'
+            controller:'DonationsCtrl',
+            resolve: {
+                donations: function($http) {
+                    var request = {
+                        success: function(response){
+                            return response.data.data.profileData;
+                        },
+                        error:function(){
+                            return null;
+                        },
+                        data:{
+                            page_no:1,
+                            limit:10
+                        }
+                    }; 
+                    return $http({
+                            method: "POST",
+                            url:GLOBALS.apiUrl+"list_of_donations.json",
+                            data: $.param(data)
+                        }).then(  
+                            function(response){
+                                return validateResponse(request,response);
+                            }, 
+                            function(){ 
+                                return request.error;
+                            }
+                        );
+                }
+            }
         })
         .state('profile.donationRequest', {
             url: '/donationRequests',

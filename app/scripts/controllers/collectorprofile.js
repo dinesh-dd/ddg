@@ -8,18 +8,15 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  .controller('CollectorprofileCtrl', function ($scope) {
-    $scope.collector = {
-        id:123,
-    	name:'Dinesh Dabhi',
-    	pledge:'1000',
-    	objective:'This is the objective of mine',
-    	star:3.5,
-    	location:'Ahmedbabad, Gujarat, India',
-    	Organization: 'Being Human',
-    	myStar : 1,
-    	image : 'http://creativepool.com/marketing/images/minions-1.jpg', 
-    };
+  .controller('CollectorprofileCtrl', function ($scope,collector,DonationService,$stateParams,$timeout) {
+    $scope.collector = collector;
+    $scope.ratingStatus = null;
+    if(collector){
+        $scope.loadStatus = 'success';    
+    } else {
+        $scope.loadStatus = 'error';    
+    }    
+
     $scope.userRate = {
 	    rate : 2,
 	    isReadOnly : true
@@ -31,9 +28,24 @@ angular.module('gePantApp')
 	};
 
     $scope.setStar = function(){
-        //TODO intigrate api to set the start here 
-        console.log('submit star');
-        console.log($scope.collector.myStar);
+        function setIcon(icon){
+            $scope.ratingStatus = "success";
+            $timeout(function(){   
+                $scope.ratingStatus = "";
+            },2000);
+        }
+        $scope.ratingStatus = "loading";
+        DonationService.submitRating({
+            success:function(){
+                setIcon("success");
+                console.info('got success');
+            },
+            error:function(){
+                setIcon("error");
+                console.error('got error');  
+            },
+            data:{collector_id:$stateParams.id,rating:$scope.collector.myStar}
+        })
     }
 
   });

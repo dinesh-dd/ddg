@@ -54,7 +54,8 @@
 		"enterPostal":"Var god ange postnummer",
 		"enterAdd":"Var god ange adressen panten finns på",
 		"streetNum":"Du glömmer inte ange gatunummer också?",
-		"correctFld":"Var god korrigera"
+		"correctFld":"Var god korrigera",
+		"collectorError":"Kunde inte hitta samlare :("
 	},
 	"placeholder":{
 		"email":"E-postadress",

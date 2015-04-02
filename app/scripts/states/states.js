@@ -10,30 +10,28 @@ angular.module('gePantApp')
             abstract: true,
             resolve: {
                 user: function($http,$rootScope) {
-                    //return $http.get('http://httpbin.org/delay/5');
-                    function setUser(response){
-                        debugger;
-                        if(typeof(response) == 'object' &&  response.data.result.rstatus != 0){
+                    // //return $http.get('http://httpbin.org/delay/5');
+                    var request = {
+                        success: function(response){
                             $rootScope.user = response.data.data.profileData;
                             $rootScope.user.userLogedIn = true;
-                            console.log($rootScope.user);
                             return response.data.data.profileData;
-                        } else {
+                        },
+                        error:function(){
                             $rootScope.user = {
                                 userLogedIn:false
                             }
-                            console.log($rootScope.user);
                             return null;
                         }
-                    }
+                    }; 
                     return $http.get(GLOBALS.apiUrl+'session_data.json')
                         .then(  
-                                function(response){ 
-                                    return setUser(response);
-                                }, 
-                                function(){ 
-                                    return setUser(null);
-                                }
+                            function(response){ 
+                                 return validateResponse(request,response);
+                            }, 
+                            function(){ 
+                                return request.error;
+                            }
                         );
                 }
             }
@@ -51,7 +49,8 @@ angular.module('gePantApp')
 
         //collector profile view
         .state('collector', {
-            url: '/collector',
+            url: '/collector/:id',
+            parent:'app',
             views: {
                 'page@': { 
                     templateUrl: 'views/collectorProfile.html',
@@ -60,14 +59,37 @@ angular.module('gePantApp')
                 'nav-right@': { 
                     templateUrl : 'views/navigation/navigation.html',
                 }
-            } 
+            },
+            resolve: {
+                collector: function($http,$rootScope,$stateParams) {
+                    var request = {
+                        success: function(response){
+                            return response.data.data.profileData;
+                        },
+                        error:function(){
+                            return null;
+                        }
+                    }; 
+                    return $http({
+                            method: "POST",
+                            url:GLOBALS.apiUrl+"collector_profile.json",
+                            data: 'user[id]='+$stateParams.id
+                        }).then(  
+                            function(response){
+                                return validateResponse(request,response);
+                            }, 
+                            function(){ 
+                                return request.error;
+                            }
+                        );
+                }
+            }
         })
 
         //--------------Model--------------
-        //TODO add the service for the model
         .state('modal', {
             abstract: true,
-            parent:'home',
+            parent:'^',
             url: 'pop/',
             onEnter: ['$modal', '$state', function($modal, $state) {
                 console.log('Open modal');
@@ -75,7 +97,7 @@ angular.module('gePantApp')
                   template: '<div ui-view="modal"></div>',
                   controller:'PopcontrollerCtrl'
                 }).result.finally(function() {
-                  $state.go('home');
+                  $state.go('^');
               });
             }]
           })

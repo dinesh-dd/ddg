@@ -54,45 +54,52 @@ angular.module('gePantApp')
             setMarkers();
         }
         function setMarkers(){
+            //TODO marker is not good in the map 
+            //TODO infowindow is out of sync in small devices
+            $scope.loadingLocations = true;
             var request = {
-                //TODO set the loadin indicator for api call
-                //TODO set the multiple marker and remove the infowindow of other marker
-                //TODO set the marker with image
-                //TODO on infowindow click open the profile
                 success : function(response){
+                    $scope.loadingLocations = false;
                     var collectors = response.data.collectors;
                     console.log(collectors);
+                    collectors.push({
+                        id: 63,
+                        image: null,
+                        latitude: 60.12771862224645,
+                        location: "Folketshusvägen ",
+                        longitude: 18.647614240753228,
+                        name: "dinesh",
+                        objective: null,
+                        pledge: null,
+                        rating: null,
+                    })
                     var infowindow = new google.maps.InfoWindow();
                     var marker;
-                    // GLOBALS.markers.length = 0;
-                    // function clearMarkers() {
-                    //     for (var i = 0; i < markers.length; i++) {
-                    //         GLOBALS.markers[i].setMap(null);
-                    //     }
-                    //     GLOBALS.markers.length = 0;
-                    // }
-                    // function closeOtherMarkers(){
-                    //     for (var i = 0; i < markers.length; i++) {
-                    //         GLOBALS.markers[i].setMap(null);
-                    //     }
-                    //     GLOBALS.markers.length = 0;
-                    // }
-                    // cMarker
+                    var pinIcon = new google.maps.MarkerImage(
+                        "images/pin.png",
+                        null, /* size is determined at runtime */
+                        null, /* origin is 0,0 */
+                        null, /* anchor is bottom center of the scaled image */
+                        new google.maps.Size(40, 56)
+                    );
                     for (var i = 0; i < collectors.length; i++) {
                         marker = new google.maps.Marker({
                             position: new google.maps.LatLng(collectors[i]['latitude'], collectors[i]['longitude']),
-                            map: $scope.map
+                            map: $scope.map,
+                            icon:pinIcon
                         });
                         GLOBALS.markers.push(marker); 
                         var name = collectors[i].name;
                         var location = collectors[i].location;
-                        var image = collectors[i].image || 'images/avtar.jpg'
+                        var image = collectors[i].image || 'images/avtar.jpg';
+                        var id = collectors[i].id;
 
-                        var contentString = '<div class="content_gg" id="content_gg">'+
-                        '<a class="imageContent" style="background-image:url('+image+')">'+
+
+                        var contentString = '<div class="content_gg" id="content_gg" style="height: 70px;">'+
+                        '<a class="imageContent" href="#/collector/'+id+'" style="background-image:url('+image+')">'+
                         '</a>\
                         <div class="nameContent">\
-                            <a class="name">\
+                            <a class="name" href="#/collector/'+id+'">\
                                 '+name+'\
                             </a>\
                         <div class="distance">\
@@ -110,6 +117,7 @@ angular.module('gePantApp')
                     }
                 }, 
                 error: function(response){
+                    $scope.loadingLocations = false;
                     console.error(response)
                 },
                 data:{

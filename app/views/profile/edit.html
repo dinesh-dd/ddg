@@ -1,4 +1,4 @@
-<form name="form" id="loginForm" ng-submit="editProfile()" novalidate autocomplete="off">
+<form name="form" id="loginForm" ng-submit="editProfile()" novalidate autocomplete="off" enctype="multipart/form-data">
     <h2>
         {{ 'header.editProfile' | translate }}
     </h2>
@@ -89,6 +89,10 @@
                      placeholder="{{ 'placeholder.org' | translate }}" />
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <input type="file" file-model="myFile"/>
+            <!-- <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/> -->
         </div>
         <div class="row">
             <button ng-click='editProfile()' class="btn btn-success" ng-disabled="form.$invalid">

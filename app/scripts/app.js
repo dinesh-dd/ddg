@@ -69,6 +69,41 @@ angular
 	})
 	.config(function($httpProvider) {
 		$httpProvider.defaults.headers.post  = {'Content-Type': 'application/x-www-form-urlencoded'};
+		$httpProvider.defaults.transformRequest = function(data){
+			if(data === undefined){
+				return data;
+			} else if (typeof(data.data) == 'object') {
+	        	data.data = $.param(data.data);
+	        	return data.data;
+	        } else {
+	        	return data;
+	        }
+
+	    }
 	});
 
+
+
+//Globle variables 
 var mergedParams = [];
+function validateResponse(request,response){
+	if(typeof(response) == 'object' &&  
+		( 	//check if direct http request is made
+			( 	
+				response.data &&
+				response.data.result &&
+				response.data.result.rstatus != 0 
+			) 
+		 	||  //check if response from the resources
+			( 
+				response.result &&
+		  		response.result.rstatus != 0 
+		  	)
+		)
+	   ) 
+		{
+		return request.success(response);
+    } else {
+    	return request.error(response);
+    }
+}

@@ -11,7 +11,7 @@ angular.module('gePantApp')
   	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService','$translate', function ($scope,$rootScope,UserService,$translate) {
 	    var languageCode = {
             'English':'en',
-            'Swidish':'sv'
+            'Swedish':'sv'
         }
 
     	$scope.setLanguage = function(language){

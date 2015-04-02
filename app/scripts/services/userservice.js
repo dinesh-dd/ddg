@@ -19,6 +19,8 @@ angular.module('gePantApp')
             }
         }
         var setLanguage = function(language){
+            var a = $window;
+            debugger;
             var returnLanguage = null;
             switch(language){
                 case 'en-US':
@@ -26,8 +28,8 @@ angular.module('gePantApp')
                     returnLanguage = 'English';
                     break;
                 case 'sv':
-                case 'Swidish':
-                    returnLanguage = 'Swidish';
+                case 'Swedish':
+                    returnLanguage = 'Swedish';
                     break;
                 default:
                     returnLanguage = 'English';
@@ -39,27 +41,27 @@ angular.module('gePantApp')
         return c = {
             setLanguage: setLanguage,
         	login: function(user) {
-                typeof user  == "object"  && MemberApi.login(user.data,user, function(a, d) {
+                typeof user  == "object"  && MemberApi.login(user, function(a, d) {
                   	validateUser(user,a,d);
                 }, user.error)
             },
             session: function(user){
-                typeof user  == "object"  && MemberApi.current({},user, function(a, d) {
+                typeof user  == "object"  && MemberApi.current(user, function(a, d) {
                     validateUser(user,a,d);
                 }, user.error)
             },
             loginByFacebook: function(user) {
-                typeof user  == "object"  && MemberApi.loginByFacebook(user.data,user,function(a, d) {
+                typeof user  == "object"  && MemberApi.loginByFacebook(user,function(a, d) {
                     validateUser(user,a,d);
                 }, user.error)
             },
             signUpByFacebook:function(user) {
-                typeof user  == "object"  && MemberApi.signUpByFacebook(user.data,user,function(a, d) {
+                typeof user  == "object"  && MemberApi.signUpByFacebook(user,function(a, d) {
                     validateUser(user,a,d);
                 }, user.error)
             },
             createUser:function(user){
-                typeof user  == "object"  && MemberApi.create(user.data,user, function(a, d) {
+                typeof user  == "object"  && MemberApi.create(user, function(a, d) {
                     validateUser(user,a,d);
                 }, user.error)
             },
@@ -69,17 +71,17 @@ angular.module('gePantApp')
                 }, user.error);
             },
             updateSetting:function(user){
-                typeof user  == "object"  && MemberApi.updateSetting(user.data,user, function(a, d) {
+                typeof user  == "object"  && MemberApi.updateSetting(user, function(a, d) {
                     validateUser(user,a,d);
                 }, user.error)
             },
             editProfile:function(user){
-                typeof user  == "object"  && MemberApi.editProfile(user.data,user, function(a, d) {
+                typeof user  == "object"  && MemberApi.editProfile(user, function(a, d) {
                     validateUser(user,a,d);
                 }, user.error)  
             },
             language_setting:function(user){
-                typeof user  == "object"  && MemberApi.language_setting(user.data,user, function(a, d) {
+                typeof user  == "object"  && MemberApi.language_setting(user, function(a, d) {
                     validateUser(user,a,d);
                 }, user.error)  
             }

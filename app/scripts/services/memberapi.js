@@ -11,8 +11,7 @@ angular.module('gePantApp')
     .service('MemberApi', ['$resource', function($resource) {
     return $resource(GLOBALS.apiUrl + ':methodName/:id', {
         method: '@method',
-        id: '@id',
-         
+        id: '@id'
     }, {
         current: {
             method: 'GET',

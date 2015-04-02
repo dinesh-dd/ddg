@@ -54,7 +54,8 @@
 		"enterPostal":"Please enter your postcode",
 		"enterAdd":"Please enter the address of the pledge",
 		"streetNum":"Do not forget to enter the street number as well?",
-		"correctFld":"Please correct"
+		"correctFld":"Please correct",
+		"collectorError":"Could not find the collector :("
 	},
 	"placeholder":{
 		"email":"Email Address",

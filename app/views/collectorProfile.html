@@ -1,5 +1,8 @@
-<main id="page" class="container ProfilePage collectorProfile">
-	<div class='container'>
+<main id="page" class="container ProfilePage collectorProfile" ng-switch="loadStatus">
+	<div ng-switch-when="error" class="alert alert-danger">
+		{{ 'message.collectorError' | translate }}
+	</div>
+	<div class='container' ng-switch-when="success">
 		<div class='image avatar' style="{{collection.donar_image!=null && collection.donar_image!=''?'background-image:url('+collection.donar_image+')':''}}"></div>
 		<div class='userDataContainer'>
 			<div class='name'>
@@ -7,21 +10,26 @@
 			</div>
 			<div class='location'>
 				<i class="fa fa-lg fa-fw fa-map-marker"></i>
-				{{collector.location}}			
+				{{collector.street_address}}			
 			</div>
 			<div class='ratings'>
-				<rating ng-model="collector.star" max="5" readonly="true"></rating>
+				<rating ng-model="collector.rating" max="5" readonly="true"></rating>
 			</div>
 		</div>
 		<h3 class='mtop1'>{{ 'html.goalMoney' | translate }}</h3>
-		$ {{collector.pledge}} 
+		$ {{collector.pledge || 0}} 
 		<h3  class='mtop1'>{{ 'html.objective' | translate }}</h3>
 		{{collector.objective}}
-		<div ng-show='user.userLogedIn'> <!-- fixme change this -->
+		<div ng-show='user.userLogedIn'>
 		<h3  class='mtop1'>{{ 'html.rateUser' | translate }}</h3>
 			<rating ng-model="collector.myStar" max="5" readonly="false"></rating>
 			<br>
 			<a class='btn btn-success btn-xm mtop1' ng-click='setStar()'>{{ 'html.submitRating' | translate }}</a>
+			<span class="loading rating">
+                <i class="fa fa-refresh loadicon" ng-show='ratingStatus=="loading"'></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show='ratingStatus=="success"'></i>
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show='ratingStatus=="error"'></i>
+            </span>
 		</div>
 		<!-- //TODO set the id of the collector while donationg the new thing -->
 		<div>
