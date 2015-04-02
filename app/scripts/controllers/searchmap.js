@@ -64,12 +64,26 @@ angular.module('gePantApp')
                     console.log(collectors);
                     var infowindow = new google.maps.InfoWindow();
                     var marker;
+                    // GLOBALS.markers.length = 0;
+                    // function clearMarkers() {
+                    //     for (var i = 0; i < markers.length; i++) {
+                    //         GLOBALS.markers[i].setMap(null);
+                    //     }
+                    //     GLOBALS.markers.length = 0;
+                    // }
+                    // function closeOtherMarkers(){
+                    //     for (var i = 0; i < markers.length; i++) {
+                    //         GLOBALS.markers[i].setMap(null);
+                    //     }
+                    //     GLOBALS.markers.length = 0;
+                    // }
+                    // cMarker
                     for (var i = 0; i < collectors.length; i++) {
                         marker = new google.maps.Marker({
                             position: new google.maps.LatLng(collectors[i]['latitude'], collectors[i]['longitude']),
                             map: $scope.map
                         });
-
+                        GLOBALS.markers.push(marker); 
                         var name = collectors[i].name;
                         var location = collectors[i].location;
                         var image = collectors[i].image || 'images/avtar.jpg'
