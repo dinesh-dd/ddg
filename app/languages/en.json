@@ -55,7 +55,10 @@
 		"enterAdd":"Please enter the address of the pledge",
 		"streetNum":"Do not forget to enter the street number as well?",
 		"correctFld":"Please correct",
-		"collectorError":"Could not find the collector :("
+		"collectorError":"Could not find the collector :(",
+		"loading":"Loading ...",
+		"errorData":"Error in getting data :(",
+		"noDonation":"There are no donations yet"
 	},
 	"placeholder":{
 		"email":"Email Address",

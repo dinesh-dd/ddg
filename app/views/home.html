@@ -14,7 +14,7 @@
                                 <a ui-sref="addDonation" class="btn btn-primary">
                                     {{ 'button.addDonation' | translate }}
                                 </a>
-                                <a ui-sref="signup" class="btn">
+                                <a ui-sref="signup" class="btn" ng-show="!user.userLogedIn">
                                     {{ 'button.collectPledge' | translate }}
                                 </a>
                             </p>

@@ -4,7 +4,12 @@
 		<a href="javascript:void(0)" class="dropdown-toggle smallLink" data-toggle="dropdown">
 			<span class="name">{{user.language || 'Swedish'}}</span>
 			<b class="caret"></b>
-		</a>
+			<span class="loading">
+	            <i class="fa fa-refresh loadicon" ng-show='loadStatus=="loading"'></i>
+	            <i class="fa fa-lg fa-fw fa-check-circle" ng-show='loadStatus=="success"'></i>
+	            <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show='loadStatus=="error"'></i>
+	        </span>
+		</a>		
 		<ul class="dropdown-menu language">
 			<li>
 				<a href="javascript:void(0)" ng-click='setLanguage("English")'>English</a>

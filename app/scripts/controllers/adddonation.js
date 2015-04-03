@@ -249,14 +249,16 @@ angular.module('gePantApp')
             //     $scope.setMap("map-adw2", $scope.donation.streetGeo),
             //     $scope.setStep(4)) : $scope.gotoPage("", !0, !0)
             // }, ["what", "who", "where", "whose"]), 
-            console.log('this is gotoSummery');
-            try{
-                $scope.setStep(4);
-                document.getElementById("adw-page2").style.display = "block"    
-            } catch(e){
-                console.log(e);
-            }
             
+            // This is changed 
+            // console.log('this is gotoSummery');
+            // try{
+            //     $scope.setStep(4);
+            //     document.getElementById("adw-page2").style.display = "block"    
+            // } catch(e){
+            //     console.log(e);
+            // }
+            $scope.submitDonation();
         }, $scope.trySave = function() {
             $scope.validateStep($scope.stepData.summary, !0) && $scope.addDonation(function() {
                 $scope.gotoPage("saved", !0, !1)
@@ -267,5 +269,30 @@ angular.module('gePantApp')
             }, 500)
         }, $scope.addDonation = function(b) {
             $scope.donation.lat = $scope.donation.streetGeo.geometry.location.lat, $scope.donation.lng = $scope.donation.streetGeo.geometry.location.lng, $scope.donation.geojson = angular.toJson($scope.donation.streetGeo), j.add($scope.donation, b)
+        }, $scope.submitDonation = function(){
+            var request = {
+                success:function(response){
+                    console.log(response);
+                },
+                error:function(response){
+                    console.log(response);  
+                },
+                data:{
+                    'donation[things_attributes][0][thing_name]':'PlasticBag',
+                    'donation[things_attributes][0][quantity]':0,
+                    'donation[things_attributes][1][thing_name]':'RefuseSack',
+                    'donation[things_attributes][1][quantity]':10,
+                    'donation[things_attributes][2][thing_name]':'PaperBag',
+                    'donation[things_attributes][2][quantity]':10,
+                    'donation[postal_code]':76049,
+                    'donation[street_address]':'helo',
+                    'donation[latitude]':31.5457,
+                    'donation[longitude]':35.45,
+                    'donation[collector_id]':135
+                    // 'donation[doner_name]':'dinesh dabhi',
+                    // 'donation[doner_email]':'dinesh@complitech.net'
+                }
+            }
+            DonationService.addDonation(request)
         }
     }])

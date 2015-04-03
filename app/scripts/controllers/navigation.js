@@ -8,21 +8,33 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService','$translate', function ($scope,$rootScope,UserService,$translate) {
-	    var languageCode = {
-            'English':'en',
-            'Swedish':'sv'
+  	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService','$translate','$timeout', function ($scope,$rootScope,UserService,$translate,$timeout) {
+        $scope.loadStatus = '';
+        function setIcon(icon){
+            $scope.loadStatus = icon;
+            $timeout(function(){   
+                $scope.loadStatus = "";
+            },2000);
         }
-
     	$scope.setLanguage = function(language){
-            $translate.use(languageCode[language]);
+            if ($rootScope.user.language == language){
+                return;
+            }
+            var previousLang = $rootScope.user.language;
+            console.log(previousLang);
+            $scope.loadStatus = 'loading';
 		  	UserService.setLanguage(language); 
     		var request = {
     			success:function(){
-    				console.log('getting success in changing the data')
+                    setIcon('success');
+                    $translate.use(languageCode[language]);
+    				console.log('getting success in changing the data');
     			},
     			error:function(){
-    				console.log('getting error in changing the data')
+                    setIcon('error');
+                    console.log(previousLang);
+                    UserService.setLanguage(previousLang); 
+    				console.error('getting error in changing the data');
     			},
     			data:{
     				'user[language]':$rootScope.user.language

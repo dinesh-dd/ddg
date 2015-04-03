@@ -11,8 +11,10 @@ angular.module('gePantApp')
   .controller('LogoutCtrl', function ($scope,$rootScope,$state,$cookieStore,UserService,$timeout,Facebook) {
     	$scope.u={};
     	var logout = function(){
+            var language = $rootScope.user.language;
             $rootScope.user = {
-            	userLogedIn : false
+            	userLogedIn : false,
+                language:language
             }
 
             $timeout(function() {

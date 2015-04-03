@@ -18,9 +18,11 @@ angular.module('gePantApp')
 	        success: function(b) {
 	            $scope.status = 'success';
                 $scope.user.log = 'success';
+
                 //set the root scope data
                 $rootScope.user = b.data.profileData;
                 $rootScope.user.userLogedIn = true;
+                UserService.setLanguage($rootScope.user.language);
 
                 //remove the modal after sometimeout
 	            $timeout(function() {

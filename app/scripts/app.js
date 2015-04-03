@@ -107,3 +107,7 @@ function validateResponse(request,response){
     	return request.error(response);
     }
 }
+var languageCode = {
+			            'English':'en',
+			            'Swedish':'sv'
+			        }

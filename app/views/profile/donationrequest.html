@@ -4,24 +4,24 @@
 		<div class='image avatar' style="{{donation.collector_image!=null && donation.collector_image!=''?'background-image:url('+donation.collector_image+')':''}}"></div>
 		<div class='container'>
 			<div class='things'>
-				<div class='thing' ng-show='donation.thing.PlasticBag!=0'>
-					{{donation.thing.PlasticBag}} {{ 'html.plasticBag' | translate }}
+				<div class='thing' ng-show='donation.things.PlasticBag!=0'>
+					{{donation.things.PlasticBag}} {{ 'html.plasticBag' | translate }}
 				</div>
-				<div ng-show='donation.thing.PlasticBag!=0 && ( donation.thing.PaperBag!=0 || donation.thing.RefuseSack!=0)' class='sideline'></div>
-				<div class='thing' ng-show='donation.thing.PaperBag!=0'>
-					{{donation.thing.PaperBag}} {{ 'html.paperBag' | translate }}
+				<div ng-show='donation.things.PlasticBag!=0 && ( donation.things.PaperBag!=0 || donation.things.RefuseSack!=0)' class='sideline'></div>
+				<div class='thing' ng-show='donation.things.PaperBag!=0'>
+					{{donation.things.PaperBag}} {{ 'html.paperBag' | translate }}
 				</div>
-				<div ng-show='(donation.thing.PaperBag!=0 || donation.thing.PlasticBag!=0 ) && donation.thing.RefuseSack!=0 && donation.thing.PaperBag!=0' class='sideline'></div>
-				<div class='thing'  ng-show='donation.thing.RefuseSack!=0'>
-					{{donation.thing.RefuseSack}} {{ 'html.refuseSack' | translate }}
+				<div ng-show='(donation.things.PaperBag!=0 || donation.things.PlasticBag!=0 ) && donation.things.RefuseSack!=0 && donation.things.PaperBag!=0' class='sideline'></div>
+				<div class='thing'  ng-show='donation.things.RefuseSack!=0'>
+					{{donation.things.RefuseSack}} {{ 'html.refuseSack' | translate }}
 				</div>
 				<br>
 			</div>
 			<div class='name' >
-				<b>{{ 'html.donationBy' | translate }}</b> {{donation.donar_name}}
+				<b>{{ 'html.donationBy' | translate }}</b> {{donation.doner_name}}
 				<div class='location'>
 					<i class="fa fa-lg fa-fw fa-map-marker"></i>
-					{{donation.location}}
+					{{donation.street_address}}
 				</div>
 			</div>
 			<div class='time'>
@@ -29,12 +29,12 @@
 			</div>
 			<div class='row'>
 				<div class='col-xs-6 btnparent'>
-					<button class='btn btn-primary col-xs-12' ng-click='accept()'>
+					<button class='btn btn-primary col-xs-12' ng-click='accept(donation.id)'>
 						{{ 'button.accept' | translate }}
 					</button>
 				</div>
 				<div class='col-xs-6 btnparent'>
-					<button class='btn btn-danger col-xs-12' ng-click='decline()'>
+					<button class='btn btn-danger col-xs-12' ng-click='decline(donation.id)'>
 						{{ 'button.decline' | translate }}
 					</button>
 				</div>
@@ -43,3 +43,18 @@
 
 	</div>	
 </div>
+<div ng-show='loadingStatus=="loading"' class='loading_p'>
+	<span class="loading">
+        <i class="fa fa-refresh loadicon"></i>
+    </span>
+    {{ 'message.loading' | translate }}
+</div>
+
+<div ng-show='loadingStatus=="error"' class="alert alert-danger">{{ 'message.errorData' | translate }}</div>
+
+<div ng-show='loadingStatus=="zero"' class="alert alert-warning">
+	{{ 'message.noDonation' | translate }}
+</div>
+
+
+<pager total-items="totalItems" ng-model="currentPage" items-per-page="1" ng-change="pageChanged()"  ng-show='(loadingStatus=="" || loadingStatus=="loading") && !firstLoadError'></pager>

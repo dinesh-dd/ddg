@@ -55,7 +55,10 @@
 		"enterAdd":"Var god ange adressen panten finns på",
 		"streetNum":"Du glömmer inte ange gatunummer också?",
 		"correctFld":"Var god korrigera",
-		"collectorError":"Kunde inte hitta samlare :("
+		"collectorError":"Kunde inte hitta samlare :(",
+		"loading" : "Laddar ..." ,
+		"errorData" : "Fel att få uppgifter :(",
+		"noDonation":"Det finns inga donationer ännu"
 	},
 	"placeholder":{
 		"email":"E-postadress",

@@ -23,6 +23,11 @@ angular.module('gePantApp')
                     validateResponse(request,response)
                 }, request.error);  
             },
+            addDonation:function(request){
+                DonationApi.addDonation(request,function(response) {
+                    validateResponse(request,response)
+                }, request.error);  
+            },
            	collectors:function(){
            		//find the collectors
            	},

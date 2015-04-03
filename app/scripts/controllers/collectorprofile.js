@@ -29,7 +29,7 @@ angular.module('gePantApp')
 
     $scope.setStar = function(){
         function setIcon(icon){
-            $scope.ratingStatus = "success";
+            $scope.ratingStatus = icon;
             $timeout(function(){   
                 $scope.ratingStatus = "";
             },2000);

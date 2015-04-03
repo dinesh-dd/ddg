@@ -106,6 +106,14 @@ ul.stat-list li .stat-value,ol.stat-list li .stat-value {
         margin-bottom: 5px
     }
 
+    .loading_p {
+        height: 100px;
+        text-align: center;
+        font-size: 1.5em;
+        padding-top:26px;
+        color: rgb(168, 168, 168);
+    }
+
     .profile_list{
         background-color: #fff;
         box-shadow: 0 2px 1px rgba(0, 0, 0, 0.25), 0 0 1px rgba(0, 0, 0, 0.25);

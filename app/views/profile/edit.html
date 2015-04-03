@@ -16,6 +16,17 @@
         <div class='row'>
             <div>
                 <h4>
+                    {{ 'placeholder.email' | translate }}
+                </h4>
+            </div>
+            <div class="form-group">
+                <input type="text" ng-minlength="10" ng-maxlength="15" ng-model="user.email" disabled=true class="form-control" />
+            </div>
+            <hr>
+        </div>
+        <div class='row'>
+            <div>
+                <h4>
                     {{ 'placeholder.telephone' | translate }}
                 </h4>
             </div>

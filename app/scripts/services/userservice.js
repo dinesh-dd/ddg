@@ -8,7 +8,7 @@
  * Service in the gePantApp.
  */
 angular.module('gePantApp')
-	.service("UserService", ["MemberApi","$rootScope","$window", function(MemberApi,$rootScope,$window) {
+	.service("UserService", ["MemberApi","$rootScope","$window","$translate", function(MemberApi,$rootScope,$window,$translate) {
         var validateUser = function(user,response,d){
             //TODO check for the user errors
             console.log('validation of user');
@@ -19,8 +19,9 @@ angular.module('gePantApp')
             }
         }
         var setLanguage = function(language){
-            var a = $window;
-            debugger;
+            if(language==null){ //set language from browser
+                language = navigator.languages[0] || navigator.language || 'sv'; 
+            }
             var returnLanguage = null;
             switch(language){
                 case 'en-US':
@@ -36,6 +37,7 @@ angular.module('gePantApp')
                     break;
             }
             $rootScope.user.language = returnLanguage;
+            $translate.use(languageCode[returnLanguage]);
         }
         var c = {};
         return c = {

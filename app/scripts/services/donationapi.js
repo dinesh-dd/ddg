@@ -25,16 +25,22 @@ angular.module('gePantApp')
                 methodName: 'collector.json'
             },
         },
-        collectors: {
+        addDonation:{
+            method: 'POST',
+            params: {
+                methodName: 'donations.json'
+            }
+        },
+        collections: {
             method: 'GET',
             params: {
                 methodName: 'collectors.json'
             }
         },
-        donators: {
+        donations: {
             method: 'GET',
             params: {
-                methodName: 'donors.json'
+                methodName: 'list_of_donations.json'
             }
         },
         donationRequests: {

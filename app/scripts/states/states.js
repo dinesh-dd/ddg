@@ -9,18 +9,20 @@ angular.module('gePantApp')
             url: '',
             abstract: true,
             resolve: {
-                user: function($http,$rootScope) {
+                user: function($http,$rootScope,UserService) {
                     // //return $http.get('http://httpbin.org/delay/5');
                     var request = {
                         success: function(response){
                             $rootScope.user = response.data.data.profileData;
                             $rootScope.user.userLogedIn = true;
+                            UserService.setLanguage($rootScope.user.language);
                             return response.data.data.profileData;
                         },
                         error:function(){
                             $rootScope.user = {
                                 userLogedIn:false
                             }
+                            UserService.setLanguage(null);
                             return null;
                         }
                     }; 
@@ -89,7 +91,7 @@ angular.module('gePantApp')
         //--------------Model--------------
         .state('modal', {
             abstract: true,
-            parent:'^',
+            parent:'home',
             url: 'pop/',
             onEnter: ['$modal', '$state', function($modal, $state) {
                 console.log('Open modal');
@@ -97,7 +99,7 @@ angular.module('gePantApp')
                   template: '<div ui-view="modal"></div>',
                   controller:'PopcontrollerCtrl'
                 }).result.finally(function() {
-                  $state.go('^');
+                  $state.go('home');
               });
             }]
           })

@@ -1,32 +1,47 @@
 <h2>{{ 'header.myCollections' | translate }}</h2>
 <div class='profile_list'>
-	<div ng-repeat="collection in collections" class='listitem'>
-		<div class='image avatar' style="{{collection.donar_image!=null && collection.donar_image!=''?'background-image:url('+collection.donar_image+')':''}}"></div>
+	<div ng-repeat="donation in donations" class='listitem'>
+		<div class='image avatar' style="{{donation.donar_image!=null && donation.donar_image!=''?'background-image:url('+donation.donar_image+')':''}}"></div>
 		<div class='container'>
 			<div class='things'>
-				<div class='thing' ng-show='collection.thing.PlasticBag!=0'>
-					{{collection.thing.PlasticBag}} {{ 'html.plasticBag' | translate }}
+				<div class='thing' ng-show='donation.things.PlasticBag!=0'>
+					{{donation.things.PlasticBag}} {{ 'html.plasticBag' | translate }}
 				</div>
-				<div ng-show='collection.thing.PlasticBag!=0 && ( collection.thing.PaperBag!=0 || collection.thing.RefuseSack!=0)' class='sideline'></div>
-				<div class='thing' ng-show='collection.thing.PaperBag!=0'>
-					{{collection.thing.PaperBag}} {{ 'html.paperBag' | translate }}
+				<div ng-show='donation.things.PlasticBag!=0 && ( donation.things.PaperBag!=0 || donation.things.RefuseSack!=0)' class='sideline'></div>
+				<div class='thing' ng-show='donation.things.PaperBag!=0'>
+					{{donation.things.PaperBag}} {{ 'html.paperBag' | translate }}
 				</div>
-				<div ng-show='(collection.thing.PaperBag!=0 || collection.thing.PlasticBag!=0 ) && collection.thing.RefuseSack!=0 && collection.thing.PaperBag!=0' class='sideline'></div>
-				<div class='thing'  ng-show='collection.thing.RefuseSack!=0'>
-					{{collection.thing.RefuseSack}} {{ 'html.refuseSack' | translate }}
+				<div ng-show='(donation.things.PaperBag!=0 || donation.things.PlasticBag!=0 ) && donation.things.RefuseSack!=0 && donation.things.PaperBag!=0' class='sideline'></div>
+				<div class='thing'  ng-show='donation.things.RefuseSack!=0'>
+					{{donation.things.RefuseSack}} {{ 'html.refuseSack' | translate }}
 				</div>
 				<br>
 			</div>
 			<div class='name'>
-				<b>{{ 'html.donationBy' | translate }}</b> {{collection.donar_name}}
+				<b>{{ 'html.donationBy' | translate }}</b> {{donation.doner_name}}
 				<div class='location'>
 				<i class="fa fa-lg fa-fw fa-map-marker"></i>
-					{{collection.location}}
+					{{donation.street_address}}
 				</div>
 			</div>
 			<div class='time'>
-				At {{collection.created_at | date:'medium'}}
+				At {{donation.created_at | date:'medium'}}
 			</div>
 		</div>
 	</div>	
 </div>
+<div ng-show='loadingStatus=="loading"' class='loading_p'>
+	<span class="loading">
+        <i class="fa fa-refresh loadicon"></i>
+    </span>
+    {{ 'message.loading' | translate }}
+</div>
+
+<div ng-show='loadingStatus=="error"' class="alert alert-danger">{{ 'message.errorData' | translate }}</div>
+
+<div ng-show='loadingStatus=="zero"' class="alert alert-warning">
+	{{ 'message.noDonation' | translate }}
+</div>
+
+
+<pager total-items="totalItems" ng-model="currentPage" items-per-page="1" ng-change="pageChanged()"  ng-show='(loadingStatus=="" || loadingStatus=="loading") && !firstLoadError'></pager>
