@@ -48,4 +48,4 @@
 </div>
 
 
-<pager total-items="totalItems" ng-model="currentPage" items-per-page="1" ng-change="pageChanged()"  ng-show='(loadingStatus=="" || loadingStatus=="loading") && !firstLoadError'></pager>
+<pager total-items="totalItems" ng-model="currentPage" items-per-page="perPage" ng-change="pageChanged()"  ng-show='(loadingStatus=="" || loadingStatus=="loading") && !firstLoadError' next-text="{{ 'html.next' | translate }}" previous-text="{{ 'html.previous' | translate }}"></pager>

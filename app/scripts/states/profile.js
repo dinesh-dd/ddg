@@ -27,8 +27,16 @@ angular.module('gePantApp').config(function($stateProvider) {
             url: '/collections',
             templateUrl: 'views/profile/collections.html',
             controller:'CollectionsCtrl',
+            onEnter:function($rootScope,$state){
+                if($rootScope.user.type=='Doner'){
+                    $state.go('home');
+                }
+            },
             resolve: {
-                donations: function($http) {
+                donations: function($http,$rootScope) {
+                    if($rootScope.user.type=='Doner'){
+                        return null;
+                    }
                     //request object
                     var request = {
                         success: function(response){
@@ -67,8 +75,16 @@ angular.module('gePantApp').config(function($stateProvider) {
             url: '/donations',
             templateUrl: 'views/profile/donations.html',
             controller:'DonationsCtrl',
+            onEnter:function($rootScope,$state){
+                if($rootScope.user.type=='Collector'){
+                    $state.go('home');
+                }
+            },
             resolve: {
-                donations: function($http) {
+                donations: function($http,$rootScope) {
+                    if($rootScope.user.type=='Collector'){
+                        return null;
+                    }
                     //request object
                     var request = {
                         success: function(response){
@@ -107,8 +123,16 @@ angular.module('gePantApp').config(function($stateProvider) {
             url: '/donationRequests',
             templateUrl: 'views/profile/donationrequest.html',
             controller:'DonationrequestCtrl',
+            onEnter:function($rootScope,$state){
+                if($rootScope.user.type=='Doner'){
+                    $state.go('home');
+                }
+            },
             resolve: {
                 donations: function($http,DonationApi) {
+                    if($rootScope.user.type=='Doner'){
+                        return null;
+                    }
                     //request object
                     var request = {
                         success: function(response){

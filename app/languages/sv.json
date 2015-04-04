@@ -27,7 +27,9 @@
 		"enterAdd":"2. Komplettera med gatuadress",
 		"justFinish":"Strax klara!",
 		"contactDetail":"Kontaktuppgifter",
-		"otherInfo":"Övrig information"
+		"otherInfo":"Övrig information",
+		"collectionTotal":"Total samlingar",
+		"collectionMonth":"Total kollektioner denna månad"
 	},
 	"message":{
 		"trylogin":"Försöker logga in...",
@@ -58,7 +60,9 @@
 		"collectorError":"Kunde inte hitta samlare :(",
 		"loading" : "Laddar ..." ,
 		"errorData" : "Fel att få uppgifter :(",
-		"noDonation":"Det finns inga donationer ännu"
+		"noDonation":"Det finns inga donationer ännu",
+		"errorDonationResponse":"Fel svar på donation :(",
+		"donationSuccess":"Donation svarade framgångsrikt ..."
 	},
 	"placeholder":{
 		"email":"E-postadress",
@@ -138,7 +142,9 @@
 		"confirmText":"Ja, jag bekräftar att uppgifterna ovan stämmer och att",
 		"iAgree":"jag godkänner",
 		"terms":"användarvillkoren",
-		"pleaseConfirm":"Var god bekräfta"
+		"pleaseConfirm":"Var god bekräfta",
+		"next":"Nästa",
+		"previous":"Föregående"
 	},
 	"help":{
 		"navigation":{

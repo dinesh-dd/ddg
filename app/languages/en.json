@@ -27,7 +27,9 @@
 		"enterAdd":"2. Complete street address",
 		"justFinish":"Just finished!",
 		"contactDetail":"Contact Details",
-		"otherInfo":"Other Information"
+		"otherInfo":"Other Information",
+		"collectionTotal":"Total collections",
+		"collectionMonth":"Total collections this month"
 	},
 	"message":{
 		"trylogin":"Trying to login ...",
@@ -58,7 +60,9 @@
 		"collectorError":"Could not find the collector :(",
 		"loading":"Loading ...",
 		"errorData":"Error in getting data :(",
-		"noDonation":"There are no donations yet"
+		"noDonation":"There are no donations yet",
+		"errorDonationResponse":"Error in response to donation :(",
+		"donationSuccess":"Donation responded successfully ..."
 	},
 	"placeholder":{
 		"email":"Email Address",
@@ -138,7 +142,9 @@
 		"confirmText":"Yes, I confirm that the above information is correct and that",
 		"iAgree":"I agree",
 		"terms":"terms of use",
-		"pleaseConfirm":"Please confirm"
+		"pleaseConfirm":"Please confirm",
+		"next":"Next",
+		"previous":"Previous"
 	},
 	"help":{
 		"navigation": {

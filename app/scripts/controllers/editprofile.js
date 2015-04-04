@@ -21,6 +21,8 @@ angular.module('gePantApp')
          * function to edit the profile by calling userservice
          */
     	$scope.editProfile = function(){
+            var postal_code = $scope.u.postal_code.formatted_address_postal || '';
+            var street_address = $scope.u.street_address.formatted_address_street || '';
             $scope.profileStatus = 'trying';
             var request = {
                 success:function(){
@@ -32,14 +34,14 @@ angular.module('gePantApp')
                 },
                 data:{
                     'user[username]':$scope.u.name,
-                    'user[street_address]':$scope.u.street_address.formatted_address_street,
+                    'user[street_address]':street_address,
                     'user[latitude]':$scope.u.latitude,
                     'user[longitude]':$scope.u.longitude,
                     'user[pledge]':$scope.u.pledge,
                     'user[objective]':$scope.u.objective,
                     'user[organization_name]':$scope.u.organization_name,
                     'user[contact_no]':$scope.u.contact_no,
-                    'user[postal_code]':$scope.u.postal_code.formatted_address_postal,
+                    'user[postal_code]':postal_code,
                 }
             }
 
@@ -70,6 +72,7 @@ angular.module('gePantApp')
         },
         
         $scope.setPostalCode = function() {
+            console.log($scope.form);
             MapService.setMap("map-adw", {
                 geometry: $scope.u.postal_code.geometry
             }), $scope.u.postalCode = $scope.u.postal_code.postal_code, $scope.u.city = $scope.u.postal_code.postal_town, $timeout(function() {

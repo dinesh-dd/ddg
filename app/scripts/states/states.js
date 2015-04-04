@@ -11,6 +11,7 @@ angular.module('gePantApp')
             resolve: {
                 user: function($http,$rootScope,UserService) {
                     // //return $http.get('http://httpbin.org/delay/5');
+                    console.log('here');
                     var request = {
                         success: function(response){
                             $rootScope.user = response.data.data.profileData;
@@ -32,7 +33,7 @@ angular.module('gePantApp')
                                  return validateResponse(request,response);
                             }, 
                             function(){ 
-                                return request.error;
+                                return request.error();
                             }
                         );
                 }
@@ -81,7 +82,7 @@ angular.module('gePantApp')
                                 return validateResponse(request,response);
                             }, 
                             function(){ 
-                                return request.error;
+                                return request.error();
                             }
                         );
                 }
@@ -90,9 +91,8 @@ angular.module('gePantApp')
 
         //--------------Model--------------
         .state('modal', {
-            abstract: true,
-            parent:'home',
             url: 'pop/',
+            abstract:true,
             onEnter: ['$modal', '$state', function($modal, $state) {
                 console.log('Open modal');
                 $modal.open({
@@ -104,9 +104,8 @@ angular.module('gePantApp')
             }]
           })
 
-          .state('login', {
+          .state('modal.login', {
             url: 'login/',
-            parent: 'modal',
             views: {
               'modal@': {
                 templateUrl: 'views/login.html',

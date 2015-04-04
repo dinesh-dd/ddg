@@ -12,9 +12,10 @@ angular.module('gePantApp')
   	$scope.donations= donations.donations;
   	$scope.firstLoadError = false;
   	$scope.zeroLength = false;
+    $scope.perPage = GLOBALS.pageLimit;
   	$scope.totalItems = donations.total_page;
-	$scope.currentPage = 1;
-	$scope.loadingStatus = '';
+	  $scope.currentPage = 1;
+	  $scope.loadingStatus = '';
   	if($scope.donations==null){
   		$scope.loadingStatus = "error";
   	} else if($scope.donations.length==0){
@@ -39,31 +40,16 @@ angular.module('gePantApp')
                     };
                     //call api  
                     return $http({
-                            method: "POST",
-                            url:GLOBALS.apiUrl+"list_of_donations.json",
-                            data: $.param(request.data)
-                        }).then(  
-                            function(response){
-                                return validateResponse(request,response);
-                            }, 
-                            function(){ 
-                                return request.error;
-                            }
-                        );
+                        method: "POST",
+                        url:GLOBALS.apiUrl+"list_of_donations.json",
+                        data: $.param(request.data)
+                    }).then(  
+                        function(response){
+                            return validateResponse(request,response);
+                        }, 
+                        function(){ 
+                            return request.error();
+                        }
+                    );
 	};
-   //  $scope.donations = [
-   //  	{
-   //  		thing:{
-			// 	PlasticBag:2,
-			// 	PaperBag:10,
-			// 	RefuseSack:0
-			// }, 
-			// collector_Name : 'Dinesh Dabhi',
-			// collector_image : 'http://creativepool.com/marketing/images/minions-1.jpg', 
-			// //when status is pending upper two values not be there 
-			// location : 'location string',
-			// created_at : new Date(),
-			// status : 'accepted'
-   //  	},
-   //  ]
   });

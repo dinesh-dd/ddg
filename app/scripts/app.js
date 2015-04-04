@@ -50,6 +50,11 @@ angular
 		$rootScope.$on('$stateChangeStart', 
         	function(event, toState, toParams, fromState, fromParams){ 
               	$rootScope.currentLink = findName(toState.name);
+    //           	console.log(toState);
+    // 		    if (toState.url=='/collections') {
+			 //      	event.preventDefault();
+			 //      	return;
+				// }
               	console.log('current state text is::'+$rootScope.currentLink);
         	});
 	})

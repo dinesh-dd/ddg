@@ -46,21 +46,32 @@
     <aside class="col-sm-4">
         <hr class="visible-xs">
         <p class="add-donation-button text-size-125">
-            <!-- <a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">Ladle pledge</a>-->
-            <a ui-sref="addDonation" class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">{{ 'button.givePledge' | translate }}</a>
-            
+            <a ui-sref="addDonation" ng-show='user.type=="Doner"' class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">{{ 'button.givePledge' | translate }}</a>
+            <a ui-sref="profile.collections" ng-show='user.type=="Collector"' class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">{{ 'navigation.collections' | translate }}</a>
         </p>
         <hr>
         <div class="faststat">
             <ul class="stat-list">
                 <li>
-                    <p><span class="stat-label">{{ 'header.numberOfDays' | translate }} </span> <span class="stat-value">{{user.daysOnGepant || 0}}</span></p>
+                    <p>
+                        <span class="stat-label">{{ 'header.numberOfDays' | translate }} </span> 
+                        <span class="stat-value">{{user.daysOnGepant || 0}}</span>
+                    </p>
                 </li>
                 <li>
-                    <p><span class="stat-label">{{ 'header.donationsThisMonth' | translate }}</span> <span class="stat-value">{{user.donationsThisMonth || 0}}</span></p>
+                    <p>
+                        <span class="stat-label" ng-show='user.type=="Doner"'>{{ 'header.donationsThisMonth' | translate }}</span> 
+                        <span ng-show='user.type=="Collector"' class="stat-label">{{ 'header.collectionMonth' | translate }}</span> 
+                        <span class="stat-value">{{user.donationsThisMonth || 0}}</span>
+                    </p>
                 </li>
                 <li>
-                    <p><span class="stat-label">{{ 'header.donationsTotal' | translate }}</span> <span class="stat-value">{{user.donationsTotal || 0}}</span></p>
+                    <p>
+                        <span ng-show='user.type=="Doner"' class="stat-label">{{ 'header.donationsTotal' | translate }}</span> 
+                        <span ng-show='user.type=="Collector"' class="stat-label">{{ 'header.collectionTotal' | translate }}</span> 
+                        
+                        <span class="stat-value">{{user.donationsTotal || 0}}</span>
+                    </p>
                 </li>
             </ul>
         </div>

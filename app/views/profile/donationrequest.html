@@ -1,6 +1,19 @@
 <h2>{{ 'header.myDonationRequests' | translate }}</h2>
-<div class='profile_list'>
-	<div ng-repeat="donation in donations" class='listitem'>
+
+<div class="alert alert-danger" ng-show='loadAccept=="error"'>
+	{{ 'message.errorDonationResponse' | translate }}
+</div>
+
+<div class="alert alert-success" ng-show='loadAccept=="success"'>
+	{{ 'message.donationSuccess' | translate }}
+</div>
+
+<div class='profile_list' style="position: relative;">
+	<div class="loadMask" ng-show='loadAccept=="loading"'>
+		<i class="fa fa-refresh loadicon"></i>
+		{{ 'message.loading' | translate }}
+	</div>
+	<div ng-repeat="donation in donations" class='listitem' ng-show='loadingStatus==""'>
 		<div class='image avatar' style="{{donation.collector_image!=null && donation.collector_image!=''?'background-image:url('+donation.collector_image+')':''}}"></div>
 		<div class='container'>
 			<div class='things'>
@@ -29,12 +42,12 @@
 			</div>
 			<div class='row'>
 				<div class='col-xs-6 btnparent'>
-					<button class='btn btn-primary col-xs-12' ng-click='accept(donation.id)'>
+					<button class='btn btn-primary col-xs-12' style="padding: 15px 0px;" ng-click='accept(donation.id,$index)'>
 						{{ 'button.accept' | translate }}
 					</button>
 				</div>
 				<div class='col-xs-6 btnparent'>
-					<button class='btn btn-danger col-xs-12' ng-click='decline(donation.id)'>
+					<button class='btn btn-danger col-xs-12' style="padding: 15px 0px;" ng-click='decline(donation.id)'>
 						{{ 'button.decline' | translate }}
 					</button>
 				</div>
@@ -57,4 +70,4 @@
 </div>
 
 
-<pager total-items="totalItems" ng-model="currentPage" items-per-page="1" ng-change="pageChanged()"  ng-show='(loadingStatus=="" || loadingStatus=="loading") && !firstLoadError'></pager>
+<pager total-items="totalItems" ng-model="currentPage" items-per-page="perPage" ng-change="pageChanged()"  ng-show='(loadingStatus=="" || loadingStatus=="loading") && !firstLoadError' next-text="{{ 'html.next' | translate }}" previous-text="{{ 'html.previous' | translate }}"></pager>

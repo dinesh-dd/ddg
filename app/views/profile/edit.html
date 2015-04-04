@@ -35,7 +35,7 @@
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.tel.$dirty && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPhone' | translate }}"></i>
             </div>
             <hr>
-        </div>
+        </div> 
         <div class='row'>
             <div>
                 <h4>{{ 'placeholder.postalCode' | translate }}</h4>
@@ -43,6 +43,7 @@
             <div class="form-group">
                 <input type="text" ng-model="u.postal_code" name="postalCode" class="form-control" placeholder="{{ 'placeholder.postalCode' | translate }}" autocomplete="off" typeahead="address as address.formatted_address_postal for address in getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setPostalCode()">
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.postalCode.$dirty && form.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPostal' | translate }}"></i>
+                <!-- by enabling this there will be the padding right side -->
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.postalCode.$valid"></i> 
             </div>
             <hr>
@@ -52,7 +53,7 @@
                 <h4>{{ 'placeholder.streetAdd' | translate }}</h4>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="u.street_address" name="address" id="adw-address" required autocomplete="off" class="form-control"  placeholder="{{ 'placeholder.streetAdd' | translate }}"  ng-disabled="form.postalCode.$invalid" typeahead="address as address.formatted_address_street for address in getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setStreet()">
+                <input type="text" ng-model="u.street_address" name="address" id="adw-address" autocomplete="off" class="form-control"  placeholder="{{ 'placeholder.streetAdd' | translate }}"  ng-disabled="form.postalCode.$invalid" typeahead="address as address.formatted_address_street for address in getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setStreet()">
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.address.$dirty || currStep.validated) && form.address.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterAdd' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$valid && !u.street_address.street_number" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.streetNum' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.address.$valid && u.street_address.street_number"></i>
@@ -65,7 +66,6 @@
             <hr>
         </div>
         <div class='row' ng-show='u.type=="Collector"'>
-        <!-- <div class='row'> -->
             <div>
                 <h4>{{ 'placeholder.pledge' | translate }}</h4>
             </div>
@@ -78,7 +78,6 @@
             <hr>
         </div>
         <div class='row' ng-show='u.type=="Collector"'>
-        <!-- <div class='row'> -->
             <div>
                 <h4>{{ 'html.objective' | translate }}</h4>
             </div>
@@ -90,7 +89,6 @@
             <hr>
         </div>
         <div class='row' ng-show='u.type=="Collector"'>
-        <!-- <div class='row'> -->
             <div>
                 <h4>{{ 'placeholder.org' | translate }}</h4>
             </div>
@@ -101,9 +99,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row m-bot-1">
             <input type="file" file-model="myFile"/>
-            <!-- <input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"/> -->
         </div>
         <div class="row">
             <button ng-click='editProfile()' class="btn btn-success" ng-disabled="form.$invalid">
@@ -122,5 +119,5 @@
                 </div>
             </div>
         </div>
-    </main>
+    </main> 
 </form>

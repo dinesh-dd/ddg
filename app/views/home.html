@@ -11,7 +11,7 @@
                                 {{ 'html.homecarosalContent' | translate }}
                             </p>
                             <p>
-                                <a ui-sref="addDonation" class="btn btn-primary">
+                                <a ui-sref="addDonation" ng-show='user.type=="Doner"'  class="btn btn-primary">
                                     {{ 'button.addDonation' | translate }}
                                 </a>
                                 <a ui-sref="signup" class="btn" ng-show="!user.userLogedIn">
