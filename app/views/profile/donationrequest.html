@@ -14,7 +14,7 @@
 		{{ 'message.loading' | translate }}
 	</div>
 	<div ng-repeat="donation in donations" class='listitem' ng-show='loadingStatus==""'>
-		<div class='image avatar' style="{{donation.collector_image!=null && donation.collector_image!=''?'background-image:url('+donation.collector_image+')':''}}"></div>
+		<div class='image avatar' style="{{donation.doner_image!=null && donation.doner_image!=''?'background-image:url('+donation.doner_image+')':''}}"></div>
 		<div class='container'>
 			<div class='things'>
 				<div class='thing' ng-show='donation.things.PlasticBag!=0'>

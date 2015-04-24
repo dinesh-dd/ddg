@@ -29,7 +29,12 @@
 		"contactDetail":"Kontaktuppgifter",
 		"otherInfo":"Övrig information",
 		"collectionTotal":"Total samlingar",
-		"collectionMonth":"Total kollektioner denna månad"
+		"collectionMonth":"Total kollektioner denna månad",
+		"changeImage":"Ändra bild",
+		"collector":"Collector",
+		"collectorSelected":"Vald collector",
+		"popular":"vad som är populärt",
+		"error":"Fel !!!"
 	},
 	"message":{
 		"trylogin":"Försöker logga in...",
@@ -62,7 +67,13 @@
 		"errorData" : "Fel att få uppgifter :(",
 		"noDonation":"Det finns inga donationer ännu",
 		"errorDonationResponse":"Fel svar på donation :(",
-		"donationSuccess":"Donation svarade framgångsrikt ..."
+		"donationSuccess":"Donation svarade framgångsrikt ...",
+		"enterStreet":"Ange gatuadress",
+		"collectorError":"Kunde inte donera så samlare",
+		"tryingDonation":"Försöker skicka donation",
+		"errorDonation":"Fel i skicka donation",
+		"authError1":"Du är inte autorised göra denna process . Vänligen ",
+		"authError2":" först."
 	},
 	"placeholder":{
 		"email":"E-postadress",
@@ -102,7 +113,10 @@
 		"shareTW":"Dela på Twitter",
 		"updateProfile":"Uppdatera Profil",
 		"change":"Ändra",
-		"chageAgain":"Gå tillbaka och ändra"
+		"chageAgain":"Gå tillbaka och ändra",
+		"upload":"Ladda upp",
+		"seeAll":"se allt",
+		"loadMore":"Ladda mer"
 	},
 	"html":{
 		"loginEmail":"Eller logga in via e-postadress",
@@ -144,7 +158,10 @@
 		"terms":"användarvillkoren",
 		"pleaseConfirm":"Var god bekräfta",
 		"next":"Nästa",
-		"previous":"Föregående"
+		"previous":"Föregående",
+		"pledged":"förbetalt",
+		"funded":"ställda",
+		"collectors":"Samlare"
 	},
 	"help":{
 		"navigation":{

@@ -1,7 +1,7 @@
 <h2>{{ 'header.myCollections' | translate }}</h2>
 <div class='profile_list'>
 	<div ng-repeat="donation in donations" class='listitem' ng-show='loadingStatus==""'>
-		<div class='image avatar' style="{{donation.donar_image!=null && donation.donar_image!=''?'background-image:url('+donation.donar_image+')':''}}"></div>
+		<div class='image avatar' style="{{donation.doner_image!=null && donation.doner_image!=''?'background-image:url('+donation.doner_image+')':''}}"></div>
 		<div class='container'>
 			<div class='things'>
 				<div class='thing' ng-show='donation.things.PlasticBag!=0'>

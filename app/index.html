@@ -14,8 +14,12 @@
             markers:[],
             cMarker:null
         },
-        pageLimit:3,
-        apiUrl: 'http://192.168.1.27:3000/api/gepant/'
+        pageLimit:5,
+        collectorID:{},
+        apiUrl: 'http://192.168.1.27:3000/api/gepant/',
+        url:'http://192.168.1.27:3000/'
+        // apiUrl: 'http://192.168.1.13:3000/api/gepant/',
+        // url:'http://192.168.1.13:3000/'
         // apiUrl: 'http://thevoguecode.com:3001/api/gepant/'
         // apiUrl : 'api/gepant/'
         // apiUrl:'http://192.168.1.35/WorkSpace/OfficeWork/GPent/GePant/app/api/'
@@ -44,7 +48,7 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <!-- Add your site or application content here -->
+    <!-- Add your site or application content here -->    
     <div class="loading_f" ng-cloak="">
         <p>Loading</p>
     </div>
@@ -69,15 +73,29 @@
                                 <a ui-sref="om-gepant.omGepant" class="menu1089 level1 count0 index1 om-gepant active active1 first last"><span>If Gepant</span></a>
                             </li>
                         </ul>
-                        <div ui-view="nav-right" ng-controller='NavigationCtrl'></div>
+                        <div ui-view="nav-right" ng-controller='NavigationCtrl'>
+                            <div class='subLoader' style="">
+                                Loading ... <i class="fa fa-refresh loadicon"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div ui-view='page'></div>
-        <div ui-view></div>
-        <footer></footer>
+        <div ui-view='page' id="page1">
+            <div class='mainLoader' style="font-size:2em">
+                Loading ... <i class="fa fa-refresh loadicon"></i>
+            </div>
+        </div>
     </section>
+    <footer class="navbar navbar-fixed-bottom ge-Footer hidden">
+        <a class="" href="#/">
+            <img src="images/logo-gepant.png" alt="GePant.se">
+        </a>
+        <br>
+        {{totalDonations}}
+        <span>© 2015 GEPANT</span>  
+    </footer>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -132,6 +150,11 @@
     <script src="scripts/services/geolocation.js"></script>
     <script src="scripts/controllers/profilesetting.js"></script>
     <script src="scripts/controllers/editprofile.js"></script>
+    <script src="scripts/services/modal_service.js"></script>
+    <script src="scripts/controllers/home.js"></script>
+    <script src="scripts/controllers/logindonation.js"></script>
+    <script src="scripts/controllers/collectors.js"></script>
+    <script src="scripts/controllers/loginerror.js"></script>
     <!-- endbuild -->
 </body>
 

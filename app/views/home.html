@@ -11,10 +11,10 @@
                                 {{ 'html.homecarosalContent' | translate }}
                             </p>
                             <p>
-                                <a ui-sref="addDonation" ng-show='user.type=="Doner"'  class="btn btn-primary">
+                                <a ng-click="modal('addDonation')" ng-show='!user.userLogedIn || user.type=="Doner"'  class="btn btn-primary">
                                     {{ 'button.addDonation' | translate }}
                                 </a>
-                                <a ui-sref="signup" class="btn" ng-show="!user.userLogedIn">
+                                <a ng-click="modal('signup')" class="btn" ng-show="!user.userLogedIn">
                                     {{ 'button.collectPledge' | translate }}
                                 </a>
                             </p>
@@ -24,7 +24,7 @@
             </slide>
         </carousel>
     </div>
-    <div class='searchResult container' ng-controller='SearchmapCtrl'>
+    <div class='searchResult container mtop2 mbot1' ng-controller='SearchmapCtrl'>
         <div class="box container">
             <h2>{{ 'header.where' | translate }}</h2>
             <p class="control">
@@ -43,5 +43,85 @@
             </p>
         </div>
         <div id="start-map" collapse="mapCollapse"></div>
+    </div>
+    <!-- Top three collectors -->
+    <div class="col-xs-12 mtop2 mbot1 collectorHeader" ng-show="collectors">
+        <h4>{{ 'header.popular' | translate }}</h4>
+        <button class='btn btn-small grayButton' ui-sref="allCollectors">{{ 'button.seeAll' | translate }}</button>
+    </div>
+    <!-- list for the big devices -->
+    <div class='searchResult container collectorNormal' ng-controller='SearchmapCtrl'>
+        <div class="col-xs-3" ng-repeat="collector in collectors">
+        <div class='colloctorItem' ng-click="currStep.select(collector.id)">
+            <div class='img' style="background-image:url({{collector.image}})"  ng-click="gotoCollector({{collector.collector_id}})"></div>
+            <div class='container'>
+                <div class='name'  ng-click="gotoCollector({{collector.collector_id}})">
+                    <b>{{collector.collector_name}}</b>
+                </div>
+                <div class='star left'>
+                    <rating ng-model="collector.rating" max="5"  readonly="true"></rating>
+                </div>
+                <div class='objective mtop1 left'  ng-show="collector.objective">{{collector.objective}}</div>
+                <div class="container progresscontainer">
+                    <div class='location' ng-show="collector.location">
+                        <i class="fa fa-lg fa-fw fa-map-marker"></i> {{collector.location}}
+                    </div>
+                    <div ng-show="collector.collector_pledge">
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{collector.percentage}}%">
+                          </div>
+                        </div>
+                        <div class="progressData">
+                            <span class="funded">
+                                <b>{{collector.percentage}}%</b><br>
+                                <span>{{ 'html.funded' | translate }}</span>
+                            </span>
+                            <span class="pledged">
+                                <b>{{collector.collector_pledge || 0 }}</b><br>
+                                <span>{{ 'html.pledged' | translate }}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div> 
+    </div>
+    <!-- list for the small devices -->
+    <div class='searchResult mobilescroll collectorMobile' ng-controller='SearchmapCtrl'>
+        <div class='colloctorItem mobileItem' ng-repeat="collector in collectors" ng-click="currStep.select(collector.id)">
+            <div class='img' style="background-image:url({{collector.image}})"  ng-click="gotoCollector({{collector.collector_id}})"></div>
+            <div class='container'>
+                <div class='name'  ng-click="gotoCollector({{collector.collector_id}})">
+                    <b>{{collector.collector_name}}</b>
+                </div>
+                <div class='star left'>
+                    <rating ng-model="collector.rating" max="5"  readonly="true"></rating>
+                </div>
+                <div class='objective mtop1 left' ng-show="collector.objective">{{collector.objective}}</div>
+                <div class="container progresscontainer">
+                    <div class='location' ng-show="collector.location">
+                        <i class="fa fa-lg fa-fw fa-map-marker"></i> {{collector.location}}
+                    </div>
+                    <div ng-show="collector.collector_pledge">
+                        <div class="progress">
+                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{collector.percentage}}%;">
+                          </div>
+                        </div>
+                        <div class="progressData">
+                            <span class="funded">
+                                <b>{{collector.percentage}}%</b><br>
+                                <span>{{ 'html.funded' | translate }}</span>
+                            </span>
+                            <span class="pledged">
+                                <b>{{collector.collector_pledge || 0 }}</b><br>
+                                <span>{{ 'html.pledged' | translate }}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

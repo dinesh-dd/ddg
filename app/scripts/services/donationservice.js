@@ -8,37 +8,25 @@
  * Service in the gePantApp.
  */
 angular.module('gePantApp')
-  .service('DonationService',["DonationApi",function(DonationApi) {
+  .service('DonationService',function(DonationApi,UserService) {
         var c = {};
         return c = {
             findCollectors:function(request){
             	if( request.data.latitude != null){
             		DonationApi.searchCollector(request.data,request, function(response) {
-	                	validateResponse(request,response)
+	                	UserService.validateResponse(request,response)
 	              }, request.error);	
             	}
             },
             submitRating:function(request){
                 DonationApi.submitRating(request.data,request,function(response) {
-                    validateResponse(request,response)
+                    UserService.validateResponse(request,response)
                 }, request.error);  
             },
             addDonation:function(request){
                 DonationApi.addDonation(request,function(response) {
-                    validateResponse(request,response)
+                    UserService.validateResponse(request,response)
                 }, request.error);  
-            },
-           	collectors:function(){
-           		//find the collectors
-           	},
-           	doners:function(){
-           		//find the doners
-           	},
-           	donationRequests:function(){
-           		//find the donation requests
-           	},
-           	donationResponse:function(){
-           		//respones to donation requests
-           	}
+            }
         }
-    }]);
+    });

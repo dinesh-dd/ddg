@@ -8,7 +8,15 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-    .controller('SignupCtrl', ['$scope', 'UserService', '$timeout', '$location', '$state', 'Facebook','$rootScope', function($scope, UserService, $timeout, $location, $state, Facebook,$rootScope) {
+    .controller('SignupCtrl', ['$scope', 'UserService', '$timeout', '$location', '$state', 'Facebook','$rootScope','$modalInstance','modalService', function($scope, UserService, $timeout, $location, $state, Facebook,$rootScope,$modalInstance,modalService) {
+        $scope.modal= function(name){
+            switch(name){
+                case 'login':
+                    modalService.openModal(name,'LoginCtrl');        
+                    break;
+            }
+        }
+        $scope.modalInstance = $modalInstance;
         $scope.u = {}
         $scope.u.type = 'Doner';
        	       
@@ -20,8 +28,7 @@ angular.module('gePantApp')
             success: function(b) {
                 $scope.status = 'success';
                 //set the root scope data
-                $rootScope.user = b.data.profileData;
-                $rootScope.user.userLogedIn = true;
+                UserService.setUser(b.data.profileData);
 
                 //remove the modal after sometimeout
                 $timeout(function() {
@@ -46,7 +53,7 @@ angular.module('gePantApp')
             console.log('inside goto login');
             $scope.$close();
             setTimeout(function() {
-                $state.go('login');    
+                $scope.modal('login')
             }, 400);
         };
         

@@ -8,15 +8,16 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  .controller('DonationrequestCtrl', function ($scope,donations,$http,_,$timeout) {
+  .controller('DonationrequestCtrl', function ($scope,donations,$http,_,$timeout,UserService) {
   	$scope.donations= donations.donations;
   	$scope.firstLoadError = false;
   	$scope.zeroLength = false;
-  	$scope.totalItems = donations.total_page;
+  	$scope.totalItems = donations.total_page*GLOBALS.pageLimit;
+    console.log($scope.totalItems);
   	$scope.perPage = GLOBALS.pageLimit;
-	$scope.currentPage = 1;
-	$scope.loadingStatus = '';
-	$scope.loadAccept = '';
+	  $scope.currentPage = 1;
+    $scope.loadingStatus = '';
+	  $scope.loadAccept = '';
   	if($scope.donations==null){
   		$scope.loadingStatus = "error";
   	} else if($scope.donations.length==0){
@@ -37,9 +38,12 @@ angular.module('gePantApp')
 		$scope.loadingStatus = 'loading'
 		var request = {
 	        success: function(response){
-	        	$scope.loadingStatus = ''
+	        	  $scope.loadingStatus = ''
 	            $scope.donations = response.data.data.donations;
-	            $scope.totalItems = response.data.total_page;
+	            $scope.totalItems = response.data.total_page*GLOBALS.pageLimit;
+              _.each($scope.donations,function(value){
+                  value.doner_image = setImageFullPath(value.doner_image);
+              });
 	        },
 	        error:function(){
 	        	$scope.loadingStatus = 'error'
@@ -56,7 +60,7 @@ angular.module('gePantApp')
             data: $.param(request.data)
         }).then(  
             function(response){
-                return validateResponse(request,response);
+                return UserService.validateResponse(request,response);
             }, 
             function(){ 
                 return request.error();
@@ -105,7 +109,7 @@ angular.module('gePantApp')
             data: $.param(request.data)
         }).then(  
             function(response){
-                return validateResponse(request,response);
+                return UserService.validateResponse(request,response);
             }, 
             function(){ 
                 return request.error();

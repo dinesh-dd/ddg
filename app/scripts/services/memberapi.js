@@ -66,6 +66,12 @@ angular.module('gePantApp')
             params: {
                 methodName: 'language_setting.json'
             }
+        },
+        getCollectors:{
+            method: 'POST',
+            params: {
+                methodName: 'collector_list.json'
+            }  
         }
     });
 }]);

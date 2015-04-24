@@ -8,12 +8,13 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  .controller('CollectionsCtrl', function ($scope,donations,$http) {
+  .controller('CollectionsCtrl', function ($scope,donations,$http,UserService) {
   	$scope.donations= donations.donations;
   	$scope.firstLoadError = false;
   	$scope.zeroLength = false;
     $scope.perPage = GLOBALS.pageLimit;
-  	$scope.totalItems = donations.total_page;
+  	$scope.totalItems = donations.total_page*GLOBALS.pageLimit;
+    console.log($scope.totalItems);
   	$scope.currentPage = 1;
   	$scope.loadingStatus = '';
   	if($scope.donations==null){
@@ -27,7 +28,11 @@ angular.module('gePantApp')
 		var request = {
             success: function(response){
             	$scope.loadingStatus = ''
-                $scope.donations = response.data.data.donations;
+              $scope.donations = response.data.data.donations;
+              $scope.totalItems = response.data.total_page*GLOBALS.pageLimit;
+              _.each($scope.donations,function(value){
+                  value.doner_image = setImageFullPath(value.doner_image);
+              });
             },
             error:function(){
             	$scope.loadingStatus = 'error'
@@ -35,7 +40,7 @@ angular.module('gePantApp')
             },
             data:{
                 page:$scope.currentPage,
-                limit:GLOBALS.pageLimit
+                limit:GLOBALS.pageLimit 
             }
         };
         //call api  
@@ -45,7 +50,7 @@ angular.module('gePantApp')
             data: $.param(request.data)
         }).then(  
             function(response){
-                return validateResponse(request,response);
+                return UserService.validateResponse(request,response);
             }, 
             function(){ 
                 return request.error();

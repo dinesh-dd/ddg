@@ -1,8 +1,8 @@
 .content_gg{
 	width: 270px;
 	.imageContent{
-		height: 63px;
-		width: 63px;
+		height: 65px;
+		width: 65px;
 		float: left;
 		position: absolute;
 		background-image: url("../images/location@2x.png");
@@ -14,23 +14,50 @@
 	}
 	.nameContent{
 		float: left;
-		padding-left:5px;
-		padding-left: 70px;
+		padding-left:70px;
 	}
 	.nameContent .name{
-		font-size: 23px;
+		font-size: 26px;
 		font-weight: bold;
-		width: 145px;
+		width: 160px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		color:#1B547B ;
-		display: block;
-		text-decoration: none;
+		display:block;
+		text-decoration:none;
 	}
 	.nameContent .distance{
 		font-size: 14px;
+		width: 160px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		display: block;
 		color: rgb(97, 108, 115);
 		padding-top: 4px;
+	}
+}
+
+@media (max-width: 321px){
+	.content_gg{
+		width: 170px;
+		height: auto;
+		.imageContent{
+			height: 30px;
+			width: 30px;
+		}
+		.nameContent{
+			padding-left:39px;
+		}
+		.nameContent .name{
+			font-size: 10px;
+			width: 120px;
+		}
+		.nameContent .distance{
+			font-size: 10px;
+			width: 120px;
+			padding-top:0px;
+		}
 	}
 }

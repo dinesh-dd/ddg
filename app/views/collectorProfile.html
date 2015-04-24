@@ -1,39 +1,90 @@
-<main id="page" class="container ProfilePage collectorProfile" ng-switch="loadStatus">
-	<div ng-switch-when="error" class="alert alert-danger">
+
+<div class="container collectorProfileBread">
+    <ol class="breadcrumb">
+        <li>
+           <a href="javascript:void(0)" class="ng-binding ng-scope">{{collector.name}}</a>
+        </li>
+    </ol>
+</div>
+
+<main id="page" class="container ProfilePage collectorProfile">
+	<div ng-show="loadStatus=='error'" class="alert alert-danger">
 		{{ 'message.collectorError' | translate }}
 	</div>
-	<div class='container' ng-switch-when="success">
-		<div class='image avatar' style="{{collection.donar_image!=null && collection.donar_image!=''?'background-image:url('+collection.donar_image+')':''}}"></div>
-		<div class='userDataContainer'>
-			<div class='name'>
-				<b>{{collector.name}}</b>
-			</div>
-			<div class='location'>
-				<i class="fa fa-lg fa-fw fa-map-marker"></i>
-				{{collector.street_address}}			
-			</div>
-			<div class='ratings'>
-				<rating ng-model="collector.rating" max="5" readonly="true"></rating>
+	<article class="col-sm-8" ng-show="loadStatus=='success'">
+	    <header>
+            <div class="cover bg-donator" style="background-color: #56D156;">
+                <div class="logo">
+                    <div class="inner avatar bg-donator-faded" style="background-image:url({{collector.image}})"></div>
+                </div>
+            </div>
+            <h1>{{collector.name}}</h1>
+            <hr>
+            <div>
+                <h3>
+                    {{ 'placeholder.addr' | translate }}
+                </h3>
+                <i class="fa fa-lg fa-fw fa-map-marker"></i> 
+                {{collector.street_address}}
+                <hr>
+            </div>
+            <div>
+                <h3>
+                    {{ 'html.goalMoney' | translate }}
+                </h3> 
+                {{collector.pledge || 0}}
+                <hr>
+            </div>
+            <div>
+                <h3>{{ 'html.objective' | translate }}</h3> 
+                {{collector.objective || '-- No 
+                Objective Yet --'}}
+            </div>
+        </header>
+
+		<div class='container'>
+			<div ng-show='user.userLogedIn && user.type=="Doner"'>
+			<h3  class='mtop1'>{{ 'html.rateUser' | translate }}</h3>
+				<rating ng-model="collector.my_rating" max="5" readonly="false"></rating>
+				<br>
+				<a class='btn btn-success btn-xm mtop1' ng-click='setStar()'>{{ 'html.submitRating' | translate }}</a>
+				<span class="loading rating">
+	                <i class="fa fa-refresh loadicon" ng-show='ratingStatus=="loading"'></i>
+	                <i class="fa fa-lg fa-fw fa-check-circle" ng-show='ratingStatus=="success"'></i>
+	                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show='ratingStatus=="error"'></i>
+	            </span>
 			</div>
 		</div>
-		<h3 class='mtop1'>{{ 'html.goalMoney' | translate }}</h3>
-		$ {{collector.pledge || 0}} 
-		<h3  class='mtop1'>{{ 'html.objective' | translate }}</h3>
-		{{collector.objective}}
-		<div ng-show='user.userLogedIn'>
-		<h3  class='mtop1'>{{ 'html.rateUser' | translate }}</h3>
-			<rating ng-model="collector.myStar" max="5" readonly="false"></rating>
-			<br>
-			<a class='btn btn-success btn-xm mtop1' ng-click='setStar()'>{{ 'html.submitRating' | translate }}</a>
-			<span class="loading rating">
-                <i class="fa fa-refresh loadicon" ng-show='ratingStatus=="loading"'></i>
-                <i class="fa fa-lg fa-fw fa-check-circle" ng-show='ratingStatus=="success"'></i>
-                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show='ratingStatus=="error"'></i>
-            </span>
+    </article>
+	<aside class="col-sm-4" ng-show="loadStatus=='success'">
+		<hr class="visible-xs">
+		<div class='ratings'>
+			<rating ng-model="collector.rating" max="5" readonly="true"></rating>
 		</div>
-		<!-- //TODO set the id of the collector while donationg the new thing -->
-		<div>
-			<a ui-sref="addDonation" class="btn  mtop2 btn-lg btn-donator  text-size-125 btn-gepant-hover  bold">{{ 'html.donate' | translate }}</a>
-		</div>
-	</div>
+        <hr>
+        <div class="faststat">
+            <ul class="stat-list">
+                <li>
+                    <p>
+                        <span class="stat-label">{{ 'header.numberOfDays' | translate }} </span> 
+                        <span class="stat-value">{{collector.daysOnGepant || 0}}</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="stat-label">{{ 'header.collectionMonth' | translate }}</span> 
+                        <span class="stat-value">{{collector.donationsThisMonth || 0}}</span>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <span class="stat-label">{{ 'header.collectionTotal' | translate }}</span> 
+                        <span class="stat-value">{{collector.donationsTotal || 0}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <hr ng-show='(((user.type=="Doner" && user.userLogedIn) || (user.userLogedIn==false)) && showDonate=="true")'>
+        <a ng-show='(((user.type=="Doner" && user.userLogedIn) || (user.userLogedIn==false)) && showDonate=="true")' ng-click="modal()" class="btn btn-lg btn-donator fullwidth text-size-125 btn-gepant-hover  bold">{{ 'html.donate' | translate }}</a>
+    </aside>
 </main>

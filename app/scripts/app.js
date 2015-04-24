@@ -24,13 +24,12 @@ angular
 		'underscore',
 		'LocalStorageModule',
 		'pascalprecht.translate'
-		//'frapontillo.bootstrap-switch',
 	])
 
 	/**
 	 * set the breadcrumb from here
 	 */
-	.run(function($rootScope) {
+	.run(function($rootScope,modalService) {
 		function findName(currentLink){
 			var linkMap = {
 				'om-gepant.hur-funkar-det':'help.navigation.howWork',
@@ -49,13 +48,8 @@ angular
 		}
 		$rootScope.$on('$stateChangeStart', 
         	function(event, toState, toParams, fromState, fromParams){ 
-              	$rootScope.currentLink = findName(toState.name);
-    //           	console.log(toState);
-    // 		    if (toState.url=='/collections') {
-			 //      	event.preventDefault();
-			 //      	return;
-				// }
               	console.log('current state text is::'+$rootScope.currentLink);
+              	$rootScope.currentLink = findName(toState.name);
         	});
 	})
 	.config(function($translateProvider) {
@@ -83,7 +77,6 @@ angular
 	        } else {
 	        	return data;
 	        }
-
 	    }
 	});
 
@@ -91,28 +84,14 @@ angular
 
 //Globle variables 
 var mergedParams = [];
-function validateResponse(request,response){
-	if(typeof(response) == 'object' &&  
-		( 	//check if direct http request is made
-			( 	
-				response.data &&
-				response.data.result &&
-				response.data.result.rstatus != 0 
-			) 
-		 	||  //check if response from the resources
-			( 
-				response.result &&
-		  		response.result.rstatus != 0 
-		  	)
-		)
-	   ) 
-		{
-		return request.success(response);
-    } else {
-    	return request.error(response);
-    }
-}
 var languageCode = {
-			            'English':'en',
-			            'Swedish':'sv'
-			        }
+    'English':'en',
+    'Swedish':'sv'
+}
+function setImageFullPath(imagePath){
+	if(imagePath){
+		return GLOBALS.url+ imagePath;
+	} else {
+		return 'images/avtar.jpg';
+	}
+}

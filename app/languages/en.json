@@ -29,7 +29,12 @@
 		"contactDetail":"Contact Details",
 		"otherInfo":"Other Information",
 		"collectionTotal":"Total collections",
-		"collectionMonth":"Total collections this month"
+		"collectionMonth":"Total collections this month",
+		"changeImage":"Change image",
+		"collector":"Collector",
+		"collectorSelected":"Selected collector",
+		"popular":"What's popular",
+		"error":"Error !!!"
 	},
 	"message":{
 		"trylogin":"Trying to login ...",
@@ -62,7 +67,13 @@
 		"errorData":"Error in getting data :(",
 		"noDonation":"There are no donations yet",
 		"errorDonationResponse":"Error in response to donation :(",
-		"donationSuccess":"Donation responded successfully ..."
+		"donationSuccess":"Donation responded successfully ...",
+		"enterStreet":"Please enter street address",
+		"collectorError1":"Could not donate as collector",
+		"tryingDonation":"Trying to submit donation",
+		"errorDonation":"Error in submit donation",
+		"authError1":"You are not autorised to do this process. Please ",
+		"authError2":" first."
 	},
 	"placeholder":{
 		"email":"Email Address",
@@ -102,7 +113,10 @@
 		"shareTW":"Share on Twitter",
 		"updateProfile":"Update Profile",
 		"change":"Change",
-		"chageAgain":"Go back and change"
+		"chageAgain":"Go back and change",
+		"upload":"Upload",
+		"seeAll":"see all",
+		"loadMore":"Load more"
 	},
 	"html":{
 		"loginEmail":"Or login via email address",
@@ -144,7 +158,10 @@
 		"terms":"terms of use",
 		"pleaseConfirm":"Please confirm",
 		"next":"Next",
-		"previous":"Previous"
+		"previous":"Previous",
+		"pledged":"pledged",
+		"funded":"funded",
+		"collectors":"Collectors"
 	},
 	"help":{
 		"navigation": {

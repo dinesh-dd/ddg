@@ -30,6 +30,30 @@
 	.glyphicon-star-empty:before{
 		content:"\e006";
 		color:#CBCBC8;
-		font-size: 1.5em;
 	}
+	.glyphicon-star-empty:before , .glyphicon-star:before{
+		font-size: 2.2em;
+		padding: 4px;
+	}
+	.ratings{
+		width: 216px;
+		margin: 10px auto;	
+	}
+}
+
+.collectorProfileBread{
+    padding:0px;
+    .breadcrumb{
+        margin-bottom:0px;
+        padding: 10px 15px;
+    }
+    ol{
+        background:rgb(86, 209, 86);
+        border-radius: 0px;
+        a{
+            opacity: 0.9;
+            color:white;
+        }
+    }
+
 }

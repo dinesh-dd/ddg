@@ -8,7 +8,8 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  .controller('LogoutCtrl', function ($scope,$rootScope,$state,$cookieStore,UserService,$timeout,Facebook) {
+  .controller('LogoutCtrl', function ($scope,$rootScope,$state,$cookieStore,UserService,$timeout,Facebook,$modalInstance) {
+        $scope.modalInstance = $modalInstance;
     	$scope.u={};
     	var logout = function(){
             var language = $rootScope.user.language;

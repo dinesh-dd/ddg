@@ -16,7 +16,7 @@ angular.module('gePantApp')
                 components: GLOBALS.map.components,
                 sensor: !1
             };
-            return c.isObject(a) && (e = c.extend(e, a)), b.get("http://maps.googleapis.com/maps/api/geocode/json", {
+            return c.isObject(a) && (e = c.extend(e, a)), b.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBcFnJN2g9YZspeptIvi1F-UcIz9qmvuXE", {
                 params: e
             }).then(function(a) {
                 return c.isFunction(d) ? d(a) : a
@@ -94,6 +94,7 @@ angular.module('gePantApp')
             var map = new google.maps.Map(mapid, mapOptions);
             options.map = map;
             h(options);
+            return map;
         }
      
         return initted = !1,

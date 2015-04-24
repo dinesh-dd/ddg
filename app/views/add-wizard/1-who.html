@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs" ng-show="!user.isLogged()">
+<ul class="nav nav-tabs" ng-show="!user.userLogedIn">
     <li ng-class="{active:currStep.tab!='login'}"  class="hidden-xs">
         <a href="javascript:;" ng-click="currStep.tab='anonymous';currStep.validated=false;">
             {{ 'header.contactInfo' | translate }} 
@@ -15,7 +15,38 @@
         </a>
     </li>
 </ul>
-<div ng-switch="currStep.tab">
+<div ng-show="user.userLogedIn">
+    <form name="form" step-data="stepData['who']" ng-submit="nextStep(true)" novalidate autocomplete="off">
+        <fieldset>
+            <div class="form-group">
+                <input type="text" disabled="true" ng-model="donation.contactName" required name="name" class="form-control" placeholder="{{ 'placeholder.name' | translate }}">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.name.$dirty || currStep.validated) && form.name.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterName' | translate }}"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.name.$valid"></i>
+            </div>
+            <div class="form-group">
+                <input type="email" disabled="true" ng-model="donation.contactEmail" required name="email" class="form-control" placeholder="{{ 'placeholder.email' | translate }}">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.email.$dirty || currStep.validated) && form.email.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.validEmail' | translate }}"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
+            </div>
+            <div class="form-group">
+                <input type="number"  min="0" ng-minlength="10" ng-maxlength="15" required ng-model="donation.contactTelephone"  name="tel" class="form-control" placeholder="{{ 'placeholder.telephone' | translate }}">
+                <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.tel.$dirty || currStep.validated) && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPhone' | translate }}"></i>
+                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.tel.$valid"></i>
+            </div>
+            <div class="alert alert-danger pop" ng-show="currStep.validated && form.$invalid">
+                <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i>{{ 'message.correctInfo' | translate }}</span>
+                {{ 'message.mouseOver' | translate }}
+            </div>
+            <div class="buttons">
+                <button class="btn btn-info btn-sm">
+                    {{ 'button.nextStep' | translate }}
+                    <i class="fa fa-chevron-right fa-lg"></i>
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div ng-switch="currStep.tab" ng-show="!user.userLogedIn" ng-controller="LogindonationCtrl">
     <form ng-switch-default name="form" step-data="stepData['who']" ng-submit="nextStep(true)" novalidate autocomplete="off">
         <fieldset>
             <div class="form-group">
@@ -29,24 +60,10 @@
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
             </div>
             <div class="form-group">
-                <input type="tel" ng-model="donation.contactTelephone" required name="tel" class="form-control" placeholder="{{ 'placeholder.telephone' | translate }}">
+                <input type="number"  min="0" ng-minlength="10" ng-maxlength="15" ng-model="donation.contactTelephone" required name="tel" class="form-control" placeholder="{{ 'placeholder.telephone' | translate }}">
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.tel.$dirty || currStep.validated) && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPhone' | translate }}"></i>
                 <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.tel.$valid"></i>
             </div>
-            <!--
-<div ng-show="!user.isLogged()">
-<div class="checkbox">
-<label>
- <input type="checkbox" ng-model="donation.createAccount" name="createAccount"> Skapa konto
-</label>
-</div>
-<div class="form-group" ng-show="donation.createAccount">
-<input type="password" ng-model="donation.password" name="password" class="form-control" id="caPass" placeholder="Lösenord" ng-required="donation.createAccount && !user.isLogged()" ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/">
-<i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.password.$dirty || currStep.validated) && form.password.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra."></i>
-<i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.password.$valid"></i>
-</div>
-</div>
--->
             <div class="alert alert-danger pop" ng-show="currStep.validated && form.$invalid">
                 <span class="nobr"><i class="fa fa-lg fa-fw fa-exclamation-circle"></i>{{ 'message.correctInfo' | translate }}</span>
                 {{ 'message.mouseOver' | translate }}
@@ -60,7 +77,7 @@
         </fieldset>
     </form>
     <form ng-switch-when="login" name="form" id="loginForm" ng-submit="tryLogin()" novalidate autocomplete="off">
-        <div ng-switch="currStep.loginStatus">
+        <div ng-switch="status">
             <div ng-switch-when="trying" class="alert alert-info">
                {{ 'message.trylogin' | translate }}<i class="fa fa-refresh loadicon"></i>
             </div>
@@ -68,6 +85,9 @@
                 {{ 'message.loginSuccess' | translate }}</div>
             <div ng-switch-when="error" class="alert alert-danger">
                 {{ 'message.loginFailure' | translate }}
+            </div>
+            <div ng-switch-when="collectorError" class="alert alert-danger">
+                {{ 'message.collectorError1' | translate }}
             </div>
             <div ng-switch-default class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">{{ 'message.provideLogin' | translate }}</div>
         </div>
@@ -79,10 +99,10 @@
             {{ 'html.loginEmail' | translate }}
         </h3>
         <div class="form-group">
-            <input type="text" ng-model="currStep.login.email" name="email" class="form-control" id="lEmail" placeholder="{{ 'placeholder.email' | translate }}">
+            <input type="text" ng-model="u.email" name="email" class="form-control" id="lEmail" placeholder="{{ 'placeholder.email' | translate }}">
         </div>
         <div class="form-group">
-            <input type="password" ng-model="currStep.login.password" name="password" class="form-control" id="lPass"  placeholder="{{ 'placeholder.password' | translate }}">
+            <input type="password" ng-model="u.password" name="password" class="form-control" id="lPass"  placeholder="{{ 'placeholder.password' | translate }}">
         </div>
         <button type="submit" class="btn btn-success btn-sm">
             {{ 'header.login' | translate }}

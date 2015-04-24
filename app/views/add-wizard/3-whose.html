@@ -1,19 +1,19 @@
 <form name="form" step-data="stepData['whose']" ng-submit="setStep(-1)" novalidate>
     <fieldset>
-        <div class='nextButtonsContainer'>
+        <div class='nextButtonsContainer' ng-hide='currStep.isLoading=="addressError" || currStep.isLoading=="noData"'>
             <span class="ng-isolate-scope status-icon">
 			  	<span class="icon fa fa-fw fa-chevron-left enable" 
-			  		  ng-class="currStep.pages==0 || currStep.currentPage==1?'disable':'enable'">
+			  		  ng-class="currStep.pages==0 || currStep.currentPage==1?'disable':'enable'" ng-click="currStep.previous()">
 			  	</span>
             </span>
             <span class="ng-isolate-scope status-icon">
 	            <span class="icon fa fa-fw fa-chevron-right enable" 
-	            	  ng-class="currStep.pages==0 || currStep.currentPage==currStep.pages?'disable':'enable'">
+	            	  ng-class="currStep.pages==0 || currStep.currentPage==currStep.pages?'disable':'enable'" ng-click="currStep.next()">
 	            </span>
             </span>
         </div>
-        <div class='collectors container ProfilePage' ng-show='!currStep.isLoading'>
-        	<div ng-repeat="collector in currStep.collectors" class='collector'>
+        <div class='collectors container ProfilePage' ng-swipe-left="currStep.next()" ng-swipe-right="currStep.previous()" ng-show='!currStep.isLoading'>
+        	<div ng-repeat="collector in currStep.collectors" class='collector' ng-click="currStep.select(collector.id)">
 				<div class='image avatar' style="{{collector.image!=null && collector.image!=''?'background-image:url('+collector.image+')':''}}"></div>
 				<div class='container'>
 					<div class='name'>
@@ -24,20 +24,47 @@
 						</div>
 					</div>
 					<div class='star mtophalf left'>
-						<rating ng-model="collector.star" max="5" readonly="false"></rating>
+						<rating ng-model="collector.rating" max="5"  readonly="true"></rating>
 					</div>
 					<div class='Objective mtophalf left'>
-						<b>Objective</b> : {{collector.objective}}
+						<b>{{ 'html.objective' | translate }}</b> : {{collector.objective}}
 					</div>
 					<div class='Pledge mtophalf left'>
-						<b>Pledge</b> :  ${{collector.pledge}}
+						<b>{{ 'placeholder.pledge' | translate }}</b> :  ${{collector.pledge || 0 }}
 					</div>
 				</div>
 			</div>
         </div>
-        <div class='spinner' ng-show='currStep.isLoading'></div>
+        <div class='spinner' ng-show='currStep.isLoading=="loading"'></div>
+        <div class='alert alert-danger' ng-show='currStep.isLoading=="error"'>
+        	{{ 'message.errorData' | translate }}
+        </div>
+        <div class='alert alert-warning' ng-show='currStep.isLoading=="noData"'>
+        	{{ 'message.collectorError' | translate }}
+        </div>
+        <div class='alert alert-warning' ng-show='currStep.isLoading=="addressError"'>
+        	{{ 'message.enterStreet' | translate }}
+        </div>
+        <div ng-show='donation.collector_s.id' style="font-weight: bold;margin-bottom: 10px">
+        	{{ 'header.collectorSelected' | translate }}
+        </div>
+        <div ng-show='donation.collector_s.id' class="selectedCollector ProfilePage">
+        	<div class='image avatar' style="background-image:url({{donation.collector_s.image}})"></div>
+        	<div class='close' ng-click="donation.collector_s = {}" style="padding: 7px;">
+        		<i class="fa fa-times"></i>	
+        	</div>
+        	<div class='container'>
+				<div class='name'>
+					<b>{{donation.collector_s.name}}</b>
+					<div class='location'>
+					<i class="fa fa-lg fa-fw fa-map-marker"></i>
+						{{donation.collector_s.location}}
+					</div>
+				</div>
+			</div>
+        </div>
         <div class="buttons">
-            <button class="btn btn-info btn-sm">Vidare till nästa steg <i class="fa fa-arrow-down"></i></button>
+            <button class="btn btn-info btn-sm">{{ 'button.nextStep' | translate }}<i class="fa fa-arrow-down"></i></button>
         </div>
     </fieldset>
 </form>

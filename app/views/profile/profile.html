@@ -21,7 +21,7 @@
         <header>
             <div class="cover bg-donator">
                 <div class="logo">
-                    <div class="inner avatar bg-donator-faded"></div>
+                    <div class="inner avatar bg-donator-faded" style="background-image:url({{user.image}})"></div>
                 </div>
             </div>
             <h1>{{user.name}}</h1>
@@ -30,7 +30,7 @@
                 <h3>
                     {{ 'header.myPledge' | translate }}
                 </h3> 
-                ${{user.pledge || 0}}
+                {{user.pledge || 0}}
                 <hr>
             </div>
             <div ng-show='user.type=="Collector"'>
@@ -46,7 +46,7 @@
     <aside class="col-sm-4">
         <hr class="visible-xs">
         <p class="add-donation-button text-size-125">
-            <a ui-sref="addDonation" ng-show='user.type=="Doner"' class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">{{ 'button.givePledge' | translate }}</a>
+            <a ng-click="modal('addDonation')" href="javascript:void(0)" ng-show='user.type=="Doner"' class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">{{ 'button.givePledge' | translate }}</a>
             <a ui-sref="profile.collections" ng-show='user.type=="Collector"' class="btn btn-lg btn-donator btn-gepant-hover fullwidth bold">{{ 'navigation.collections' | translate }}</a>
         </p>
         <hr>
@@ -88,7 +88,7 @@
                     <a href="http://gepant.dev.denkan.se" class="btn btn-sm btn-tw fullwidth tweet"
                                 target="_blank">
                         <i class="fa fa-fw fa-lg fa-twitter"></i>
-                        {{ 'button.shareFB' | translate }}
+                        {{ 'button.shareTW' | translate }}
                     </a>
                     <script>
                     $('a.tweet').click(function(e) {

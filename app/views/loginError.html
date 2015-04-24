@@ -1,0 +1,15 @@
+<style type="text/css">
+	.lgMsg.btn:hover, .lgMsg.btn:focus, .lgMsg.btn.focus {
+		color: rgb(25, 209, 86);
+		text-decoration: none;
+	}
+</style>
+<header class="modal-header">
+	<h1>{{ 'header.error' | translate }}</h1>
+	<a href="javascript:void(0)" class="close" ng-click='$close()'></a>
+</header>
+<div class="modal-body fat-v">
+	<a class="btn lgMsg" href="javascript:void(0)" style="padding: 15px 0px;white-space:pre-line">
+		{{ 'message.authError1' | translate }}<strong ng-click='openLoginModal()'>{{ 'header.login' | translate }}</strong> {{ 'message.authError2' | translate }}
+	</a>
+</div>

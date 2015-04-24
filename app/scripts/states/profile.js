@@ -5,6 +5,11 @@ angular.module('gePantApp').config(function($stateProvider) {
         .state('profile', {
             url: '/profile',
             parent:'app',
+            onEnter:function($rootScope,$state){
+                if($rootScope.user.userLogedIn==false){
+                    $state.go('home');
+                }
+            },
             views: {
                 'page@': {
                     templateUrl: 'views/profile/profile.html',
@@ -16,12 +21,12 @@ angular.module('gePantApp').config(function($stateProvider) {
         .state('profile.setting', {
             url: '/setting',
             templateUrl: 'views/profile/setting.html',
-            controller:'ProfilesettingCtrl'
+            controller:'ProfilesettingCtrl',
         })
         .state('profile.edit', {
             url: '/edit',
             templateUrl: 'views/profile/edit.html',
-            controller:'EditprofileCtrl'
+            controller:'EditprofileCtrl',
         })
         .state('profile.collections', {
             url: '/collections',
@@ -33,10 +38,7 @@ angular.module('gePantApp').config(function($stateProvider) {
                 }
             },
             resolve: {
-                donations: function($http,$rootScope) {
-                    if($rootScope.user.type=='Doner'){
-                        return null;
-                    }
+                donations: function($http,$rootScope,UserService) {
                     //request object
                     var request = {
                         success: function(response){
@@ -44,6 +46,9 @@ angular.module('gePantApp').config(function($stateProvider) {
                                 total_page : response.data.total_page,
                                 donations : response.data.data.donations
                             }
+                            _.each(donations.donations,function(value){
+                                value.doner_image = setImageFullPath(value.doner_image);
+                            });
                             return donations;
                         },
                         error:function(){
@@ -62,7 +67,7 @@ angular.module('gePantApp').config(function($stateProvider) {
                             data: $.param(request.data)
                         }).then(  
                             function(response){
-                                return validateResponse(request,response);
+                                return UserService.validateResponse(request,response);
                             }, 
                             function(){ 
                                 return request.error;
@@ -81,17 +86,16 @@ angular.module('gePantApp').config(function($stateProvider) {
                 }
             },
             resolve: {
-                donations: function($http,$rootScope) {
-                    if($rootScope.user.type=='Collector'){
-                        return null;
-                    }
-                    //request object
+                donations: function($http,$rootScope,UserService) {
                     var request = {
                         success: function(response){
                             var donations = {
                                 total_page : response.data.total_page,
                                 donations : response.data.data.donations
                             }
+                            _.each(donations.donations,function(value){
+                                value.collector_image = setImageFullPath(value.collector_image);
+                            }); 
                             return donations;
                         },
                         error:function(){
@@ -110,7 +114,7 @@ angular.module('gePantApp').config(function($stateProvider) {
                             data: $.param(request.data)
                         }).then(  
                             function(response){
-                                return validateResponse(request,response);
+                                return UserService.validateResponse(request,response);
                             }, 
                             function(){ 
                                 return request.error;
@@ -124,22 +128,22 @@ angular.module('gePantApp').config(function($stateProvider) {
             templateUrl: 'views/profile/donationrequest.html',
             controller:'DonationrequestCtrl',
             onEnter:function($rootScope,$state){
+                console.warn('getting inside donation request');
                 if($rootScope.user.type=='Doner'){
                     $state.go('home');
                 }
             },
             resolve: {
-                donations: function($http,DonationApi) {
-                    if($rootScope.user.type=='Doner'){
-                        return null;
-                    }
-                    //request object
+                donations: function($http,DonationApi,$rootScope,UserService) {
                     var request = {
                         success: function(response){
                             var donations = {
                                 total_page : response.data.total_page,
                                 donations : response.data.data.donations
                             }
+                            _.each(donations.donations,function(value){
+                                value.doner_image = setImageFullPath(value.doner_image);
+                            }); 
                             return donations;
                         },
                         error:function(){
@@ -153,17 +157,17 @@ angular.module('gePantApp').config(function($stateProvider) {
 
                     //call api  
                     return $http({
-                            method: "POST",
-                            url:GLOBALS.apiUrl+"donation_requests.json",
-                            data: $.param(request.data)
-                        }).then(  
-                            function(response){
-                                return validateResponse(request,response);
-                            }, 
-                            function(){ 
-                                return request.error;
-                            }
-                        );
+                        method: "POST",
+                        url:GLOBALS.apiUrl+"donation_requests.json",
+                        data: $.param(request.data)
+                    }).then(  
+                        function(response){
+                            return UserService.validateResponse(request,response);
+                        }, 
+                        function(){ 
+                            return request.error;
+                        }
+                    );
                 }
             }  
         })

@@ -2,148 +2,165 @@
 
 angular.module('gePantApp')
 .config(function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/');
-        $urlRouterProvider.when('/om-gepant','om-gepant/omGepant');
-        $stateProvider
-        .state('app', {
-            url: '',
-            abstract: true,
-            resolve: {
-                user: function($http,$rootScope,UserService) {
-                    // //return $http.get('http://httpbin.org/delay/5');
-                    console.log('here');
-                    var request = {
-                        success: function(response){
-                            $rootScope.user = response.data.data.profileData;
-                            $rootScope.user.userLogedIn = true;
-                            UserService.setLanguage($rootScope.user.language);
-                            return response.data.data.profileData;
-                        },
-                        error:function(){
-                            $rootScope.user = {
-                                userLogedIn:false
-                            }
-                            UserService.setLanguage(null);
-                            return null;
-                        }
-                    }; 
-                    return $http.get(GLOBALS.apiUrl+'session_data.json')
-                        .then(  
-                            function(response){ 
-                                 return validateResponse(request,response);
-                            }, 
-                            function(){ 
-                                return request.error();
-                            }
-                        );
-                }
-            }
-        })
-        .state('home', {
-            parent:'app',
-            url: '/',
-            views: {
-                'page@': { templateUrl: 'views/home.html' },
-                'nav-right@': { 
-                    templateUrl : 'views/navigation/navigation.html'
-                }
-            }
-        })
+		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.when('/om-gepant','om-gepant/omGepant');
+		$stateProvider
+		.state('app', {
+			url: '',
+			abstract: true,
+			resolve: {
+				user: function($http,$rootScope,UserService) {
+					//return $http.get('http://httpbin.org/delay/5');
+					UserService.getCollectors(1,4,function(collectors){
+                        $rootScope.collectors = collectors;
+					});
+					var request = {
+						success: function(response){                            
+							UserService.setUser(response.data.data.profileData);
+							UserService.setDonations(response.data.data.totalDonations);
+							return response.data.data.profileData;
+						},
+						error:function(){
+							UserService.setUser(null);
+							UserService.setDonations(null);
+							return null;
+						}
+					}; 
+					return $http.get(GLOBALS.apiUrl+'session_data.json')
+						.then(  
+							function(response){ 
+								return UserService.validateResponse(request,response);
+							}, 
+							function(){ 
+								return request.error();
+							}
+						);
+				}
+			}
+		})
+		.state('home', {
+			parent:'app',
+			url: '/',
+			views: {
+				'page@': { 
+					templateUrl: 'views/home.html',
+					controller:'HomeCtrl',
+				},
+				'nav-right@': { 
+					templateUrl : 'views/navigation/navigation.html'
+				}
+			}
+		})
 
-        //collector profile view
-        .state('collector', {
-            url: '/collector/:id',
-            parent:'app',
-            views: {
-                'page@': { 
-                    templateUrl: 'views/collectorProfile.html',
-                    controller:'CollectorprofileCtrl'
-                 },
-                'nav-right@': { 
-                    templateUrl : 'views/navigation/navigation.html',
-                }
-            },
-            resolve: {
-                collector: function($http,$rootScope,$stateParams) {
-                    var request = {
-                        success: function(response){
-                            return response.data.data.profileData;
-                        },
-                        error:function(){
-                            return null;
-                        }
-                    }; 
-                    return $http({
-                            method: "POST",
-                            url:GLOBALS.apiUrl+"collector_profile.json",
-                            data: 'user[id]='+$stateParams.id
-                        }).then(  
-                            function(response){
-                                return validateResponse(request,response);
-                            }, 
-                            function(){ 
-                                return request.error();
-                            }
-                        );
-                }
-            }
-        })
+		//collector profile view
+		.state('collector', {
+			url: '/collector/:id',
+			parent:'app',
+			views: {
+				'page@': { 
+					templateUrl: 'views/collectorProfile.html',
+					controller:'CollectorprofileCtrl'
+				 },
+				'nav-right@': { 
+					templateUrl : 'views/navigation/navigation.html',
+				}
+			},
+			resolve: {
+				collector: function($http,$rootScope,UserService,$stateParams,$state) {
+					var request = {
+						success: function(response){
+							var collectorData = response.data.data.profileData;
+							collectorData.image = setImageFullPath(collectorData.image);
+							return collectorData;
+						},
+						error:function(){
+							return null;
+						}
+					}; 
+					return $http({
+						method: "POST",
+						url:GLOBALS.apiUrl+"collector_profile.json",
+						data: 'user[id]='+$stateParams.id
+					}).then(  
+						function(response){
+							return UserService.validateResponse(request,response);
+						}, 
+						function(){ 
+							return request.error();
+						}
+					);
+				}
+			}
+		})
+		.state('allCollectors',{
+			url:'/allCollectors/',
+			parent:'app',
+			views: {
+				'page@': { 
+					templateUrl: 'views/collectors.html',
+					controller:'CollectorsCtrl'
+				 },
+				'nav-right@': { 
+					templateUrl : 'views/navigation/navigation.html',
+				}
+			}
+		})
 
-        //--------------Model--------------
-        .state('modal', {
-            url: 'pop/',
-            abstract:true,
-            onEnter: ['$modal', '$state', function($modal, $state) {
-                console.log('Open modal');
-                $modal.open({
-                  template: '<div ui-view="modal"></div>',
-                  controller:'PopcontrollerCtrl'
-                }).result.finally(function() {
-                  $state.go('home');
-              });
-            }]
-          })
+		//--------------Model--------------
+		// .state('modal', {
+		//     url: 'pop/',
+		//     abstract:true,
+		//     onEnter: ['$modal', '$state', function($modal, $state) {
+		//         console.log('Open modal');
+		//         $modal.open({
+		//           template: '<div ui-view="modal"></div>',
+		//           controller:'PopcontrollerCtrl'
+		//         }).result.finally(function() {
+		//           $state.go('home');
+		//       });
+		//     }]
+		//   })
 
-          .state('modal.login', {
-            url: 'login/',
-            views: {
-              'modal@': {
-                templateUrl: 'views/login.html',
-                controller:'LoginCtrl',
-              }
-            }
-          })
+		//   .state('modal.login', {
+		//     url: 'login/',
+		//     views: {
+		//       'modal@': {
+		//         templateUrl: 'views/login.html',
+		//         controller:'LoginCtrl',
+		//       }
+		//     }
+		//   })
 
-        .state('logout', {
-            url: 'logout/',
-            parent: 'modal',
-            views: {
-              'modal@': {
-                templateUrl: 'views/logout.html',
-                controller:'LogoutCtrl'
-              }
-            }
-        })
+		// .state('logout', {
+		//     url: 'logout/',
+		//     parent: 'modal',
+		//     views: {
+		//       'modal@': {
+		//         templateUrl: 'views/logout.html',
+		//         controller:'LogoutCtrl'
+		//       }
+		//     }
+		// })
 
-        .state('signup', {
-            url: 'signup/',
-            parent: 'modal',
-            views: {
-              'modal@': {
-                templateUrl: 'views/signup.html',
-                controller:'SignupCtrl'
-              }
-            }
-        })
-        
-        .state('addDonation', {
-            url: 'addDonation/',
-            parent: 'modal',
-            views: {
-              'modal@': {
-                templateUrl: 'views/addDonation.html',
-                controller:'AdddonationCtrl'
-              }
-            }
-        })
-      });
+		// .state('signup', {
+		//     url: 'signup/',
+		//     parent: 'modal',
+		//     views: {
+		//       'modal@': {
+		//         templateUrl: 'views/signup.html',
+		//         controller:'SignupCtrl'
+		//       }
+		//     }
+		// })
+		
+		// .state('addDonation', {
+		//     url: 'addDonation/',
+		//     parent: 'modal',
+		//     views: {
+		//       'modal@': {
+		//         templateUrl: 'views/addDonation.html',
+		//         controller:'AdddonationCtrl'
+		//       }
+		//     }
+		// })
+	  });

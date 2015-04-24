@@ -2,63 +2,39 @@
 
 /**
  * @ngdoc function
- * @name gePantApp.controller:LoginCtrl
+ * @name gePantApp.controller:LogindonationCtrl
  * @description
- * # LoginCtrl
+ * # LogindonationCtrl
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-	.controller('LoginCtrl',['$scope','UserService','$timeout','$state','Facebook','$rootScope','$modalInstance','modalService',function($scope,UserService,$timeout,$state,Facebook,$rootScope,$modalInstance,modalService) {
-        $scope.modal= function(name){
-            switch(name){
-                case 'signup':
-                    modalService.openModal(name,'SignupCtrl');        
-                    break;
-            }
-        }
-        $scope.modalInstance = $modalInstance;
+	.controller('LogindonationCtrl',['$scope','UserService','$timeout','$state','Facebook','$rootScope','modalService',function($scope,UserService,$timeout,$state,Facebook,$rootScope,modalService) {
 		$scope.u={};
 	    var functions = {
 		    trying: function() {
 	            $scope.status = 'trying', 
 	            $scope.loginError = !1;
 	        },
-	        success: function(b) {
-	            $scope.status = 'success';
-
-                //set the root scope data
-                UserService.setUser(b.data.profileData);
-
-                //remove the modal after sometimeout
-	            $timeout(function() {
-                    $scope.modalInstance.close();
-                    $timeout(function() {
-                        //go to profile view after sometime
-                        $state.go('profile');
-                    },200);
-	            }, 1000);
+	        success: function(response) {
+	            var user = response.data.profileData;
+	            if (user.type=="Collector"){
+	            	$scope.status = 'collectorError';	
+	            } else {
+	            	$scope.status = 'success';
+	            	UserService.setUser(user);
+	            }
 	        },
 	        error: function() {
 	            $scope.status = 'error';
 	            $scope.loginError = !0;
 	        }
         };
-    	// console.log('this is inside the login controller'+ $scope.u);
 
-        /**
-         * @method gotoSignUp 
-         * function to go to login state 
-         */
-        $scope.gotoSignUp= function(){
-            console.log('inside goto signup');
-            $scope.$close();
-            setTimeout(function() {
-                $scope.modal('signup');    
-            }, 400);
-        };
-      
+        
         //login 
     	$scope.tryLogin =function(){
+    		debugger;
+    		console.error('yes i m here');
     		functions.trying();
             var user = {
                 data : {

@@ -8,11 +8,14 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-    .controller('SearchmapCtrl', ["$scope", "$http", "MapService", "GeoLocation", "localStorageService","DonationService" ,function($scope, b, c, d,e,DonationService) {
+    .controller('SearchmapCtrl', ["$scope", "$http", "MapService", "GeoLocation", "localStorageService","DonationService","$timeout",function($scope, b, c, d,e,DonationService,$timeout) {
+        var lat = null;
+        var lng = null;
         $scope.mapCollapse = !0, 
         $scope.mapCanvas = document.getElementById("start-map"), 
         $scope.map = {}, 
-        $scope.geo = {}, 
+        $scope.geo = {},
+        $scope.firstTime = 0;
         d.byIP(function(b) {
             $scope.geo = b
         }), 
@@ -37,9 +40,11 @@ angular.module('gePantApp')
                 rotateControl: !0,
                 minZoom: 8
             });
+            lat = b.viewport.northeast.lat;
+            lng = b.viewport.northeast.lng;
             var e = new google.maps.LatLng(b.viewport.northeast.lat, b.viewport.northeast.lng),
                 f = new google.maps.LatLng(b.viewport.southwest.lat, b.viewport.southwest.lng),
-                g = new google.maps.LatLngBounds(f, e);
+                g = new google.maps.LatLngBounds(f, e);                
             $scope.map.fitBounds(g);
             var h = google.maps.geometry.spherical.computeDistanceBetween(e, f),
                 i = new google.maps.Circle({
@@ -50,29 +55,22 @@ angular.module('gePantApp')
                     strokeWeight: 0,
                     editable: !0
                 });
-            i.setMap($scope.map), $scope.mapCollapse = !1, 
+            i.setMap($scope.map), $scope.mapCollapse = !1;
             setMarkers();
+            google.maps.event.addListenerOnce($scope.map, 'idle', function() {
+                google.maps.event.trigger($scope.map, 'resize');
+                $timeout(function() {
+                    $scope.map.setCenter(new google.maps.LatLng(b.viewport.northeast.lat, b.viewport.northeast.lng));
+                }, 200);
+            });
         }
         function setMarkers(){
-            //TODO marker is not good in the map 
-            //TODO infowindow is out of sync in small devices
             $scope.loadingLocations = true;
             var request = {
                 success : function(response){
                     $scope.loadingLocations = false;
                     var collectors = response.data.collectors;
                     console.log(collectors);
-                    collectors.push({
-                        id: 63,
-                        image: null,
-                        latitude: 60.12771862224645,
-                        location: "Folketshusvägen ",
-                        longitude: 18.647614240753228,
-                        name: "dinesh",
-                        objective: null,
-                        pledge: null,
-                        rating: null,
-                    })
                     var infowindow = new google.maps.InfoWindow();
                     var marker;
                     var pinIcon = new google.maps.MarkerImage(
@@ -88,18 +86,17 @@ angular.module('gePantApp')
                             map: $scope.map,
                             icon:pinIcon
                         });
-                        GLOBALS.markers.push(marker); 
                         var name = collectors[i].name;
                         var location = collectors[i].location;
-                        var image = collectors[i].image || 'images/avtar.jpg';
+                        var image = setImageFullPath(collectors[i].image);
                         var id = collectors[i].id;
 
 
-                        var contentString = '<div class="content_gg" id="content_gg" style="height: 70px;">'+
-                        '<a class="imageContent" href="#/collector/'+id+'" style="background-image:url('+image+')">'+
+                        var contentString = '<div class="content_gg" id="content_gg">'+
+                        '<a class="imageContent" href="#/collector/'+id+'?showDonate=true" style="background-image:url('+image+')">'+
                         '</a>\
                         <div class="nameContent">\
-                            <a class="name" href="#/collector/'+id+'">\
+                            <a class="name" href="#/collector/'+id+'?showDonate=true">\
                                 '+name+'\
                             </a>\
                         <div class="distance">\
@@ -121,8 +118,8 @@ angular.module('gePantApp')
                     console.error(response)
                 },
                 data:{
-                    latitude:60.1282423,
-                    longitude:18.645962,
+                    latitude:lat,
+                    longitude:lng,
                     page:1,
                     limit:100
                 }

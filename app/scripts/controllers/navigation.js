@@ -8,7 +8,20 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService','$translate','$timeout', function ($scope,$rootScope,UserService,$translate,$timeout) {
+  	.controller('NavigationCtrl',[ '$scope','$rootScope','UserService','$translate','$timeout','modalService', function ($scope,$rootScope,UserService,$translate,$timeout,modalService) {
+        $scope.modal= function(name){
+            switch(name){
+                case 'login':
+                    modalService.openModal(name,'LoginCtrl');        
+                    break;
+                case 'signup':
+                    modalService.openModal(name,'SignupCtrl');        
+                    break;
+                case 'logout':
+                    modalService.openModal(name,'LogoutCtrl');        
+                    break;
+            }
+        }
         $scope.loadStatus = '';
         function setIcon(icon){
             $scope.loadStatus = icon;
@@ -42,6 +55,8 @@ angular.module('gePantApp')
     		}
             if($rootScope.user.userLogedIn){
                 UserService.language_setting(request);    
+            } else {
+                setIcon('success');
             }
     	}
 

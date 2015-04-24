@@ -23,14 +23,14 @@
 <!-- Navigation section for login -->
 <ul ng-show="!user.userLogedIn" class="nav navbar-nav navbar-right">
 	<li>
-		<a ui-sref="signup" class="smallLink" style="min-width: 93px !important;padding-right: 10px !important">
+		<a ng-click="modal('signup')" href="javascript:void(0)" class="smallLink" style="min-width: 93px !important;padding-right: 10px !important">
 			<span>
 				{{ 'header.signUp' | translate }}
 			</span>
 		</a>
 	</li>
 	<li>
-		<a ui-sref="modal.login" class="navbar-btn btn btn-default" style="margin-right: 14px;">
+		<a id="nav-login" ng-click="modal('login')"  href="javascript:void(0)"  class="navbar-btn btn btn-default" style="margin-right: 14px;">
 			{{ 'header.login' | translate }}
 		</a>
 	</li>
@@ -50,6 +50,17 @@
 				</a>
 			</li>
 			<li>
+				<a ui-sref="profile.edit">
+				{{ 'navigation.editProfile' | translate }}
+				</a>
+			</li>
+			<li>
+				<a ui-sref="profile.setting">
+					{{ 'navigation.setting' | translate }}
+				</a>
+			</li>
+			<li class="divider"></li>
+			<li>
 				<a ui-sref="profile.donations" ng-show='user.type=="Doner"'> 
 			  		{{ 'navigation.donations' | translate }}
 				</a>
@@ -64,18 +75,7 @@
 			</li>
 			<li class="divider"></li>
 			<li>
-				<a ui-sref="profile.edit">
-				{{ 'navigation.editProfile' | translate }}
-				</a>
-			</li>
-			<li>
-				<a ui-sref="profile.setting">
-					{{ 'navigation.setting' | translate }}
-				</a>
-			</li>
-			<li class="divider"></li>
-			<li>
-				<a ui-sref="logout">
+				<a  ng-click="modal('logout')">
 					{{ 'header.logout' | translate }}
 				</a>
 			</li>

@@ -8,8 +8,19 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  .controller('CollectorprofileCtrl', function ($scope,collector,DonationService,$stateParams,$timeout) {
+  .controller('CollectorprofileCtrl', function ($scope,collector,DonationService,$stateParams,$timeout,modalService,$location) {
     $scope.collector = collector;
+    $scope.showDonate = $location.search().showDonate;
+    console.log('showDonate  '+$scope.showDonate);
+    $scope.modal= function(){
+        GLOBALS.collectorID = {
+            name:collector.name,
+            location:collector.street_address,
+            image:collector.image,
+            id:$stateParams.id
+        }; 
+        modalService.openModal('addDonation','AdddonationCtrl');        
+    }
     $scope.ratingStatus = null;
     if(collector){
         $scope.loadStatus = 'success';    
@@ -44,7 +55,7 @@ angular.module('gePantApp')
                 setIcon("error");
                 console.error('got error');  
             },
-            data:{collector_id:$stateParams.id,rating:$scope.collector.myStar}
+            data:{collector_id:$stateParams.id,rating:$scope.collector.my_rating}
         })
     }
 

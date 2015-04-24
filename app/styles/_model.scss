@@ -78,6 +78,12 @@
     position: relative
 }
 
+@media (max-width: 767px) {
+    .modal-dialog .modal-content .modal-header h1{
+        font-size: 1.15em;
+    }
+}
+
 .modal-dialog .modal-content .modal-header:before,.modal-dialog .modal-content .modal-header:after {
     display: table;
     content: " "
