@@ -51,6 +51,9 @@ angular
               	console.log('current state text is::'+$rootScope.currentLink);
               	$rootScope.currentLink = findName(toState.name);
         	});
+		$rootScope.$on('$stateChangeSuccess',function(){
+		    $("html, body").animate({ scrollTop: 0 }, 200);
+		})
 	})
 	.config(function($translateProvider) {
 		$translateProvider.useStaticFilesLoader({

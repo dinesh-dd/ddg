@@ -72,6 +72,18 @@ angular.module('gePantApp')
             params: {
                 methodName: 'collector_list.json'
             }  
+        },
+        forgotPassword:{
+            method: 'POST',
+            params: {
+                methodName: 'forgot_password.json'
+            }    
+        },
+        changePassword:{
+            method: 'POST',
+            params: {
+                methodName: 'change_password.json'
+            }    
         }
     });
 }]);

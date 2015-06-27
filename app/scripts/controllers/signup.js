@@ -39,8 +39,17 @@ angular.module('gePantApp')
                     },200);
                 }, 1000);
             },
-            error: function() {
+            error: function(response) {
+                // Email has already been taken
+                if(response && response.result && 
+                    response.result.messages[0]=="Email has already been taken"){                    
+                    //set message the email has taken via language
+                    $scope.errorType = 'emailTaken';
+                } else {
+                    $scope.errorType = '';
+                }
                 $scope.status = 'error';
+
                 $scope.loginError = !0;
             }
         };

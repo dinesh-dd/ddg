@@ -15,12 +15,14 @@ angular.module('gePantApp')
                         $rootScope.collectors = collectors;
 					});
 					var request = {
-						success: function(response){                            
+						success: function(response){                 
+							$rootScope.total__donations =   response.data.data.total_donations || 0;
 							UserService.setUser(response.data.data.profileData);
 							UserService.setDonations(response.data.data.totalDonations);
 							return response.data.data.profileData;
 						},
-						error:function(){
+						error:function(response){
+							$rootScope.total__donations =   response.data.data.total_donations || 0;
 							UserService.setUser(null);
 							UserService.setDonations(null);
 							return null;
@@ -71,6 +73,10 @@ angular.module('gePantApp')
 						success: function(response){
 							var collectorData = response.data.data.profileData;
 							collectorData.image = setImageFullPath(collectorData.image);
+							try{
+                                collectorData.street_address = JSON.parse(collectorData.street_address);
+                            } catch(e){console.error('error in location convert to json')}
+                            collectorData.street_address = (collectorData.street_address && collectorData.street_address.formatted_address) || collectorData.street_address;
 							return collectorData;
 						},
 						error:function(){

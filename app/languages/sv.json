@@ -34,7 +34,8 @@
 		"collector":"Collector",
 		"collectorSelected":"Vald collector",
 		"popular":"vad som är populärt",
-		"error":"Fel !!!"
+		"error":"Fel !!!",
+		"ifGepant":"Om Gepant"
 	},
 	"message":{
 		"trylogin":"Försöker logga in...",
@@ -46,7 +47,8 @@
 		"enterBag":"Du bör ange åtminstone en påse ;)",
 		"enterName":"Var god ange namn",
 		"validEmail":"Var god ange en giltig e-postadress",
-		"validPassword":"Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra.",
+		"validPassword1":"Ogiltigt lösenord. Ditt lösenord måste vara minst 8 tecken, innehålla stora och små bokstäver och minst en siffra.",
+		"validPassword":"Ogiltigt lösenord . Ditt lösenord måste vara minst 8 tecken och högst 25 tecken",
 		"enterPhone":"Ange telefonnumret",
 		"correctInfo":"Uppgifterna är inte korrekt ifyllda. Var god korrigera",
 		"markedField":"-markerade fält",
@@ -73,7 +75,20 @@
 		"tryingDonation":"Försöker skicka donation",
 		"errorDonation":"Fel i skicka donation",
 		"authError1":"Du är inte autorised göra denna process . Vänligen ",
-		"authError2":" först."
+		"authError2":" först.",
+		"tryforgotPassword":"Att försöka återställa lösenordet",
+		"successforgotPassword":"Lösenordet skickas till din e-postadress",
+		"errorforgotPassword":"Fel att återhämta lösenordet",
+		"tryChangePassword": "Försöker att ändra lösenord",
+        "successChangePassword": "Lösenord ändrats :)",
+        "errorChangePassword": "Fel att ändra lösenordet :(",
+        "requireOld" : "Gammalt lösenord krävs",
+        "notMatching" : "Bekräfta lösenord som inte matchar med nytt lösenord",
+        "totalDonation":"Donerat hittills",
+        "emailTaken":"E-post har redan tagits",
+        "accurateLocation":"Välj plats från rullgardins för exakt läge",
+        "invalidPledge":"Ange ett giltigt pantvärdet"
+
 	},
 	"placeholder":{
 		"email":"E-postadress",
@@ -86,7 +101,10 @@
 		"streetAdd":"Gatuadress",
 		"pledge":"Pant",
 		"addr":"Adress",
-		"moreinfo":"Ex. tider som passar för avhämtning, om du vill bli uppringd innan etc."
+		"moreinfo":"Ex. tider som passar för avhämtning, om du vill bli uppringd innan etc.",
+		"oldPassword":"Gammalt lösenord",
+        "newPassword":"Nytt lösenord",
+        "confirmPassword":"Bekräfta lösenord"
 	},
 	"navigation":{
 		"viewProfile":"Visa profil",
@@ -116,7 +134,10 @@
 		"chageAgain":"Gå tillbaka och ändra",
 		"upload":"Ladda upp",
 		"seeAll":"se allt",
-		"loadMore":"Ladda mer"
+		"loadMore":"Ladda mer",
+		"forgotPassword":"Glömt lösenord ?",
+		"recoverPassword":"Återskapa lösenord",
+		"changePassword": "Ändra lösenord"
 	},
 	"html":{
 		"loginEmail":"Eller logga in via e-postadress",
@@ -190,7 +211,7 @@
 			"wantToDonate3":"Uppskatta hur mycket pant du har",
 			"wantToDonate4":"Välj när panten kan bli upphämtad",
 			"wantToDonate5":"Välj vem du vill donera till",
-			"wantToDonate6":"Tänk på att du även kan donera utländska och tillplattade burkar till föreningar som ingår i Returpacks föreningskocept.",
+			"wantToDonate6":"Tänk på att du även kan donera utländska och tillplattade burkar till föreningar som ingår i Returpacks föreningskoncept.",
 			"collectPledge1":"Om du vill samla pant till dig själv eller till en organisation som du representerar kan du",
 			"collectPledge2":"registrera dig här",
 			"collectPledge3":"Det är helt kostnadsfritt och du kommer igång direkt.",

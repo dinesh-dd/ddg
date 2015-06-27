@@ -14,6 +14,9 @@ angular.module('gePantApp')
                 case 'signup':
                     modalService.openModal(name,'SignupCtrl');        
                     break;
+                case 'forgotpassword':
+                    modalService.openModal(name,'ForgotpasswordCtrl');        
+                    break;
             }
         }
         $scope.modalInstance = $modalInstance;
@@ -49,11 +52,11 @@ angular.module('gePantApp')
          * @method gotoSignUp 
          * function to go to login state 
          */
-        $scope.gotoSignUp= function(){
+        $scope.changeModal= function(name){
             console.log('inside goto signup');
             $scope.$close();
             setTimeout(function() {
-                $scope.modal('signup');    
+                $scope.modal(name);    
             }, 400);
         };
       
@@ -75,14 +78,15 @@ angular.module('gePantApp')
             functions.trying();
             Facebook.login(function(response) {
                 if (response.status == "connected") {
-                    console.log(response);
-                     var user = {
+                    var user = {
                         data : {
                             'user[fb_auth_token]':response.authResponse.accessToken,
+                            'user[language]':$rootScope.user.language,
+                            'user[type]':'Doner',
                         }
                     };
                     var b = angular.extend(user, functions);
-                    UserService.loginByFacebook(b); 
+                    UserService.signUpByFacebook(b); 
                 } else {
                     functions.error();  
                 }

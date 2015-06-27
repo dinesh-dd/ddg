@@ -36,8 +36,7 @@
                 </h4>
             </div>
             <div class="form-group">
-            <!-- ng-minlength="10" ng-maxlength="15" -->
-                <input type="number"  min="0" ng-minlength="10" ng-maxlength="15" ng-model="u.contact_no" name="tel" class="form-control" id="ptel" placeholder="{{ 'placeholder.telephone' | translate }}" />
+                <input type="text" ng-pattern="/^[0-9]*$/" ng-minlength="10" ng-maxlength="15" ng-model="u.contact_no" name="tel" class="form-control" id="ptel" placeholder="{{ 'placeholder.telephone' | translate }}" />
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.tel.$dirty && form.tel.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPhone' | translate }}"></i>
             </div>
             <hr>
@@ -47,7 +46,7 @@
                 <h4>{{ 'placeholder.postalCode' | translate }}</h4>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="u.postal_code"  ng-change="setStreetValidation()" name="postalCode" class="form-control" placeholder="{{ 'placeholder.postalCode' | translate }}" autocomplete="off" typeahead="address as address.formatted_address_postal for address in getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setPostalCode()">
+                <input type="text" ng-model="u.postal_code"  ng-change="changeMap()" name="postalCode" class="form-control" placeholder="{{ 'placeholder.postalCode' | translate }}" autocomplete="off" typeahead="address as address.formatted_address_postal for address in getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setPostalCode()">
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.postalCode.$dirty && form.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPostal' | translate }}"></i>
                 <!-- by enabling this there will be the padding right side -->
             </div>
@@ -58,10 +57,22 @@
                 <h4>{{ 'placeholder.streetAdd' | translate }}</h4>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="u.street_address" name="address" id="adw-address" autocomplete="off" class="form-control"  placeholder="{{ 'placeholder.streetAdd' | translate }}"  ng-disabled="form.postalCode.$invalid || u.postal_code==''" typeahead="address as address.formatted_address for address in getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="setStreet()">
+                <input type="text" 
+                    ng-model="u.street_address" 
+                    name="address" 
+                    ng-change="changeMap()"
+                    id="adw-address" 
+                    autocomplete="off" 
+                    class="form-control"  
+                    placeholder="{{ 'placeholder.streetAdd' | translate }}"  ng-disabled="form.postalCode.$invalid || u.postal_code==''" 
+                    typeahead="address as address.formatted_address for address in getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" 
+                    typeahead-wait-ms="300" 
+                    typeahead-editable="true" 
+                    type-ahead-loading="loadingLocations" 
+                    typeahead-on-select="setStreet()">
                 <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.address.$dirty) && form.address.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterAdd' | translate }}"></i>
-                <!-- <i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$valid && !u.street_address.street_number" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.streetNum' | translate }}"></i> -->
-                <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.address.$valid && u.street_address.street_number"></i>
+                <i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$dirty && form.address.$valid && !form.address.$modelValue.address_components" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.accurateLocation' | translate }}"></i>
+                <!-- <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.address.$valid && u.street_address.street_number"></i> -->
             </div>
         </div>
         <div class='row' id="add-donation-wizard">
@@ -77,7 +88,7 @@
             <div>
                 <div class="form-group">
                     <input type="number" min="0" ng-model="u.pledge" name="pledge" class="form-control" placeholder="{{ 'placeholder.pledge' | translate }}"/>
-                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.pledge.$dirty && form.pledge.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="Please enter valid pledge value"></i>
+                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.pledge.$dirty && form.pledge.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.invalidPledge' | translate }}"></i>
                 </div>
             </div>
             <hr>
@@ -88,7 +99,7 @@
             </div>
             <div>
                 <div class="form-group">
-                    <textarea rows="3" ng-model="u.objective" name="Objective" class="form-control" id="pObjective" placeholder="{{ 'html.objective' | translate }}" />
+                    <textarea rows="3" ng-model="u.objective" name="Objective" class="form-control" id="pObjective" placeholder="{{ 'placeholder.obj' | translate }}" />
                 </div>
             </div>
             <hr>

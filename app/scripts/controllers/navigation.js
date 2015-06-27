@@ -20,6 +20,9 @@ angular.module('gePantApp')
                 case 'logout':
                     modalService.openModal(name,'LogoutCtrl');        
                     break;
+                case 'changepassword':
+                    modalService.openModal(name,'ChangepasswordCtrl');        
+                    break;
             }
         }
         $scope.loadStatus = '';

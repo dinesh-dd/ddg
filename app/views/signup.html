@@ -12,7 +12,12 @@
             {{ 'message.signupSuccess' | translate }} 
         </div>
         <div ng-switch-when="error" class="alert alert-danger">
-            {{ 'message.signupFailure' | translate }} 
+            <div ng-if="errorType==''">
+                {{ 'message.signupFailure' | translate }} 
+            </div>
+            <div ng-if="errorType=='emailTaken'">
+                {{ 'message.emailTaken' | translate }} 
+            </div>
         </div>
     </div>
 
@@ -70,7 +75,8 @@
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.email.$valid"></i>
         </div>
         <div class="form-group">
-            <input type="password" ng-model="u.password" required name="password" class="form-control" id="caPass" placeholder="{{ 'placeholder.password' | translate }}" ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/">
+            <input type="password" ng-model="u.password" required name="password" class="form-control" id="caPass" placeholder="{{ 'placeholder.password' | translate }}" ng-minlength="6" ng-maxlength="25">
+             <!-- ng-pattern="/(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[^a-zA-Z]).{8,}/" -->
             <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="form.password.$dirty && form.password.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.validPassword' | translate }}"></i>
             <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.password.$valid"></i>
         </div>

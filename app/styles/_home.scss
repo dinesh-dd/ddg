@@ -1,0 +1,21 @@
+.totalDonation {
+    background: rgb(67, 123, 147) !important;
+    .breadcrumb {
+        color: white;
+        opacity: 1 !important;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+    }
+    .text_donation {
+        float: left;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .clearfix{
+    	float:left;
+        margin-left: -30px;
+    }
+}

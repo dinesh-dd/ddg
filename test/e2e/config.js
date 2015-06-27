@@ -18,6 +18,6 @@ exports.config = {
     defaultTimeoutInterval: 30000
   },
   onPrepare: function() {
-	  browser.baseUrl = "http://localhost:9000"
+	  browser.baseUrl = "http://192.168.1.35:9000/"
   }
 };

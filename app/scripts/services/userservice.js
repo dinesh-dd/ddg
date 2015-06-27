@@ -26,8 +26,6 @@ angular.module('gePantApp')
                         (response.result && response.result.errorcode == 401)
                     ) 
                 ){  //check if its an authentication error
-                    debugger;
-                    console.log(response.config);
                     if(response.config && response.config.url.indexOf('session')>-1){
                         return request.error(response);    
                     }
@@ -58,7 +56,6 @@ angular.module('gePantApp')
                 $rootScope.user.userLogedIn = true;
                 $rootScope.user.image= setImageFullPath($rootScope.user.image);
                 setLanguage($rootScope.user.language);
-                console.log($rootScope.user);    
             } else {
                 $rootScope.user = {
                     userLogedIn:false
@@ -137,6 +134,16 @@ angular.module('gePantApp')
                     validateResponse(user,a);
                 }, user.error)  
             },
+            forgotPassword:function(user){
+                typeof user  == "object"  && MemberApi.forgotPassword(user, function(a, d) {
+                    validateResponse(user,a);
+                }, user.error)    
+            },
+            changePassword:function(user){
+                typeof user  == "object"  && MemberApi.changePassword(user, function(a, d) {
+                    validateResponse(user,a);
+                }, user.error)    
+            },
             language_setting:function(user){
                 typeof user  == "object"  && MemberApi.language_setting(user, function(a, d) {
                     validateResponse(user,a,false);
@@ -145,18 +152,20 @@ angular.module('gePantApp')
             getCollectors:function(pageNumber,limit,callback){
                 var request = {
                     success:function(response){
-                        console.log('got success');
-                        console.log(response.data.collectors); 
                         _.each(response.data.collectors,function(value){
                             var percentage   = 0;
                             value.image = setImageFullPath(value.image);
                             if(value.collector_pledge){
                                 if(value.collector_totalThings){
-                                    percentage = (value.collector_totalThings/value.collector_pledge) * 100;
+                                    percentage = (value.collector_totalThings[0]/value.collector_pledge) * 100;
                                     percentage = Math.round(percentage);
                                 }
                             }
                             value.percentage = percentage;
+                            try{
+                                value.location = JSON.parse(value.location);
+                            } catch(e){}
+                            value.location = (value.location && value.location.formatted_address) || value.location;
                         });
                         return callback(response.data.collectors,response.total_page);
                     },

@@ -1,7 +1,44 @@
 <div ng-controller="CarouselDemoCtrl">
+    <script type="text/javascript" src="scripts/flipcounter.js"></script>
+    <script type="text/javascript" src="scripts/modernizr.custom.21954.js"></script>
+    <div id="header-splitter" class="totalDonation">
+        <div class="container">
+            <ol class="breadcrumb">
+                <div class="text_donation">
+                    {{ 'message.totalDonation' | translate }}
+                </div>
+                <div class="clearfix" id="g_counter_">
+                    <div class="counter-wrapper">
+                        <ul class="flip-counter small" id="myCounter"></ul>
+                    </div>
+                </div>
+                <input type="hidden" ng-bind="total__donations" id="total_counter">
+            </ol>
+        </div>
+    </div>
+    <script>
+    $(function() {
+        debugger;
+        if (typeof GLOBALS.myCounter == 'undefined') {
+            GLOBALS.myCounter = null;
+        }
+        $('#g_counter_').empty().append('<div class="counter-wrapper">\
+                        <ul class="flip-counter small" id="myCounter"></ul>\
+                    </div>');
+        setTimeout(function() {
+            var data = 89329 + parseInt($('#total_counter').text());
+            GLOBALS.myCounter = new flipCounter('myCounter', {
+                value: 89329 + parseInt($('#total_counter').text()),
+                pace: 90000000,
+            });
+        }, 0);
+
+    });
+    </script>
     <div id='carousel'>
         <carousel interval="myInterval">
             <slide ng-repeat="slide in slides" active="slide.active" class="{{slide.class}}">
+                <!-- <video src="{{slide.video}}" class="video1" autoplay loop></video> -->
                 <img ng-src="images/slider-image.png" style="margin:auto;">
                 <div class="item-content ng-scope" autoscale="1200">
                     <div class="carousel-caption">
@@ -11,7 +48,7 @@
                                 {{ 'html.homecarosalContent' | translate }}
                             </p>
                             <p>
-                                <a ng-click="modal('addDonation')" ng-show='!user.userLogedIn || user.type=="Doner"'  class="btn btn-primary">
+                                <a ng-click="modal('addDonation')" ng-show='!user.userLogedIn || user.type=="Doner"' class="btn btn-primary">
                                     {{ 'button.addDonation' | translate }}
                                 </a>
                                 <a ng-click="modal('signup')" class="btn" ng-show="!user.userLogedIn">
@@ -31,15 +68,7 @@
                 <span class="loading">
                     <i class="fa fa-refresh loadicon" ng-show="loadingLocations"></i>
                 </span>
-                <input type="text" 
-                    class="form-control input-lg searchBar" 
-                    ng-model="myPlace" 
-                    placeholder="{{ 'placeholder.enterAddress' | translate }}"
-                    autofocus typeahead="address as address.formatted_address for address in getLocation($viewValue) | filter:$viewValue" 
-                    typeahead-min-length="2" 
-                    typeahead-wait-ms="300" 
-                    typeahead-loading="loadingLocations" 
-                    typeahead-on-select="setLocation()">
+                <input type="text" class="form-control input-lg searchBar" ng-model="myPlace" placeholder="{{ 'placeholder.enterAddress' | translate }}" autofocus typeahead="address as address.formatted_address for address in getLocation($viewValue) | filter:$viewValue" typeahead-min-length="2" typeahead-wait-ms="300" typeahead-loading="loadingLocations" typeahead-on-select="setLocation()">
             </p>
         </div>
         <div id="start-map" collapse="mapCollapse"></div>
@@ -52,76 +81,76 @@
     <!-- list for the big devices -->
     <div class='searchResult container collectorNormal' ng-controller='SearchmapCtrl'>
         <div class="col-xs-3" ng-repeat="collector in collectors">
-        <div class='colloctorItem' ng-click="currStep.select(collector.id)">
-            <div class='img' style="background-image:url({{collector.image}})"  ng-click="gotoCollector({{collector.collector_id}})"></div>
-            <div class='container'>
-                <div class='name'  ng-click="gotoCollector({{collector.collector_id}})">
-                    <b>{{collector.collector_name}}</b>
-                </div>
-                <div class='star left'>
-                    <rating ng-model="collector.rating" max="5"  readonly="true"></rating>
-                </div>
-                <div class='objective mtop1 left'  ng-show="collector.objective">{{collector.objective}}</div>
-                <div class="container progresscontainer">
-                    <div class='location' ng-show="collector.location">
-                        <i class="fa fa-lg fa-fw fa-map-marker"></i> {{collector.location}}
+            <div class='colloctorItem' ng-click="currStep.select(collector.id)">
+                <div class='img' style="background-image:url({{collector.image}})" ng-click="gotoCollector(collector.collector_id)"></div>
+                <div class='container'>
+                    <div class='name' ng-click="gotoCollector(collector.collector_id)">
+                        <b>{{collector.collector_name}}</b>
                     </div>
-                    <div ng-show="collector.collector_pledge">
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{collector.percentage}}%">
-                          </div>
+                    <div class='star left'>
+                        <rating ng-model="collector.rating" max="5" readonly="true"></rating>
+                    </div>
+                    <div class='objective mtop1 left' ng-show="collector.objective">{{collector.objective}}</div>
+                    <div class="container progresscontainer">
+                        <div class='location' ng-show="collector.location">
+                            <i class="fa fa-lg fa-fw fa-map-marker"></i> {{collector.location}}
                         </div>
-                        <div class="progressData">
-                            <span class="funded">
+                        <div ng-show="collector.collector_pledge">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{collector.percentage}}%">
+                                </div>
+                            </div>
+                            <div class="progressData">
+                                <span class="funded">
                                 <b>{{collector.percentage}}%</b><br>
                                 <span>{{ 'html.funded' | translate }}</span>
-                            </span>
-                            <span class="pledged">
+                                </span>
+                                <span class="pledged">
                                 <b>{{collector.collector_pledge || 0 }}</b><br>
                                 <span>{{ 'html.pledged' | translate }}</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div> 
-    </div>
-    <!-- list for the small devices -->
-    <div class='searchResult mobilescroll collectorMobile' ng-controller='SearchmapCtrl'>
-        <div class='colloctorItem mobileItem' ng-repeat="collector in collectors" ng-click="currStep.select(collector.id)">
-            <div class='img' style="background-image:url({{collector.image}})"  ng-click="gotoCollector({{collector.collector_id}})"></div>
-            <div class='container'>
-                <div class='name'  ng-click="gotoCollector({{collector.collector_id}})">
-                    <b>{{collector.collector_name}}</b>
-                </div>
-                <div class='star left'>
-                    <rating ng-model="collector.rating" max="5"  readonly="true"></rating>
-                </div>
-                <div class='objective mtop1 left' ng-show="collector.objective">{{collector.objective}}</div>
-                <div class="container progresscontainer">
-                    <div class='location' ng-show="collector.location">
-                        <i class="fa fa-lg fa-fw fa-map-marker"></i> {{collector.location}}
-                    </div>
-                    <div ng-show="collector.collector_pledge">
-                        <div class="progress">
-                          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{collector.percentage}}%;">
-                          </div>
-                        </div>
-                        <div class="progressData">
-                            <span class="funded">
-                                <b>{{collector.percentage}}%</b><br>
-                                <span>{{ 'html.funded' | translate }}</span>
-                            </span>
-                            <span class="pledged">
-                                <b>{{collector.collector_pledge || 0 }}</b><br>
-                                <span>{{ 'html.pledged' | translate }}</span>
-                            </span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<!-- list for the small devices -->
+<div class='searchResult mobilescroll collectorMobile' ng-controller='SearchmapCtrl'>
+    <div class='colloctorItem mobileItem' ng-repeat="collector in collectors" ng-click="currStep.select(collector.id)">
+        <div class='img' style="background-image:url({{collector.image}})" ng-click="gotoCollector(collector.collector_id)"></div>
+        <div class='container'>
+            <div class='name' ng-click="gotoCollector(collector.collector_id)">
+                <b>{{collector.collector_name}}</b>
+            </div>
+            <div class='star left'>
+                <rating ng-model="collector.rating" max="5" readonly="true"></rating>
+            </div>
+            <div class='objective mtop1 left' ng-show="collector.objective">{{collector.objective}}</div>
+            <div class="container progresscontainer">
+                <div class='location' ng-show="collector.location">
+                    <i class="fa fa-lg fa-fw fa-map-marker"></i> {{collector.location}}
+                </div>
+                <div ng-show="collector.collector_pledge">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{collector.percentage}}%;">
+                        </div>
+                    </div>
+                    <div class="progressData">
+                        <span class="funded">
+                                <b>{{collector.percentage}}%</b><br>
+                                <span>{{ 'html.funded' | translate }}</span>
+                        </span>
+                        <span class="pledged">
+                                <b>{{collector.collector_pledge || 0 }}</b><br>
+                                <span>{{ 'html.pledged' | translate }}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

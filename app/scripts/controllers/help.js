@@ -8,7 +8,7 @@
  * Controller of the gePantApp
  */
 angular.module('gePantApp')
-  	.controller('HelpCtrl', function ($scope,$rootScope,$filter,$state,$timeout) {
+  	.controller('HelpCtrl', function ($scope,$rootScope,$filter,$state,$timeout,modalService) {
 
       $timeout(function(){
           $rootScope.currentLink = findName($state.$current.name);
@@ -18,6 +18,20 @@ angular.module('gePantApp')
       function findName(currentState){
           var single_object = $filter('filter')($scope.navs, function (d) {return d.link == currentState;})[0];
           return single_object ? single_object.text : '';
+      }
+
+      $scope.modal= function(name){
+          switch(name){
+              case 'login':
+                  modalService.openModal(name,'LoginCtrl');        
+                  break;
+              case 'signup':
+                  modalService.openModal(name,'SignupCtrl');        
+                  break;
+              case 'logout':
+                  modalService.openModal(name,'LogoutCtrl');        
+                  break;
+          }
       }
 
   		$scope.navs = [

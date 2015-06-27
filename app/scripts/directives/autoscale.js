@@ -7,7 +7,7 @@
  * # autoscale
  */
 angular.module('gePantApp')
-  .directive('autoscale', ['$window', function(a) {
+  .directive('autoscale', ['$window','$timeout', function(a,$timeout) {
         return {
             restrict: 'AC',
             link: function(b, c, d) {
@@ -29,6 +29,10 @@ angular.module('gePantApp')
                 }, b.calcParams(), angular.element(a).bind('resize', function() {
                     b.calcParams(), b.$apply()
                 })
+                //this is the patch for setting the transform which is not working first time in devices
+                $timeout(function() {
+                    b.calcParams(), b.$apply();
+                }, 10);
             }
         }
     }])

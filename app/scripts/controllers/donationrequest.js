@@ -83,7 +83,6 @@ angular.module('gePantApp')
             	$scope.donations.splice(index, 1);
             	//remove one item from total items
             	$scope.totalItems = $scope.totalItems -1;
-            	debugger;
             	if($scope.donations.length == 0 ){
 	            	if ($scope.totalItems==0){
 	            		//set messag that there is no items

@@ -16,7 +16,7 @@ angular.module('gePantApp')
                 components: GLOBALS.map.components,
                 sensor: !1
             };
-            return c.isObject(a) && (e = c.extend(e, a)), b.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBcFnJN2g9YZspeptIvi1F-UcIz9qmvuXE", {
+            return c.isObject(a) && (e = c.extend(e, a)), b.get("https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC_PqpV2IPjIUd7YLfWVIQODqnCCGSKiro", {
                 params: e
             }).then(function(a) {
                 return c.isFunction(d) ? d(a) : a
@@ -85,7 +85,7 @@ angular.module('gePantApp')
             return a.position = new google.maps.LatLng(a.lat, a.lng), console.log(a), new google.maps.Marker(a)
         }
 
-        function setMapCenterWithMarker(mapid,options){
+        function setMapCenterWithMarker(mapid, options) {
             mapid = c.isObject(mapid) ? mapid : document.getElementById(mapid) || document.querySelector(mapid);
             var mapOptions = {
                 zoom: 16,
@@ -96,7 +96,17 @@ angular.module('gePantApp')
             h(options);
             return map;
         }
-     
+
+        function setMapWithMarker(mapId, geometry) {
+            var map = g(mapId, geometry);
+            var marker = new google.maps.Marker({
+                position: geometry.geometry.location,
+                map: map,
+                title: 'your info '
+            });
+
+        }
+
         return initted = !1,
             function(b) {
                 a.mapServiceInit = function() {
@@ -110,7 +120,8 @@ angular.module('gePantApp')
                 formatAddress: e,
                 formatAddresses: f,
                 setMap: g,
+                setMapWithMarker: setMapWithMarker,
                 setMapMarker: h,
-                setMapCenterWithMarker:setMapCenterWithMarker
+                setMapCenterWithMarker: setMapCenterWithMarker
             }
     }]);

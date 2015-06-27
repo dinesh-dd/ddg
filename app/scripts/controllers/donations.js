@@ -23,8 +23,7 @@ angular.module('gePantApp')
   	}
 
 	$scope.pageChanged = function() {
-		$scope.loadingStatus = 'loading'
-    debugger;
+		$scope.loadingStatus = 'loading';
 		var request = {
         success: function(response){
         	  $scope.loadingStatus = ''

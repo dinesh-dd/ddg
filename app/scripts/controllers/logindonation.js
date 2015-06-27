@@ -33,8 +33,6 @@ angular.module('gePantApp')
         
         //login 
     	$scope.tryLogin =function(){
-    		debugger;
-    		console.error('yes i m here');
     		functions.trying();
             var user = {
                 data : {
@@ -51,20 +49,21 @@ angular.module('gePantApp')
             functions.trying();
             Facebook.login(function(response) {
                 if (response.status == "connected") {
-                    console.log(response);
-                     var user = {
+                    var user = {
                         data : {
                             'user[fb_auth_token]':response.authResponse.accessToken,
+                            'user[language]':$rootScope.user.language,
+                            'user[type]':'Doner',
                         }
                     };
                     var b = angular.extend(user, functions);
-                    UserService.loginByFacebook(b); 
+                    UserService.signUpByFacebook(b); 
                 } else {
                     functions.error();  
                 }
             },{scope: 'email'});
         }
-
+        
       //functions related to facebook
       $scope.getLoginStatus = function() {
         Facebook.getLoginStatus(function(response) {

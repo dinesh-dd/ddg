@@ -1,33 +1,33 @@
-<form name="form" step-data="stepData['where']" id="whereForm" ng-submit="nextStep(true)" novalidate autocomplete="off">
+<form name="formWhere" step-data="stepData['where']" id="whereForm" ng-submit="nextStep(true)" novalidate autocomplete="off" ng-init="setData()">
     <fieldset>
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
                     <p>{{ 'header.enterPostal' | translate }}</p>
-                    <input type="text" ng-model="donation.postalCodeGeo" name="postalCode" class="form-control" placeholder="{{ 'placeholder.postalCode' | translate }}" autofocus required autocomplete="off" typeahead="address as address.formatted_address_postal for address in currStep.getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="currStep.setPostalCode()" ng-change="currStep.setStreetValidation(this)">
-                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.postalCode.$dirty || currStep.validated) && form.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPostal' | translate }}"></i>
-                    <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.postalCode.$valid"></i>
+                    <input type="text" ng-model="donation.postalCodeGeo" name="postalCode" class="form-control" placeholder="{{ 'placeholder.postalCode' | translate }}" autofocus required autocomplete="off" ng-change="currStep.changeMap()" typeahead="address as address.formatted_address_postal for address in currStep.getPostalCode($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="currStep.setPostalCode()">
+                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(formWhere.postalCode.$dirty || currStep.validated) && formWhere.postalCode.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterPostal' | translate }}"></i>
+                    <i class="fa fa-lg fa-fw fa-check-circle" ng-show="formWhere.postalCode.$valid"></i>
                 </div>
                 <div class="form-group">
                     <p>{{ 'header.enterAdd' | translate }}</p>
-                    <input type="text" ng-model="donation.streetGeo" name="address" id="adw-address" required autocomplete="off" class="form-control" placeholder="{{ 'placeholder.streetAdd' | translate }}" ng-disabled="form.postalCode.$invalid" typeahead="address as address.formatted_address for address in currStep.getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="false" type-ahead-loading="loadingLocations" typeahead-on-select="currStep.setStreet()">
-                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(form.address.$dirty || currStep.validated) && form.address.$invalid" popover-trigger="mouseenter" popover-placement="left"  popover="{{ 'message.enterAdd' | translate }}"></i>
-                    <i class="fa fa-lg fa-fw fa-question-circle" ng-show="form.address.$valid && !donation.streetGeo.street_number" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.streetNum' | translate }}"></i>
-                    <i class="fa fa-lg fa-fw fa-check-circle" ng-show="form.address.$valid && donation.streetGeo.street_number"></i>
+                    <input type="text" ng-model="donation.streetGeo" name="address" id="adw-address" ng-change="currStep.changeMap()" required autocomplete="off" class="form-control" placeholder="{{ 'placeholder.streetAdd' | translate }}" ng-disabled="formWhere.postalCode.$invalid" typeahead="address as address.formatted_address for address in currStep.getStreet($viewValue) | filter:$viewValue" typeahead-min-length="3" typeahead-wait-ms="300" typeahead-editable="true" type-ahead-loading="loadingLocations" typeahead-on-select="currStep.setStreet()">
+                    <i class="fa fa-lg fa-fw fa-exclamation-circle" ng-show="(formWhere.address.$dirty || currStep.validated) && formWhere.address.$invalid" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.enterAdd' | translate }}"></i>
+                    <i class="fa fa-lg fa-fw fa-question-circle" ng-show="formWhere.address.$dirty && formWhere.address.$valid && !formWhere.address.$modelValue.address_components" popover-trigger="mouseenter" popover-placement="left" popover="{{ 'message.accurateLocation' | translate }}"></i>
+                    <i class="fa fa-lg fa-fw fa-check-circle" ng-show="formWhere.address.$valid && formWhere.address.$modelValue.address_components"></i>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="map" round>
-                    <div id="map-adw" class="map-preview round-fill"></div>
+                    <div id="map-adw3" class="map-preview round-fill"></div>
                 </div>
             </div>
         </div>
         <p class="alert alert-danger pop" ng-show="currStep.validated && !currStep.validate()">
             {{ 'message.correctFld' | translate }}
             <span class="nobr">
-        	<i class="fa fa-lg fa-fw fa-exclamation-circle"></i>
+            <i class="fa fa-lg fa-fw fa-exclamation-circle"></i>
             {{ 'message.markedField' | translate }}
-        	</span>
+            </span>
         </p>
         <div class="buttons">
             <button class="btn btn-info btn-sm">
